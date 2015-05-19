@@ -1,0 +1,12 @@
+/htdocs/media
+/htdocs/static
+/pyenv
+
+# Python
+*.py[co]
+
+# Coverage
+.coverage
+
+# My settings file
+edvinas.py
