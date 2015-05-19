@@ -9,6 +9,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
+THUMBNAIL_DEBUG = True
 
 DATABASES = {
     'default': {

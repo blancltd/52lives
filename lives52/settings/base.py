@@ -8,8 +8,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -41,6 +43,11 @@ DEFAULT_FROM_EMAIL = 'lives52@blanctools.com'
 EMAIL_SUBJECT_PREFIX = '[lives52] '
 
 
+# PROJECT ROOT APPS
+PROJECT_APPS_ROOT = os.path.join(BASE_DIR, '../apps')
+sys.path.append(PROJECT_APPS_ROOT)
+
+
 # Application definition
 DEFAULT_APPS = [
     'django.contrib.admin',
@@ -53,9 +60,14 @@ DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     'raven.contrib.django.raven_compat',
+    'django_extensions',
+    'sorl.thumbnail',
 ]
 
 PROJECT_APPS = [
+    'lifes',
+    'notes',
+    'nominators',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -103,15 +115,23 @@ else:
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'en-gb'
+
+
+# Datetime config.
+DATE_FORMAT = 'd M Y'
+TIME_FORMAT = 'H:i'
+DATETIME_FORMAT = 'd M Y H:i'
+
 
 TIME_ZONE = 'Europe/London'
 
-USE_I18N = False
 
-USE_L10N = True
+USE_I18N = True
 
-USE_TZ = True
+USE_L10N = False
+
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -133,7 +153,7 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'htdocs/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../htdocs/media')
 
 DEFAULT_FILE_STORAGE = os.environ.get(
     'DEFAULT_FILE_STORAGE', 'django.core.files.storage.FileSystemStorage'

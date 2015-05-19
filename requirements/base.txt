@@ -5,6 +5,8 @@ psycopg2==2.6
 Pillow==2.8.1
 dj-database-url==0.3.0
 raven==5.3.1
+django-extensions==1.5.5
+sorl-thumbnail==12.2
 
 # Storage
 apache-libcloud==0.17.0
