@@ -1,11 +1,5 @@
 ========================
-blancltd django-template
+52Lives
 ========================
 
-
-Instructions
-------------
-
-1.  django-admin startproject --template=https://github.com/blancltd/django-template/archive/master.zip project_name
-
-
+52-lives.org 1 in 10 project
