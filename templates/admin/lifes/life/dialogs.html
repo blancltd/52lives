@@ -1,0 +1,10 @@
+<div id="dialog" class="add-note-dialog" title="Add note">
+  <form method="post" action="{% url 'admin:life-add-note' 1 %}" class="add-note-form">
+    {% csrf_token %}
+    {% for field in add_note_form %}
+    {{ field.label }} {% if field.field.required %}*{% endif %}
+      {{ field }}
+    {% endfor %}
+  </form>
+</div>
+
