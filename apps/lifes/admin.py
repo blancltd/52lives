@@ -43,7 +43,8 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
     date_hierarchy = 'created_at'
     search_fields = ('first_name', 'last_name', 'number', 'request',)
     list_display = (
-        'get_full_name', 'number', 'request', 'is_published', 'created_at', 'updated_at',
+        'get_full_name', 'number', 'request', 'home_phone', 'mobile_phone', 'is_published',
+        'created_at', 'updated_at',
     )
     list_filter = ('is_published',)
     fieldsets = (
@@ -51,10 +52,27 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
             'Life', {
                 'fields': (
                     'title', 'first_name', 'last_name', 'number',
-                    'image', 'content', 'request', 'is_published',
+                    'image', 'is_published',
                 )
             }
         ),
+        (
+            'About', {
+                'classes': ('collapse',),
+                'fields': (
+                    'content', 'request',
+                )
+            }
+        ),
+        (
+            'Contacts', {
+                'classes': ('collapse',),
+                'fields': (
+                    'email', 'home_phone', 'mobile_phone',
+                )
+            }
+        ),
+
         (
             'Approved information', {
                 'classes': ('collapse',),

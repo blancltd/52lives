@@ -23,6 +23,9 @@ class Life(models.Model):
         blank=True,
         upload_to='uploads/lifes/life/%Y/%m/%d'
     )
+    email = models.EmailField(blank=True)
+    home_phone = models.CharField(max_length=20, blank=True)
+    mobile_phone = models.CharField(max_length=20, blank=True)
     content = models.TextField(help_text.LIFE['content'])
     request = models.TextField(help_text.LIFE['request'])
     summary = models.TextField(help_text.LIFE['summary'], blank=True)
