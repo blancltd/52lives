@@ -9,17 +9,44 @@ from django.http import JsonResponse
 
 from sorl.thumbnail.admin import AdminImageMixin
 
+from addresses.forms import AddressForm
+from addresses.models import Address
 from notes.forms import NoteForm
 from notes.models import Note
 
 from .models import Life
 
 
+class AddressInline(GenericTabularInline):
+    template = 'admin/lifes/life/edit_inlines/addresses.html'
+    model = Address
+    extra = 0
+    min_num = 0
+    can_delete = True
+    list_per_page = 2
+    fieldsets = (
+        (
+            'Notes', {
+                'classes': ('collapse',),
+                'fields': (
+                    'line_1', 'line_2', 'line_3', 'city', 'county', 'postcode', 'country',
+                    'created_by', 'created_at', 'updated_at',
+                )
+            }
+        ),
+    )
+    readonly_fields = (
+        'line_1', 'line_2', 'line_3', 'city', 'county', 'postcode', 'country',
+        'created_by', 'created_at', 'updated_at',
+    )
+
+
 class NoteInline(GenericTabularInline):
-    template = 'admin/lifes/life/edit_inlines/tabular.html'
+    template = 'admin/lifes/life/edit_inlines/notes.html'
     model = Note
-    extra = 1
-    can_delete = False
+    extra = 0
+    min_num = 0
+    can_delete = True
     list_per_page = 2
     fieldsets = (
         (
@@ -37,7 +64,7 @@ class NoteInline(GenericTabularInline):
 @admin.register(Life)
 class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
     inlines = [
-        NoteInline,
+        AddressInline, NoteInline
     ]
     list_per_page = 2
     date_hierarchy = 'created_at'
@@ -100,23 +127,22 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
                 r'^(\d+)/add-note/$',
                 self.add_note,
                 name='life-add-note'
+            ),
+            url(
+                r'^(\d+)/add-address/$',
+                self.add_address,
+                name='life-add-address'
             )
         ]
         return life_urls + urls
 
-    def save_formset(self, request, form, formset, change):
-        # TODO: Remove after is all done.
-        notes = formset.save(commit=False)
-        for note in notes:
-            note.created_by = request.user
-            note.save()
-
     def change_view(self, request, object_id, form_url='', extra_context=None):
-        obj = self.get_object(request, unquote(object_id))
+        """ Add extra context in template. """
         add_note_form = NoteForm()
+        add_address_form = AddressForm()
         context = {
-            'notes': obj.notes.all(),
             'add_note_form': add_note_form,
+            'add_address_form': add_address_form,
         }
         if extra_context:
             context.update(extra_context)
@@ -125,6 +151,7 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
         )
 
     def add_note(self, request, object_id):
+        """ Add note for life. """
         context = {}
         obj = self.get_object(request, unquote(object_id))
         add_note_form = NoteForm(request.POST)
@@ -139,5 +166,23 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
             context.update({'success': True})
         else:
             context.update(add_note_form.errors)
+        return JsonResponse(context)
+
+    def add_address(self, request, object_id):
+        """ Add address for life. """
+        context = {}
+        obj = self.get_object(request, unquote(object_id))
+        add_address_form = AddressForm(request.POST)
+        if add_address_form.is_valid():
+            address = add_address_form.save(commit=False)
+            address.content_object = obj
+            address.created_by = request.user
+            address.save()
+            messages.success(request, 'The address "{}" was added successfully.'.format(
+                address.line_1
+            ))
+            context.update({'success': True})
+        else:
+            context.update(add_address_form.errors)
         return JsonResponse(context)
 

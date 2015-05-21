@@ -1,10 +1,15 @@
 <div id="dialog" class="add-note-dialog" title="Add note">
-  <form method="post" action="{% url 'admin:life-add-note' 1 %}" class="add-note-form">
+  <form method="post" action="{% url 'admin:life-add-note' object_id %}" class="add-note-form">
     {% csrf_token %}
-    {% for field in add_note_form %}
-    {{ field.label }} {% if field.field.required %}*{% endif %}
-      {{ field }}
-    {% endfor %}
+    {% include "admin/lifes/life/includes/dialog_form.html" with form=add_note_form %}
+  </form>
+</div>
+
+
+<div id="dialog" class="add-address-dialog" title="Add address">
+  <form method="post" action="{% url 'admin:life-add-address' object_id %}" class="add-address-form">
+    {% csrf_token %}
+    {% include "admin/lifes/life/includes/dialog_form.html" with form=add_address_form %}
   </form>
 </div>
 

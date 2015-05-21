@@ -65,9 +65,11 @@ THIRD_PARTY_APPS = [
 ]
 
 PROJECT_APPS = [
+    'addresses',
+    'countries',
     'lifes',
-    'notes',
     'nominators',
+    'notes',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECT_APPS

@@ -1,0 +1,10 @@
+<table>
+  {% for field in form %}
+    <tr>
+      <th>
+        <label for="{{ field.id_for_label }}">{{ field.label }} {% if field.field.required %}*{% endif %}:</label>
+      </th>
+      <td>{{ field }}</td>
+    </tr>
+  {% endfor %}
+</table>
