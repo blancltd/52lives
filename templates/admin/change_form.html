@@ -3,6 +3,8 @@
 
 {% block extrahead %}{{ block.super }}
 <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/libs/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 {{ media }}
 {% endblock %}
 
@@ -30,7 +32,22 @@
 
 {% block content %}
 
-  {% include "admin/lifes/life/dialogs.html" %}
+  {% block dialogs %}
+
+    {% comment %}
+      Add dialogs in the begging of page
+    {% endcomment %}
+
+    {% for inline_admin_formset in inline_admin_formsets %}
+      {% if inline_admin_formset.opts.dialog_data %}
+        {% with dialog_data=inline_admin_formset.opts.dialog_data %}
+          {% include "admin/addresses/address/dialogs.html" %}
+        {% endwith %}
+      {% endif %}
+    {% endfor %}
+
+  {% endblock dialogs %}
+
   <div id="content-main">
 
   {% block object-tools %}
@@ -99,12 +116,7 @@
             {% endif %}
             });
         })(django.jQuery);
-
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/libs/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/admin/lifes/lifes.js' %}"></script>
-
 {% endblock %}
 
 {# JavaScript for prepopulated fields #}

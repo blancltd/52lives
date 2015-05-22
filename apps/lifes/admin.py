@@ -2,18 +2,15 @@
 
 from django.conf.urls import url
 from django.contrib import admin
-from django.contrib import messages
 from django.contrib.admin.utils import unquote
-from django.contrib.contenttypes.admin import GenericTabularInline
+from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 
 from sorl.thumbnail.admin import AdminImageMixin
 
-from addresses.forms import AddressForm
-from addresses.models import Address
+from addresses.admin import AddressInline
+from notes.admin import NoteInline
 from nominators.models import Nominator
-from notes.forms import NoteForm
-from notes.models import Note
 
 from .models import Life
 
@@ -30,51 +27,6 @@ class NominatorInline(admin.TabularInline):
 
     def has_add_permission(self, request):
         return False
-
-
-class AddressInline(GenericTabularInline):
-    template = 'admin/lifes/life/edit_inlines/addresses.html'
-    model = Address
-    extra = 0
-    min_num = 0
-    can_delete = True
-    list_per_page = 2
-
-    fieldsets = (
-        (
-            'Notes', {
-                'classes': ('collapse',),
-                'fields': (
-                    'line_1', 'line_2', 'line_3', 'city', 'county', 'postcode', 'country',
-                    'created_by', 'created_at', 'updated_at',
-                )
-            }
-        ),
-    )
-    readonly_fields = (
-        'line_1', 'line_2', 'line_3', 'city', 'county', 'postcode', 'country',
-        'created_by', 'created_at', 'updated_at',
-    )
-
-
-class NoteInline(GenericTabularInline):
-    template = 'admin/lifes/life/edit_inlines/notes.html'
-    model = Note
-    extra = 0
-    min_num = 0
-    can_delete = True
-    list_per_page = 2
-    fieldsets = (
-        (
-            'Notes', {
-                'classes': ('collapse',),
-                'fields': (
-                    'note', 'created_by', 'created_at', 'updated_at',
-                )
-            }
-        ),
-    )
-    readonly_fields = ('note', 'created_by', 'created_at', 'updated_at',)
 
 
 @admin.register(Life)
@@ -132,7 +84,6 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
             }
         ),
     )
-
     readonly_fields = ('id', 'created_at', 'updated_at', 'number',)
 
     def get_urls(self):
@@ -151,19 +102,20 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
         ]
         return life_urls + urls
 
-    def change_view(self, request, object_id, form_url='', extra_context=None):
-        """ Add extra context in template. """
-        add_note_form = NoteForm()
-        add_address_form = AddressForm()
-        context = {
-            'add_note_form': add_note_form,
-            'add_address_form': add_address_form,
-        }
-        if extra_context:
-            context.update(extra_context)
-        return super(LifeAdmin, self).change_view(
-            request, object_id, form_url, extra_context=context
-        )
+    def get_inline_instances(self, request, obj=None):
+        """ Update post url for AddressInline. """
+        inline_instances = super(LifeAdmin, self).get_inline_instances(request, obj)
+        if obj is not None:
+            for inline in inline_instances:
+                if isinstance(inline, AddressInline):
+                    inline.dialog_data['post_url'] = reverse(
+                        'admin:life-add-address', args=(obj.id,)
+                    )
+                elif isinstance(inline, NoteInline):
+                    inline.dialog_data['post_url'] = reverse(
+                        'admin:life-add-note', args=(obj.id,)
+                    )
+        return inline_instances
 
     def get_formsets_with_inlines(self, request, obj=None):
         if obj is None:
@@ -174,35 +126,17 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
         """ Add note for life. """
         context = {}
         obj = self.get_object(request, unquote(object_id))
-        add_note_form = NoteForm(request.POST)
-        if add_note_form.is_valid():
-            note = add_note_form.save(commit=False)
-            note.content_object = obj
-            note.created_by = request.user
-            note.save()
-            messages.success(request, 'The note "{}" was added successfully.'.format(
-                note.note
-            ))
-            context.update({'success': True})
-        else:
-            context.update(add_note_form.errors)
+        context = NoteInline.create_note(
+            request, obj
+        )
         return JsonResponse(context)
 
     def add_address(self, request, object_id):
         """ Add address for life. """
-        context = {}
         obj = self.get_object(request, unquote(object_id))
-        add_address_form = AddressForm(request.POST)
-        if add_address_form.is_valid():
-            address = add_address_form.save(commit=False)
-            address.content_object = obj
-            address.created_by = request.user
-            address.save()
-            messages.success(request, 'The address "{}" was added successfully.'.format(
-                address.line_1
-            ))
-            context.update({'success': True})
-        else:
-            context.update(add_address_form.errors)
+        context = AddressInline.create_address(
+            request, obj
+        )
         return JsonResponse(context)
+
 

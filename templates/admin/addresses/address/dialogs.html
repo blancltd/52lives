@@ -1,0 +1,9 @@
+<div id="dialog" class="{{ dialog_data.dialog_class }}" title="{{ dialog_data.title }}">
+  <form method="post" action="{{ dialog_data.post_url }}" class="{{ dialog_data.form_class }}">
+    {% csrf_token %}
+    {% with form=dialog_data.form %}
+      {% include "admin/includes/dialog_form.html" %}
+    {% endwith %}
+  </form>
+</div>
+
