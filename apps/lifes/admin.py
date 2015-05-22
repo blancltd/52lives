@@ -11,10 +11,25 @@ from sorl.thumbnail.admin import AdminImageMixin
 
 from addresses.forms import AddressForm
 from addresses.models import Address
+from nominators.models import Nominator
 from notes.forms import NoteForm
 from notes.models import Note
 
 from .models import Life
+
+
+class NominatorInline(admin.TabularInline):
+    model = Nominator
+    can_delete = False
+    extra = 0
+    min_num = 0
+    readonly_fields = (
+        'title', 'first_name', 'last_name', 'email', 'home_phone', 'mobile_phone', 'reason',
+        'message', 'hear_about_us',
+    )
+
+    def has_add_permission(self, request):
+        return False
 
 
 class AddressInline(GenericTabularInline):
@@ -24,6 +39,7 @@ class AddressInline(GenericTabularInline):
     min_num = 0
     can_delete = True
     list_per_page = 2
+
     fieldsets = (
         (
             'Notes', {
@@ -64,9 +80,8 @@ class NoteInline(GenericTabularInline):
 @admin.register(Life)
 class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
     inlines = [
-        AddressInline, NoteInline
+        NominatorInline, AddressInline, NoteInline
     ]
-    list_per_page = 2
     date_hierarchy = 'created_at'
     search_fields = ('first_name', 'last_name', 'number', 'request',)
     list_display = (
@@ -149,6 +164,11 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
         return super(LifeAdmin, self).change_view(
             request, object_id, form_url, extra_context=context
         )
+
+    def get_formsets_with_inlines(self, request, obj=None):
+        if obj is None:
+            return []
+        return super(LifeAdmin, self).get_formsets_with_inlines(request, obj)
 
     def add_note(self, request, object_id):
         """ Add note for life. """
