@@ -29,17 +29,26 @@
               {{ inline_admin_form.pk_field.field }}
             {% endif %}
 
-            <td colspan="2">{{ inline_admin_form.original.note }}</td>
-            <td>{{ inline_admin_form.original.created_by }}</td>
-            <td>{{ inline_admin_form.original.created_at }}</td>
-            <td>{{ inline_admin_form.original.updated_at }}</td>
+            {% if inline_admin_form.original %}
+              <td colspan="2">{{ inline_admin_form.original.note }}</td>
+              <td>{{ inline_admin_form.original.created_by }}</td>
+              <td>{{ inline_admin_form.original.created_at }}</td>
+              <td>{{ inline_admin_form.original.updated_at }}</td>
 
-            {% if inline_admin_formset.formset.can_delete %}
-              <td class="delete">
-                {% if inline_admin_form.original %}
-                  {{ inline_admin_form.deletion_field.field }}
-                {% endif %}
-              </td>
+              {% if inline_admin_formset.formset.can_delete %}
+                <td class="delete">
+                  {% if inline_admin_form.original %}
+                    {{ inline_admin_form.deletion_field.field }}
+                  {% endif %}
+                </td>
+              {% endif %}
+
+            {% else %}
+              {% if forloop.first %}
+                <td>
+                  No entries.
+                </td>
+              {% endif %}
             {% endif %}
 
           </tr>
