@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import sys
 
+from contentfiles.config import libcloud_providers
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -250,5 +252,7 @@ LOGGING = {
 SITE_ID = 1
 
 # Cloud storage
-from contentfiles.config import libcloud_providers
 LIBCLOUD_PROVIDERS = libcloud_providers('lives52')
+
+LIFE_52_NUMBER = 12
+

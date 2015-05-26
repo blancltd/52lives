@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.admin.utils import unquote
@@ -85,6 +86,21 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
         ),
     )
     readonly_fields = ('id', 'created_at', 'updated_at', 'number',)
+
+    def save_model(self, request, obj, form, change):
+        """
+        Given a model instance save it to the database and add life number.
+        """
+        if obj.is_published and not obj.number:
+            try:
+                latest_life_number = Life.objects.filter(number__isnull=False).latest().number
+            except Life.DoesNotExist:
+                latest_life_number = settings.LIFE_52_NUMBER
+            else:
+                latest_life_number += 1
+
+            obj.number = latest_life_number
+        obj.save()
 
     def get_urls(self):
         urls = super(LifeAdmin, self).get_urls()

@@ -36,6 +36,9 @@ class Life(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        get_latest_by = 'id'
+
     def __str__(self):
         return u'{} {}'.format(self.first_name, self.last_name)
 
