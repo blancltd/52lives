@@ -10,13 +10,13 @@ from sorl.thumbnail.admin import AdminImageMixin
 
 from addresses.admin import AddressInline
 from notes.admin import NoteInline
-from nominators.models import Nominator
+from persons.models import Person
 
 from .models import Life
 
 
-class NominatorInline(admin.TabularInline):
-    model = Nominator
+class PersonInline(admin.TabularInline):
+    model = Person
     can_delete = False
     extra = 0
     min_num = 0
@@ -32,7 +32,7 @@ class NominatorInline(admin.TabularInline):
 @admin.register(Life)
 class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
     inlines = [
-        NominatorInline, AddressInline, NoteInline
+        PersonInline, AddressInline, NoteInline
     ]
     date_hierarchy = 'created_at'
     search_fields = ('first_name', 'last_name', 'number', 'request',)
@@ -103,7 +103,7 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
         return life_urls + urls
 
     def get_inline_instances(self, request, obj=None):
-        """ Update post url for AddressInline. """
+        """ Update post url for AddressInline and NotesInline. """
         inline_instances = super(LifeAdmin, self).get_inline_instances(request, obj)
         if obj is not None:
             for inline in inline_instances:

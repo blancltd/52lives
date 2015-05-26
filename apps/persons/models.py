@@ -6,11 +6,11 @@ from django.utils.encoding import python_2_unicode_compatible
 from lifes import choices as life_choices
 from lifes.models import Life
 
-from . import choices as nominators_choices
+from . import choices as persons_choices
 
 
 @python_2_unicode_compatible
-class Nominator(models.Model):
+class Person(models.Model):
     life = models.ForeignKey(Life, blank=True, null=True)
     title = models.CharField(max_length=10, choices=life_choices.SOCIAL_TITLE_CHOICES)
     first_name = models.CharField(max_length=20)
@@ -18,7 +18,7 @@ class Nominator(models.Model):
     email = models.EmailField(blank=True)
     home_phone = models.CharField(max_length=20, blank=True)
     mobile_phone = models.CharField(max_length=20, blank=True)
-    reason = models.IntegerField(choices=nominators_choices.REASON_TYPES)
+    reason = models.IntegerField(choices=persons_choices.REASON_TYPES)
     message = models.TextField()
     hear_about_us = models.CharField(max_length=120)
     updated_at = models.DateTimeField(auto_now=True)

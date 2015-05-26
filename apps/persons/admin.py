@@ -3,17 +3,19 @@
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.admin.utils import unquote
+from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 
 from addresses.admin import AddressInline
+from notes.admin import NoteInline
 
-from .models import Nominator
+from .models import Person
 
 
-@admin.register(Nominator)
-class NominatorAdmin(admin.ModelAdmin):
+@admin.register(Person)
+class PersonAdmin(admin.ModelAdmin):
     inlines = [
-        AddressInline,
+        AddressInline, NoteInline
     ]
     date_hierarchy = 'created_at'
     search_fields = (
@@ -27,7 +29,7 @@ class NominatorAdmin(admin.ModelAdmin):
     list_filter = ('reason',)
     fieldsets = (
         (
-            'Nominator', {
+            'Person', {
                 'fields': (
                     'title', 'first_name', 'last_name', 'life', 'reason', 'message',
                     'hear_about_us',
@@ -59,23 +61,52 @@ class NominatorAdmin(admin.ModelAdmin):
         js = ('js/admin/addresses/addresses.js',)
 
     def get_urls(self):
-        urls = super(NominatorAdmin, self).get_urls()
+        urls = super(PersonAdmin, self).get_urls()
         life_urls = [
+            url(
+                r'^(\d+)/add-note/$',
+                self.add_note,
+                name='persons-add-note'
+            ),
             url(
                 r'^(\d+)/add-address/$',
                 self.add_address,
-                name='nominators-add-address'
+                name='persons-add-address'
             )
         ]
         return life_urls + urls
 
+    def get_inline_instances(self, request, obj=None):
+        """ Update post url for AddressInline and NotesInline. """
+        inline_instances = super(PersonAdmin, self).get_inline_instances(request, obj)
+        if obj is not None:
+            for inline in inline_instances:
+                if isinstance(inline, AddressInline):
+                    inline.dialog_data['post_url'] = reverse(
+                        'admin:persons-add-address', args=(obj.id,)
+                    )
+                elif isinstance(inline, NoteInline):
+                    inline.dialog_data['post_url'] = reverse(
+                        'admin:persons-add-note', args=(obj.id,)
+                    )
+        return inline_instances
+
     def get_formsets_with_inlines(self, request, obj=None):
         if obj is None:
             return []
-        return super(NominatorAdmin, self).get_formsets_with_inlines(request, obj)
+        return super(PersonAdmin, self).get_formsets_with_inlines(request, obj)
+
+    def add_note(self, request, object_id):
+        """ Add note for life. """
+        context = {}
+        obj = self.get_object(request, unquote(object_id))
+        context = NoteInline.create_note(
+            request, obj
+        )
+        return JsonResponse(context)
 
     def add_address(self, request, object_id):
-        """ Add address for nominator. """
+        """ Add address for person. """
         obj = self.get_object(request, unquote(object_id))
         context = AddressInline.create_address(
             request, obj

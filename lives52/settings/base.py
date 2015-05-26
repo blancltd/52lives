@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Django settings for lives52 project.
 
@@ -64,15 +66,18 @@ THIRD_PARTY_APPS = [
     'sorl.thumbnail',
 ]
 
+
 PROJECT_APPS = [
     'addresses',
     'countries',
     'lifes',
-    'nominators',
     'notes',
+    'persons',
 ]
 
+
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECT_APPS
+
 
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
