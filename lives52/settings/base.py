@@ -251,4 +251,4 @@ SITE_ID = 1
 
 # Cloud storage
 from contentfiles.config import libcloud_providers
-LIBCLOUD_PROVIDERS = libcloud_providers('lives52')
+LIBCLOUD_PROVIDERS = libcloud_providers('52lives')
