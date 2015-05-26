@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 
 import os
 import sys
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lives52.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lives52.settings.local")
 
 # Python 2 threading problems
 if sys.version_info < (3,):
