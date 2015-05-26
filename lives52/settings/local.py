@@ -14,7 +14,7 @@ THUMBNAIL_DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DJANGO_DATABASE_NAME'),
+        'NAME': os.environ.get('DJANGO_DATABASE_NAME', 'lives52_django'),
         'USER': '',
         'PASSWORD': '',
         'PORT': '',
@@ -36,4 +36,3 @@ MIDDLEWARE_CLASSES.append(
 COVERAGE_EXCLUDES_FOLDERS = ['/var/envs/lives52/lib/python2']
 
 SECRET_KEY = "lives52"
-
