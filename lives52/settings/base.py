@@ -71,6 +71,7 @@ THIRD_PARTY_APPS = [
 
 PROJECT_APPS = [
     'addresses',
+    'contacts',
     'countries',
     'lifes',
     'notes',
