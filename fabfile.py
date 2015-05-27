@@ -16,7 +16,7 @@ env.roledefs = {
 }
 
 env.home = env.get('home', '/var/www/lives52')
-env.repo = env.get('repo', 'lives52')
+env.repo = env.get('repo', '52lives')
 env.database = env.get('database', 'lives52_django')
 
 CRONTAB = """

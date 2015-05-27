@@ -16,7 +16,7 @@ import sys
 from contentfiles.config import libcloud_providers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 
 # Production / development switches
@@ -48,7 +48,7 @@ EMAIL_SUBJECT_PREFIX = '[lives52] '
 
 
 # PROJECT ROOT APPS
-PROJECT_APPS_ROOT = os.path.join(BASE_DIR, '../apps')
+PROJECT_APPS_ROOT = os.path.join(BASE_DIR, 'apps')
 sys.path.append(PROJECT_APPS_ROOT)
 
 
@@ -163,7 +163,7 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '../htdocs/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'htdocs/media')
 
 DEFAULT_FILE_STORAGE = os.environ.get(
     'DEFAULT_FILE_STORAGE', 'django.core.files.storage.FileSystemStorage'
@@ -174,7 +174,7 @@ DEFAULT_FILE_STORAGE = os.environ.get(
 # https://docs.djangoproject.com/en/1.8/ref/settings/#templates
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, '../templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
