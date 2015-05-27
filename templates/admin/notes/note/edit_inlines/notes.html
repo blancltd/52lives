@@ -45,7 +45,7 @@
 
             {% else %}
               {% if forloop.first %}
-                <td>
+                <td colspan="{{ inline_admin_formset|cell_count }}">
                   No entries.
                 </td>
               {% endif %}
