@@ -1,15 +1,16 @@
 Django==1.8.1
-pytz==2015.4
-pylibmc==1.4.2
-psycopg2==2.6
 Pillow==2.8.1
-dj-database-url==0.3.0
-raven==5.3.1
-django-extensions==1.5.5
-sorl-thumbnail==12.2
-
-# Storage
 apache-libcloud==0.17.0
-dj-libcloud==0.2.0
 blanc-contentfiles==0.1
-
+blanc-pages-form-block==0.3.3
+blanc-pages==0.6.3
+dj-database-url==0.3.0
+dj-libcloud==0.2.0
+django-extensions==1.5.5
+django-mptt-admin==0.2.1
+django-mptt==0.7.4
+psycopg2==2.6
+pylibmc==1.4.2
+pytz==2015.4
+raven==5.3.1
+sorl-thumbnail==12.2

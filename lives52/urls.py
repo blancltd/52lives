@@ -1,7 +1,12 @@
+# -*- coding: utf-8 -*-
+
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
+
+from blanc_pages import block_admin
+
 
 urlpatterns = [
     # Examples:
@@ -9,7 +14,10 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^blockadmin/', include(block_admin.site.urls)),
+
 ]
+
 
 # Make it easier to see a 404 page under debug
 if settings.DEBUG:

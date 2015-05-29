@@ -63,8 +63,12 @@ DEFAULT_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'raven.contrib.django.raven_compat',
+    'blanc_pages',
+    'blanc_pages_form_block',
     'django_extensions',
+    'django_mptt_admin',
+    'mptt',
+    'raven.contrib.django.raven_compat',
     'sorl.thumbnail',
 ]
 
@@ -75,11 +79,16 @@ PROJECT_APPS = [
     'countries',
     'lifes',
     'notes',
+    'pages',
     'persons',
 ]
 
+BLOCKS = [
+    'blocks.forms',
+]
 
-INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECT_APPS
+
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECT_APPS + BLOCKS
 
 
 MIDDLEWARE_CLASSES = [
@@ -90,6 +99,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'blanc_pages.middleware.BlancpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'lives52.urls'
@@ -256,4 +266,6 @@ SITE_ID = 1
 LIBCLOUD_PROVIDERS = libcloud_providers('lives52')
 
 LIFE_52_NUMBER = 12
+
+BLANC_PAGES_MODEL = 'pages.Page'
 

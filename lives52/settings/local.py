@@ -36,3 +36,6 @@ MIDDLEWARE_CLASSES.append(
 COVERAGE_EXCLUDES_FOLDERS = ['/var/envs/lives52/lib/python2']
 
 SECRET_KEY = "lives52"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
