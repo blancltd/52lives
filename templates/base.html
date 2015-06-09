@@ -1,26 +1,28 @@
 {% load static from staticfiles %}<!DOCTYPE html>
 <html lang="en">
-<head>
-
-  {% block starthead %}
-  {% endblock starthead %}
-
-  <title>{% block title %}Website{% endblock %}</title>
-  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-
-  {# NOTE: Remove IE conditional comments if you're using Modernizr for more than the html5shiv #}
-  <!--[if lt IE 9]>
-      <script src="{% static 'js/modernizr.js' %}"></script>
-  <![endif]-->
+<head>{% block starthead %}{% endblock starthead %}
+    <title>{% block title %}52 Lives{% endblock %}</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <meta name="description" content="52 Lives">
+    <meta name="author" content="52 Lives">
+    <meta name="generator" content="Blanc Ltd">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lt IE 9]>
+        <script src="{% static 'js/modernizr.js' %}"></script>
+    <![endif]-->
 </head>
 <body class="{% block bodyclass %}{% endblock bodyclass %}">
 
     {% block startbody %}
     {% endblock startbody %}
 
-    {% block main_content %}
-    {% endblock main_content %}
+    <main class="page">
+        {% block main_content %}
+        {% endblock main_content %}
+    </main>
 
-  </body>
+    {% block endbody %}
+    {% endblock endbody %}
+</body>
 </html>
-

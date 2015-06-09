@@ -9,6 +9,10 @@ class DefaultLayout(blanc_pages.BlancPageLayout):
     template_name = 'blanc_pages/default.html'
     title = 'Default'
     columns = {
+        'Intro': {
+            'width': 960,
+            'image_width': 960,
+        },
         'Content': {
             'width': 960,
             'image_width': 960,
