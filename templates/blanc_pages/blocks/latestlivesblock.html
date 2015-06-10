@@ -1,0 +1,11 @@
+{% load lifes_tags %}
+{% load thumbnail %}
+
+{% get_latest_lifes 10 as latest_lifes %}
+
+{% if latest_lifes %}
+  {% for live in latest_lifes %}
+    {{ live.first_name }} {{ live.last_name }}
+  {% endfor %}
+{% endif %}
+

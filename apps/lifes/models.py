@@ -10,6 +10,7 @@ from notes.models import Note
 
 from . import help_text
 from . import choices as life_choices
+from .managers import LifeManager
 
 
 @python_2_unicode_compatible
@@ -36,8 +37,11 @@ class Life(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    objects = LifeManager()
+
     class Meta:
         get_latest_by = 'id'
+        ordering = ('-number',)
 
     def __str__(self):
         return u'{} {}'.format(self.first_name, self.last_name)

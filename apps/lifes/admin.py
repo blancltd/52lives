@@ -8,11 +8,13 @@ from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 
 from sorl.thumbnail.admin import AdminImageMixin
+from blanc_pages import block_admin
 
 from addresses.admin import AddressInline
 from notes.admin import NoteInline
 from persons.models import Person
 
+from .blocks.models import LatestLivesBlock
 from .models import Life
 
 
@@ -155,4 +157,7 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
         )
         return JsonResponse(context)
 
+
+block_admin.site.register(LatestLivesBlock)
+block_admin.site.register_block(LatestLivesBlock, 'Advanced')
 
