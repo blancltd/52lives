@@ -3,6 +3,9 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
+from blanc_pages import block_admin
+
+from .blocks.forms import ContactFormBlock
 from .models import Contact
 
 
@@ -31,4 +34,8 @@ class ContactAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
+
+
+block_admin.site.register((ContactFormBlock))
+block_admin.site.register_block(ContactFormBlock, 'Forms')
 

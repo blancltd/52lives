@@ -63,8 +63,11 @@ DEFAULT_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'blanc_basic_assets',
     'blanc_pages',
     'blanc_pages_form_block',
+    'blanc_pages_image_block',
+    'blanc_pages_redactor_block',
     'django_extensions',
     'django_mptt_admin',
     'mptt',
@@ -83,12 +86,8 @@ PROJECT_APPS = [
     'persons',
 ]
 
-BLOCKS = [
-    'blocks.forms',
-]
 
-
-INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECT_APPS + BLOCKS
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 
 MIDDLEWARE_CLASSES = [

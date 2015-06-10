@@ -11,13 +11,13 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.BLANC_PAGES_MODEL),
-        ('pages', '0004_rename_tables'),
-        ('forms', '0001_initial'),
+        ('pages', '0005_auto_20150529_1016'),
+        ('contacts', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='NominateFormBlock',
+            name='ContactFormBlock',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('recipient', models.EmailField(max_length=254)),

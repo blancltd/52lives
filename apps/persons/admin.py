@@ -6,9 +6,12 @@ from django.contrib.admin.utils import unquote
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 
+from blanc_pages import block_admin
+
 from addresses.admin import AddressInline
 from notes.admin import NoteInline
 
+from .blocks.forms import NominateFormBlock
 from .models import Person
 
 
@@ -113,4 +116,8 @@ class PersonAdmin(admin.ModelAdmin):
         )
 
         return JsonResponse(context)
+
+
+block_admin.site.register((NominateFormBlock))
+block_admin.site.register_block(NominateFormBlock, 'Forms')
 
