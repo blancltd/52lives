@@ -68,7 +68,6 @@ THIRD_PARTY_APPS = [
     'blanc_pages_form_block',
     'blanc_pages_image_block',
     'blanc_pages_redactor_block',
-    'django_extensions',
     'django_mptt_admin',
     'mptt',
     'raven.contrib.django.raven_compat',
