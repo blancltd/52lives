@@ -3,67 +3,14 @@
 {% load static from staticfiles %}
 
 
-{% block main_content %}
+{% block content %}
+
 {% blancpage_render_column blanc_page "Intro" %}
 
-<header class="head">
-    <h1><a href="/">52 Lives</a></h1>
-     <nav class="nav">
-        <ul>
-            <li><a href="#">Lives</a></li>
-            <li><a href="#">Nominate</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<article class="content">
+  <article class="content">
     {% blancpage_render_column blanc_page "Content" %}
-</article>
+  </article>
 
-<footer class="foot">
-    <ul class="sitemap">
-        <li>
-            <ul>
-                <li><h3>Lives</h3></li>
-                <li><a href="#">subpage</a></li>
-                <li><a href="#">subpage</a></li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li><h3>Lives</h3></li>
-                <li><a href="#">subpage</a></li>
-                <li><a href="#">subpage</a></li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li><h3>Lives</h3></li>
-                <li><a href="#">subpage</a></li>
-                <li><a href="#">subpage</a></li>
-            </ul>
-        </li>
-        <li>
-            <ul>
-                <li><h3>Lives</h3></li>
-                <li><a href="#">subpage</a></li>
-                <li><a href="#">subpage</a></li>
-            </ul>
-        </li>
-    </ul>
-    <div class="legal">
-        <p class="siteby"><a href="http://www.blanc.ltd.uk/">Website by Blanc</a></p>
-        <p>&copy; Copyright 52 Lives 2013-{% now 'Y' %}</p>
-        <p>Anonymity: In most cases we use real names, but occasionally may change someone's name for privacy or safety reasons.</p>
-        <p>All rights reserved.</p>
-    </div>
-</footer>
-{% endblock main_content %}
+{% endblock content %}
 
 
-{% block endbody %}
-<script src="{% static 'js/libs/packery/packery-min.js' %}"></script>
-{% endblock endbody %}

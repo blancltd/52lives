@@ -1,0 +1,32 @@
+{% load pages_tags %}
+
+<footer class="foot">
+  {% footer_pages as footer_links %}
+
+  {% for footer_header in footer_links|show_nav|slice:"1:5" %}
+      <ul class="sitemap">
+        <li>
+          <ul>
+            <li>
+              <h3>
+                <a href="{{ footer_header.get_absolute_url }}">{{ footer_header.title }}</a>
+              </h3>
+            </li>
+
+            {% for footer_page in footer_header.get_children|show_nav %}
+              <li>
+                <a href="{{ footer_page.get_absolute_url }}">{{ footer_page.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+  {% endfor %}
+
+  <div class="legal">
+      <p class="siteby"><a href="http://www.blanc.ltd.uk/">Website by Blanc</a></p>
+      <p>&copy; Copyright 52 Lives 2013-{% now 'Y' %}</p>
+      <p>Anonymity: In most cases we use real names, but occasionally may change someone's name for privacy or safety reasons.</p>
+      <p>All rights reserved.</p>
+  </div>
+</footer>
