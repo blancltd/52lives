@@ -14,7 +14,7 @@ from addresses.admin import AddressInline
 from notes.admin import NoteInline
 from persons.models import Person
 
-from .blocks.models import LatestLivesBlock
+from .blocks.models import LatestLifesBlock, LifeBlock
 from .models import Life
 
 
@@ -158,6 +158,9 @@ class LifeAdmin(AdminImageMixin, admin.ModelAdmin):
         return JsonResponse(context)
 
 
-block_admin.site.register(LatestLivesBlock)
-block_admin.site.register_block(LatestLivesBlock, 'Advanced')
+block_admin.site.register(LifeBlock)
+block_admin.site.register_block(LifeBlock, 'Advanced')
+
+block_admin.site.register(LatestLifesBlock)
+block_admin.site.register_block(LatestLifesBlock, 'Advanced')
 
