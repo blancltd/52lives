@@ -8,7 +8,7 @@ import sorl.thumbnail.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pages', '0005_auto_20150529_1016'),
+        ('pages', '0004_rename_tables'),
     ]
 
     operations = [

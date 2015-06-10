@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('assets', '__first__'),
-        ('pages', '0005_auto_20150529_1016'),
+        ('pages', '0004_rename_tables'),
     ]
 
     operations = [

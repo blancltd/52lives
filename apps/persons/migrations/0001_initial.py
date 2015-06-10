@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('lifes', '0001_initial'),
         migrations.swappable_dependency(settings.BLANC_PAGES_MODEL),
-        ('pages', '0005_auto_20150529_1016'),
+        ('pages', '0004_rename_tables'),
     ]
 
     operations = [

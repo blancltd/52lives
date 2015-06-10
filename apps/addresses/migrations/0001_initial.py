@@ -10,6 +10,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('contenttypes', '0002_remove_content_type_name'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('countries', '0001_initial'),
     ]
 
     operations = [
@@ -31,7 +32,12 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
+                ('country', models.ForeignKey(blank=True, to='countries.Country', null=True)),
                 ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
+            options={
+                'ordering': ('-created_at',),
+                'verbose_name_plural': 'Addresses',
+            },
         ),
     ]
