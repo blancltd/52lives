@@ -5,6 +5,7 @@ blanc-contentfiles==0.1
 blanc-pages-form-block==0.3.3
 blanc-pages-image-block==0.2.1
 blanc-pages-redactor-block==0.6.1
+django-redactorjs-staticfiles==9.2.6
 blanc-pages==0.6.4
 dj-database-url==0.3.0
 dj-libcloud==0.2.0

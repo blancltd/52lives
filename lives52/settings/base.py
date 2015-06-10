@@ -71,6 +71,7 @@ THIRD_PARTY_APPS = [
     'django_mptt_admin',
     'mptt',
     'raven.contrib.django.raven_compat',
+    'redactorjs_staticfiles',
     'sorl.thumbnail',
 ]
 
