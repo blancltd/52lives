@@ -16,7 +16,7 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DJANGO_DATABASE_NAME', 'first_man_standing'),
+        'NAME': os.environ.get('DJANGO_DATABASE_NAME', 'lives52_django'),
         'USER': '',
         'PASSWORD': '',
         'PORT': '',
@@ -45,9 +45,8 @@ MIDDLEWARE_CLASSES.append(
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-COVERAGE_EXCLUDES_FOLDERS = ['/var/envs/first_man_standing/lib/python2']
+COVERAGE_EXCLUDES_FOLDERS = ['/var/envs/lives52/lib/python2']
 
-SECRET_KEY = "first_man_standing"
+SECRET_KEY = "lives52"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
