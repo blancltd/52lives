@@ -35,7 +35,7 @@ class Life(models.Model):
     notes = GenericRelation(Note)
     slug = models.SlugField()
     updated_at = models.DateTimeField(auto_now=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField()
 
     objects = LifeManager()
 
@@ -48,3 +48,4 @@ class Life(models.Model):
 
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)
+
