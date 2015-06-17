@@ -4,7 +4,7 @@ from django.db import models
 
 from blanc_pages.blocks import BaseBlock
 
-from lives.models import Live
+from lives.models import Life
 
 
 class LatestLivesBlock(BaseBlock):
@@ -16,12 +16,12 @@ class LatestLivesBlock(BaseBlock):
 
 class LiveBlock(BaseBlock):
     live = models.ForeignKey(
-        Live,
+        Life,
         blank=True,
         null=True,
         limit_choices_to={'number__isnull': False}
     )
 
     class Meta:
-        verbose_name = 'Live'
+        verbose_name = 'Life'
 

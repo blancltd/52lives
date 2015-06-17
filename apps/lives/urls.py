@@ -2,7 +2,7 @@
 
 from django.conf.urls import url
 
-from .views import LivesListView, LiveDetailView
+from .views import LivesListView, LifeDetailView
 
 
 urlpatterns = [
@@ -13,7 +13,7 @@ urlpatterns = [
     ),
     url(
         r'^(?P<pk>[0-9]+)/$',
-        LiveDetailView.as_view(),
+        LifeDetailView.as_view(),
         name='detail'
     ),
 ]

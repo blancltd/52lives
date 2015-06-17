@@ -12,10 +12,10 @@ from blanc_pages import block_admin
 
 from addresses.admin import AddressInline
 from notes.admin import NoteInline
-from persons.models import Person
+from people.models import Person
 
 from .blocks.models import LatestLivesBlock, LiveBlock
-from .models import Live
+from .models import Life
 
 
 class PersonInline(admin.TabularInline):
@@ -33,7 +33,7 @@ class PersonInline(admin.TabularInline):
         return False
 
 
-@admin.register(Live)
+@admin.register(Life)
 class LiveAdmin(AdminImageMixin, admin.ModelAdmin):
     inlines = [
         PersonInline, AddressInline, NoteInline

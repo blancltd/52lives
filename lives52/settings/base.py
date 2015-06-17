@@ -85,7 +85,7 @@ PROJECT_APPS = [
     'lives',
     'notes',
     'pages',
-    'persons',
+    'people',
 ]
 
 

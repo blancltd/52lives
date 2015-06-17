@@ -43,7 +43,10 @@ class Migration(migrations.Migration):
                 ('hear_about_us', models.CharField(max_length=120)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('live', models.ForeignKey(blank=True, to='lives.Live', null=True)),
+                ('live', models.ForeignKey(blank=True, to='lives.Life', null=True)),
             ],
+            options={
+                'verbose_name_plural': 'People',
+            },
         ),
     ]

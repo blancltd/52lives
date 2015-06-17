@@ -10,16 +10,16 @@ from sorl.thumbnail import ImageField
 from notes.models import Note
 
 from . import help_text
-from . import choices as live_choices
-from .managers import LiveManager
+from . import choices as life_choices
+from .managers import LifeManager
 
 
 @python_2_unicode_compatible
-class Live(models.Model):
+class Life(models.Model):
     nominee = models.CharField(max_length=120)
     title = models.CharField(
         max_length=10,
-        choices=live_choices.SOCIAL_TITLE_CHOICES,
+        choices=life_choices.SOCIAL_TITLE_CHOICES,
         blank=True,
     )
     first_name = models.CharField(max_length=20, blank=True)
@@ -43,11 +43,12 @@ class Live(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    objects = LiveManager()
+    objects = LifeManager()
 
     class Meta:
         get_latest_by = 'id'
         ordering = ('-number',)
+        verbose_name_plural = 'Lives'
 
     def __str__(self):
         return u'{}'.format(self.nominee)
