@@ -264,7 +264,7 @@ LOGGING = {
 SITE_ID = 1
 
 # Cloud storage
-LIBCLOUD_PROVIDERS = libcloud_providers('lives52')
+LIBCLOUD_PROVIDERS = libcloud_providers('52lives')
 
 LIVE_52_NUMBER = 12
 
