@@ -4,24 +4,24 @@ from django.db import models
 
 from blanc_pages.blocks import BaseBlock
 
-from lifes.models import Life
+from lives.models import Live
 
 
-class LatestLifesBlock(BaseBlock):
+class LatestLivesBlock(BaseBlock):
     number_of_lives = models.PositiveIntegerField(default=10)
 
     class Meta:
-        verbose_name = 'Latest lifes'
+        verbose_name = 'Latest lives'
 
 
-class LifeBlock(BaseBlock):
-    life = models.ForeignKey(
-        Life,
+class LiveBlock(BaseBlock):
+    live = models.ForeignKey(
+        Live,
         blank=True,
         null=True,
         limit_choices_to={'number__isnull': False}
     )
 
     class Meta:
-        verbose_name = 'Life'
+        verbose_name = 'Live'
 

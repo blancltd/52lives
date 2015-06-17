@@ -9,10 +9,7 @@ from blanc_pages import block_admin
 
 
 urlpatterns = [
-    # Examples:
-    # url(r'^$', 'lives52.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+    #url(r'^lives/', include('lives.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blockadmin/', include(block_admin.site.urls)),
 

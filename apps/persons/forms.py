@@ -9,7 +9,7 @@ from .models import Person
 class NominateForm(forms.ModelForm):
     class Meta:
         model = Person
-        exclude = ('created_at', 'updated_at', 'life',)
+        exclude = ('created_at', 'updated_at', 'live',)
 
     def __init__(self, *args, **kwargs):
         super(NominateForm, self).__init__(*args, **kwargs)

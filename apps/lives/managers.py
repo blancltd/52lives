@@ -3,7 +3,7 @@
 from django.db import models
 
 
-class LifeManager(models.Manager):
+class LiveManager(models.Manager):
 
     def active(self):
         """ Return lives with number. """

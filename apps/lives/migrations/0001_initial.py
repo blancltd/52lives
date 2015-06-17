@@ -13,18 +13,18 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='LatestLifesBlock',
+            name='LatestLivesBlock',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('number_of_lives', models.PositiveIntegerField(default=10)),
                 ('content_block', models.ForeignKey(editable=False, to='pages.ContentBlock', null=True)),
             ],
             options={
-                'verbose_name': 'Latest lifes',
+                'verbose_name': 'Latest lives',
             },
         ),
         migrations.CreateModel(
-            name='Life',
+            name='Live',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=10, choices=[(b'Mr', 'Mr'), (b'Mrs', 'Mrs'), (b'Ms', 'Ms'), (b'Miss', 'Miss'), (b'Dr', 'Dr'), (b'Sir', 'Sir')])),
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                 ('is_published', models.BooleanField(default=False, verbose_name=b'Is accepted?')),
                 ('slug', models.SlugField()),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('created_at', models.DateTimeField()),
             ],
             options={
                 'ordering': ('-number',),
@@ -50,11 +50,11 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='LifeBlock',
+            name='LiveBlock',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('content_block', models.ForeignKey(editable=False, to='pages.ContentBlock', null=True)),
-                ('life', models.ForeignKey(blank=True, to='lifes.Life', null=True)),
+                ('live', models.ForeignKey(blank=True, to='lives.Live', null=True)),
             ],
             options={
                 'verbose_name': 'Life',

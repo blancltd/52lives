@@ -4,10 +4,10 @@ from django import template
 
 register = template.Library()
 
-from lifes.models import Life
+from lives.models import Live
 
 
 @register.assignment_tag
-def get_latest_lifes(number):
-    return Life.objects.active()[:number]
+def get_latest_lives(number):
+    return Live.objects.active()[:number]
 

@@ -10,7 +10,7 @@ from django.conf import settings
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('lifes', '0001_initial'),
+        ('lives', '0001_initial'),
         migrations.swappable_dependency(settings.BLANC_PAGES_MODEL),
         ('pages', '0004_rename_tables'),
     ]
@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
                 ('hear_about_us', models.CharField(max_length=120)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('life', models.ForeignKey(blank=True, to='lifes.Life', null=True)),
+                ('live', models.ForeignKey(blank=True, to='lives.Live', null=True)),
             ],
         ),
     ]

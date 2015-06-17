@@ -82,7 +82,7 @@ PROJECT_APPS = [
     'banners',
     'contacts',
     'countries',
-    'lifes',
+    'lives',
     'notes',
     'pages',
     'persons',
@@ -266,7 +266,7 @@ SITE_ID = 1
 # Cloud storage
 LIBCLOUD_PROVIDERS = libcloud_providers('lives52')
 
-LIFE_52_NUMBER = 12
+LIVE_52_NUMBER = 12
 
 BLANC_PAGES_MODEL = 'pages.Page'
 
