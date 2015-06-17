@@ -40,7 +40,7 @@ class Live(models.Model):
     notes = GenericRelation(Note)
     slug = models.SlugField()
     updated_at = models.DateTimeField(auto_now=True)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     objects = LiveManager()
 
@@ -49,7 +49,7 @@ class Live(models.Model):
         ordering = ('-number',)
 
     def __str__(self):
-        return u'{} {}'.format(self.first_name, self.last_name)
+        return u'{}'.format(self.nominee)
 
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)

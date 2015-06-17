@@ -14,20 +14,9 @@
 
   {% if is_paginated %}
     <div class="pagination">
-
-      {% if page_obj.has_previous %}
-        <a class="prev" href="?page={{ page_obj.previous_page_number }}">Back</a>
-      {% else %}
-        <span class="prev">Back</span>
-      {% endif %}
-
-      <span class="pages">{{ page_obj.number}} of {{ page_obj.paginator.num_pages }} pages</span>
-      {% if page_obj.has_next %}
-        <a class="next" href="?page={{ page_obj.next_page_number }}">Next</a>
-      {% else %}
-        <span class="next">Next</span>
-      {% endif %}
-
+      {% for page in page_obj.paginator.page_range %}
+      <a class="page{% ifequal page page_obj.number %} active{% endifequal %}" href="?page={{ page }}">{{ page }}</a>
+      {% endfor %}
     </div>
   {% endif %}
 

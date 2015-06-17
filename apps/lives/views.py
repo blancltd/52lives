@@ -8,5 +8,5 @@ from .models import Live
 class LivesListView(ListView):
     queryset = Live.objects.active()
     model = Live
-    paginate_by = 52
+    paginate_by = 1
 

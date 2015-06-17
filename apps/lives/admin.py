@@ -86,7 +86,7 @@ class LiveAdmin(AdminImageMixin, admin.ModelAdmin):
             }
         ),
     )
-    readonly_fields = ('id', 'updated_at', 'number',)
+    readonly_fields = ('id', 'created_at', 'updated_at', 'number',)
 
     def save_model(self, request, obj, form, change):
         """
