@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if messages %}
+  {% for message in  messages %}
+    <h3>{{ message }}</h3>
+  {% endfor %}
+{% endif %}
+
+<h1>Title</h1>
+<p>{{ object.nominee }}</p>
+
+<h2>Content:</h2>
+<p>{{ object.content|safe }}
+
+<form method="POST" action=".">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+
+{% endblock content %}

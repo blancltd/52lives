@@ -5,7 +5,9 @@
   {% if object_list %}
     <ul>
       {% for live in object_list %}
-        <li>{{ live }}</li>
+        <li>
+          <a href="{{ live.get_absolute_url }}">{{ live }}</a>
+        </li>
       {% endfor %}
     </ul>
   {% else %}

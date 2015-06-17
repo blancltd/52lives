@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from django.contrib.contenttypes.fields import GenericRelation
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.contrib.contenttypes.fields import GenericRelation
 
 from sorl.thumbnail import ImageField
 
@@ -50,6 +51,9 @@ class Live(models.Model):
 
     def __str__(self):
         return u'{}'.format(self.nominee)
+
+    def get_absolute_url(self):
+        return reverse('lives:detail', args=[str(self.id)])
 
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)

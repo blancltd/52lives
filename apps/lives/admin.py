@@ -23,6 +23,7 @@ class PersonInline(admin.TabularInline):
     can_delete = False
     extra = 0
     min_num = 0
+    show_change_link = True
     readonly_fields = (
         'title', 'first_name', 'last_name', 'email', 'home_phone', 'mobile_phone', 'reason',
         'message', 'hear_about_us',
