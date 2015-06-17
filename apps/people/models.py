@@ -11,7 +11,7 @@ from . import choices as persons_choices
 
 @python_2_unicode_compatible
 class Person(models.Model):
-    live = models.ForeignKey(Life, blank=True, null=True)
+    life = models.ForeignKey(Life, blank=True, null=True)
     title = models.CharField(max_length=10, choices=live_choices.SOCIAL_TITLE_CHOICES)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)

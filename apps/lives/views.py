@@ -19,7 +19,7 @@ class LivesListView(ListView):
 
 
 class SupportLife(SingleObjectMixin, FormView):
-    template_name = 'lives/live_detail.html'
+    template_name = 'lives/life_detail.html'
     model = Life
     form_class = SupportForm
     success_message = 'Your form has been submitted successfully.'
@@ -33,7 +33,7 @@ class SupportLife(SingleObjectMixin, FormView):
         If the form is valid, save the associated model.
         """
         person = form.save(commit=False)
-        person.live = self.object
+        person.life = self.object
         person.save()
         return super(SupportLife, self).form_valid(form)
 

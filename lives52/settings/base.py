@@ -65,6 +65,7 @@ DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     'blanc_basic_assets',
+    'blanc_basic_news',
     'blanc_pages',
     'blanc_pages_form_block',
     'blanc_pages_image_block',

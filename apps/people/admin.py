@@ -22,11 +22,11 @@ class PersonAdmin(admin.ModelAdmin):
     ]
     date_hierarchy = 'created_at'
     search_fields = (
-        'first_name', 'last_name', 'reason', 'live__first_nane', 'live__last_name', 'email',
+        'first_name', 'last_name', 'reason', 'life__first_nane', 'life__last_name', 'email',
         'home_phone', 'mobile_phone',
     )
     list_display = (
-        'first_name', 'last_name', 'reason', 'live', 'title', 'email', 'home_phone',
+        'first_name', 'last_name', 'reason', 'life', 'title', 'email', 'home_phone',
         'mobile_phone', 'hear_about_us', 'updated_at', 'created_at',
     )
     list_filter = ('reason',)
@@ -34,7 +34,7 @@ class PersonAdmin(admin.ModelAdmin):
         (
             'Person', {
                 'fields': (
-                    'title', 'first_name', 'last_name', 'live', 'reason', 'message',
+                    'title', 'first_name', 'last_name', 'life', 'reason', 'message',
                     'hear_about_us',
                 )
             }
@@ -56,7 +56,7 @@ class PersonAdmin(admin.ModelAdmin):
             }
         ),
     )
-    raw_id_fields = ('live',)
+    raw_id_fields = ('life',)
 
     readonly_fields = ('id', 'created_at', 'updated_at',)
 
@@ -65,7 +65,7 @@ class PersonAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         urls = super(PersonAdmin, self).get_urls()
-        live_urls = [
+        extra_urls = [
             url(
                 r'^(\d+)/add-note/$',
                 self.add_note,
@@ -77,7 +77,7 @@ class PersonAdmin(admin.ModelAdmin):
                 name='persons-add-address'
             )
         ]
-        return live_urls + urls
+        return extra_urls + urls
 
     def get_inline_instances(self, request, obj=None):
         """ Update post url for AddressInline and NotesInline. """
@@ -100,7 +100,7 @@ class PersonAdmin(admin.ModelAdmin):
         return super(PersonAdmin, self).get_formsets_with_inlines(request, obj)
 
     def add_note(self, request, object_id):
-        """ Add note for live. """
+        """ Add note for life. """
         context = {}
         obj = self.get_object(request, unquote(object_id))
         context = NoteInline.create_note(

@@ -95,8 +95,8 @@ class LiveAdmin(AdminImageMixin, admin.ModelAdmin):
         """
         if obj.is_published and not obj.number:
             try:
-                latest_live_number = Live.objects.filter(number__isnull=False).latest().number
-            except Live.DoesNotExist:
+                latest_live_number = Life.objects.filter(number__isnull=False).latest().number
+            except Life.DoesNotExist:
                 latest_live_number = settings.LIVE_52_NUMBER
             else:
                 latest_live_number += 1

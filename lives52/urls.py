@@ -9,6 +9,7 @@ from blanc_pages import block_admin
 
 
 urlpatterns = [
+    url(r'^blog/', include('blanc_basic_news.urls', namespace='blanc_basic_news')),
     url(r'^lives/', include('lives.urls', namespace='lives')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blockadmin/', include(block_admin.site.urls)),
