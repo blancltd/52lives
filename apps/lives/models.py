@@ -15,9 +15,14 @@ from .managers import LiveManager
 
 @python_2_unicode_compatible
 class Live(models.Model):
-    title = models.CharField(max_length=10, choices=live_choices.SOCIAL_TITLE_CHOICES)
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=30)
+    nominee = models.CharField(max_length=120)
+    title = models.CharField(
+        max_length=10,
+        choices=live_choices.SOCIAL_TITLE_CHOICES,
+        blank=True,
+    )
+    first_name = models.CharField(max_length=20, blank=True)
+    last_name = models.CharField(max_length=30, blank=True)
     number = models.PositiveIntegerField(help_text.LIVE['number'], blank=True, null=True)
     image = ImageField(
         help_text.LIVE['image'],
@@ -48,4 +53,5 @@ class Live(models.Model):
 
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)
+    get_full_name.short_description = 'Full name'
 

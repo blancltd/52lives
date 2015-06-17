@@ -15,3 +15,4 @@ class NominateForm(forms.ModelForm):
         super(NominateForm, self).__init__(*args, **kwargs)
         self.fields['reason'].widget = forms.widgets.HiddenInput()
         self.fields['reason'].initial = persons_choices.REASON_TYPE_WOULD_LIKE_TO_NOMINATE
+

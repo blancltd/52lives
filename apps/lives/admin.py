@@ -40,15 +40,15 @@ class LiveAdmin(AdminImageMixin, admin.ModelAdmin):
     date_hierarchy = 'created_at'
     search_fields = ('first_name', 'last_name', 'number', 'request',)
     list_display = (
-        'get_full_name', 'number', 'request', 'home_phone', 'mobile_phone', 'is_published',
-        'created_at', 'updated_at',
+        'nominee', 'get_full_name', 'number', 'request', 'home_phone', 'mobile_phone',
+        'is_published', 'created_at', 'updated_at',
     )
     list_filter = ('is_published',)
     fieldsets = (
         (
             'Live', {
                 'fields': (
-                    'title', 'first_name', 'last_name', 'number',
+                    'nominee', 'title', 'first_name', 'last_name', 'number',
                     'image', 'is_published',
                 )
             }
