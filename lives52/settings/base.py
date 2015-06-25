@@ -166,7 +166,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'htdocs/static')
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'lives52/static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 
