@@ -33,6 +33,7 @@ class Life(models.Model):
     email = models.EmailField(blank=True)
     home_phone = models.CharField(max_length=20, blank=True)
     mobile_phone = models.CharField(max_length=20, blank=True)
+    request_title = models.CharField(max_length=100)
     content = models.TextField(help_text.LIVE['content'])
     request = models.TextField(help_text.LIVE['request'])
     summary = models.TextField(help_text.LIVE['summary'], blank=True)

@@ -57,7 +57,7 @@ class LiveAdmin(AdminImageMixin, admin.ModelAdmin):
         (
             'About', {
                 'fields': (
-                    'content', 'request',
+                    'request_title', 'content', 'request',
                 )
             }
         ),
