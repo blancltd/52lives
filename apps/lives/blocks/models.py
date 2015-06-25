@@ -15,7 +15,7 @@ class LatestLivesBlock(BaseBlock):
 
 
 class LiveBlock(BaseBlock):
-    live = models.ForeignKey(
+    life = models.ForeignKey(
         Life,
         blank=True,
         null=True,
@@ -24,4 +24,3 @@ class LiveBlock(BaseBlock):
 
     class Meta:
         verbose_name = 'Life'
-
