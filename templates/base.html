@@ -23,11 +23,9 @@
         <header class="head">
           <h1><a href="/">52 Lives</a></h1>
            <nav class="nav">
-            <ul>
-              {% block primarynav %}
-              {% include "includes/primary_nav.html" only %}
-              {% endblock primarynav %}
-            </ul>
+            {% block primarynav %}
+            {% include "includes/primary_nav.html" only %}
+            {% endblock primarynav %}
           </nav>
         </header>
 
