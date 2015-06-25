@@ -3,6 +3,7 @@
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 
 from sorl.thumbnail import ImageField
@@ -42,7 +43,7 @@ class Life(models.Model):
     notes = GenericRelation(Note)
     slug = models.SlugField()
     updated_at = models.DateTimeField(auto_now=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=timezone.now)
 
     objects = LifeManager()
 
