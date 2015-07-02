@@ -208,6 +208,48 @@ h1 {
     }
 }
 
+.blanc_page_blocktype_nominateformblock {
+    padding: 3em 0;
+    background: @purple url(../img/form.jpg) center center no-repeat;
+    background-size: cover;
+
+    form {
+        max-width: 640px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    p {
+        margin: 0 1em;
+    }
+    label {
+        position: absolute;
+        left: -999999em;
+    }
+    input, select, textarea {
+        width: 100%;
+        margin: 0.25em 0;
+    }
+    input, textarea {
+        font-size: 1em;
+        padding: 0.25em;
+        border: 0.25em solid white;
+        .font;
+    }
+
+    .errorlist {
+        text-align: left;
+        font-size: 14/20em;
+        margin-bottom: 0;
+        color: @green;
+    }
+
+    button {
+        .ribbon;
+        border: none;
+        padding: 0 2em;
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // lives
 
@@ -224,8 +266,18 @@ h1 {
         float: left;
         width: 25%;
         position: relative;
+        @media all and (min-width: 960px) {
+            width: 20%;
+        }
+        @media all and (max-width: 840px) {
+            width: 100/3%;
+        }
 
-        &.double { width: 50%; }
+        &.double {
+            width: 50%;
+            @media all and (min-width: 960px) { width: 40%; }
+            @media all and (max-width: 840px) { width: 66.666666%; }
+        }
 
         &:before {
             content: '';
@@ -417,7 +469,9 @@ h1 {
     .legal {
         font-size: 14/20em;
         margin-bottom: 2em;
-        a {}
+        p {
+            margin: 0 0 0.25em 0;
+        }
         .siteby {
             float: right;
             margin: 0;
