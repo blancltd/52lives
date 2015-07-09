@@ -3,8 +3,8 @@
 <footer class="foot">
   {% footer_pages as footer_links %}
 
+  <ul class="sitemap">
   {% for footer_header in footer_links|show_nav|slice:"1:5" %}
-      <ul class="sitemap">
         <li>
           <ul>
             <li>
@@ -20,8 +20,8 @@
             {% endfor %}
           </ul>
         </li>
-      </ul>
   {% endfor %}
+  </ul>
 
   <div class="legal">
       <p class="siteby"><a href="http://www.blanc.ltd.uk/">Website by Blanc</a></p>
