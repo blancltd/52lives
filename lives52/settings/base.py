@@ -82,6 +82,7 @@ PROJECT_APPS = [
     'addresses',
     'banners',
     'contacts',
+    'core',
     'countries',
     'lives',
     'notes',
