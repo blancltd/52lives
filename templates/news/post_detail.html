@@ -1,0 +1,25 @@
+{% extends "news/base.html" %}
+{% load thumbnail %}
+
+
+{% block title %}{{ object.title }} - {{ block.super }}{% endblock %}
+
+
+{% block content %}
+<ul class="posts">
+    <li>
+        <h1><a class="title" href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+        <p class="date">{{ object.date|date:"F d, Y" }} | <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></p>
+
+        {% if object.image %}
+            {% thumbnail object.image.file "620x280" crop="center" as thumb %}
+                <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ i.title }}">
+            {% endthumbnail %}
+        {% endif %}
+
+        {{ object.content|safe }}
+    </li>
+</ul>
+
+{% include "includes/latest_news.html" only %}
+{% endblock content %}

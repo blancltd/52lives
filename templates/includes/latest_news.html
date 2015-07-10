@@ -1,0 +1,24 @@
+{% load news_tags thumbnail %}
+
+{% get_latest_news 3 as latest_news %}
+
+{% if latest_news %}
+    <section class="latest_news_trio">
+        <ul class="posts">
+        {% for post in latest_news reversed %}
+            <li class="piece {% cycle 'one' 'two' 'three' %}">
+                {% if post.image %}
+                    {% thumbnail post.image.file "420x280" crop="center" as thumb %}
+                        <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ i.title }}">
+                    {% endthumbnail %}
+                {% endif %}
+
+                <a href="{{ post.get_absolute_url }}" class="action">
+                    <h4>{{ post.title }}</h4>
+                    <p class="date">{{ post.date|date:"F d, Y" }} in {{ post.category }}</p>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
+{% endif %}

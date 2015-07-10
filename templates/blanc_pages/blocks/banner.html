@@ -8,7 +8,7 @@
       <img src="{{ object.image.file.url }}" alt="">
     {% endif %}
 
-    <div>
+    <div{% if object.image_id %} class="image"{% endif %}>
       {{ object.content|safe }}
 
       {% if object.link %}

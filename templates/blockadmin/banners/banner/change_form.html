@@ -1,0 +1,32 @@
+{% extends "blockadmin/change_form.html" %}
+{% load static from staticfiles %}
+
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'redactorjs/redactor.css' %}" />
+<style type="text/css">
+#content-main .field-content label {
+    display: none;
+}
+.redactor_box { margin-top: 1em; }
+</style>
+{% endblock extrastyle %}
+
+
+{% block content %}
+{{ block.super }}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{% static 'redactorjs/redactor.min.js' %}"></script>
+<script type="text/javascript">
+$().ready(function() {
+    $("#id_content").redactor({
+        focus: true,
+        iframe: true,
+        minHeight: 300,
+        css: "{% static 'redactorjs/redactor-iframe.css' %}"
+    });
+});
+</script>
+{% endblock content %}
