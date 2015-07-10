@@ -110,6 +110,12 @@ def deploy(force_reload=None):
         # Clean up any potential cruft
         run('find . -name "*.pyc" -delete')
 
+        # Make sure npm requirements installed.
+        run('npm install')
+
+        # Generate css from less.
+        run('grunt less:development autoprefixer cssmin')
+
         # Migrate database changes
         run('python manage.py migrate')
 

@@ -55,6 +55,7 @@ sys.path.append(PROJECT_APPS_ROOT)
 # Application definition
 DEFAULT_APPS = [
     'blanc_admin_theme',  # must be before django.contrib.admin
+    'core',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,7 +83,6 @@ PROJECT_APPS = [
     'addresses',
     'banners',
     'contacts',
-    'core',
     'countries',
     'lives',
     'notes',

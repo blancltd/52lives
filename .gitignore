@@ -10,3 +10,7 @@
 
 # My settings file
 edvinas.py
+
+node_modules/
+
+static/css/style*
