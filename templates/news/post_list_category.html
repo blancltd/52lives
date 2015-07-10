@@ -1,0 +1,9 @@
+{% extends "news/base_post_list.html" %}
+
+
+{% block title %}{{ category.title }} - {{ block.super }}{% endblock %}
+
+
+{% block listtitle %}
+<h1 class="title">{{ category.title }}</h1>
+{% endblock listtitle %}
