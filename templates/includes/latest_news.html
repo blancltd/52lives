@@ -4,28 +4,19 @@
 
 {% if latest_news %}
     <section class="latest_news_trio">
-        <h3>Latest News</h3>
-
         <ul class="posts">
         {% for post in latest_news reversed %}
             <li class="piece {% cycle 'one' 'two' 'three' %}">
-                <a class="top" href="{{ post.get_absolute_url }}">
-                    {% if post.image %}
-                        {% thumbnail post.image.file "310x220" crop="center" as thumb %}
-                            <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ i.title }}">
-                        {% endthumbnail %}
-                    {% endif %}
-                </a>
-
-                <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-
-                {% if post.teaser %}
-                    <p>{{ post.teaser }} ...</p>
-                {% else %}
-                    <p>{{ post.content|striptags|truncatewords:15 }}</p>
+                {% if post.image %}
+                    {% thumbnail post.image.file "420x280" crop="center" as thumb %}
+                        <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ i.title }}">
+                    {% endthumbnail %}
                 {% endif %}
 
-                <a class="more" href="{{ post.get_absolute_url }}">Read more</a>
+                <a href="{{ post.get_absolute_url }}" class="action">
+                    <h4>{{ post.title }}</h4>
+                    <p class="date">{{ post.date|date:"F d, Y" }} in {{ post.category }}</p>
+                </a>
             </li>
         {% endfor %}
         </ul>

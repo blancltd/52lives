@@ -6,9 +6,8 @@
 
 
 {% block content %}
-<div class="news">
-
-    <div class="posts post-detail">
+<ul class="posts">
+    <li>
         <h1><a class="title" href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
         <p class="date">{{ object.date|date:"F d, Y" }} | <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></p>
 
@@ -19,8 +18,8 @@
         {% endif %}
 
         {{ object.content|safe }}
-    </div>
-</div>
+    </li>
+</ul>
 
 {% include "includes/latest_news.html" only %}
 {% endblock content %}

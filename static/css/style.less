@@ -258,7 +258,8 @@ h1 {
         margin-top: 2em;
     }
 
-    h2 {
+    h2, h1 .title {
+        text-decoration: none;
         .bold;
         font-size: 2em;
         a {
@@ -289,6 +290,42 @@ h1 {
         padding: 0 2em;
         margin: 0 auto;
     }
+}
+
+.latest_news_trio {
+
+    .posts {
+        display: table;
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: table-cell;
+        width: 100/3%;
+        position: relative;
+        padding: 0;
+        border-top: none;
+        &.one { background: @purple; }
+        &.two { background: @green; }
+        &.three { background: @purple; }
+    }
+    img {
+        opacity: 0.75;
+    }
+    .action {
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+    }
+    h4 { .bold; font-size: 1.5em; margin-bottom: 0.5em; }
+    .date { color: white; }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -418,15 +455,32 @@ h1 {
         height: auto;
     }
     div {
-        position: absolute;
-        max-width: 600px;
-        top: 2em;
-        margin: 0;
         text-align: center;
-        left: 50%;
-        margin-left: -300px;
-        right: 0;
-        color: white;
+        padding: 2em 16px 3em;
+        max-width: 600px;
+        overflow: hidden;
+        margin: 0 auto;
+
+        &.image {
+            color: white;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0;
+            max-width: none;
+            top: 50%;
+            transform: translateY(-50%);
+            h1 { color: @green; }
+        }
+
+        h1 {
+            color: @purple;
+            .bold;
+            font-size: 125/16em;
+            line-height: 1.1;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
     }
     .button {
         .ribbon;
