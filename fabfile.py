@@ -114,7 +114,11 @@ def deploy(force_reload=None):
         run('npm install')
 
         # Generate css from less.
-        run('grunt less:development autoprefixer cssmin')
+        run(
+            '{}/node_modules/.bin/grunt less:development autoprefixer cssmin'.format(
+                env.home
+            )
+        )
 
         # Migrate database changes
         run('python manage.py migrate')
