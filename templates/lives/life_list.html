@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<div class="lives">
   {% if object_list %}
-    <ul>
+    <ul class="lives-grid">
       {% for live in object_list %}
         <li>
+          <img src="/static/img/logo.png" />
           <a href="{{ live.get_absolute_url }}">{{ live }}</a>
         </li>
       {% endfor %}
@@ -13,7 +14,7 @@
   {% else %}
     <p>There is no lives.</p>
   {% endif %}
-
+</div>
   {% if is_paginated %}
     <div class="pagination">
       {% for page in page_obj.paginator.page_range %}

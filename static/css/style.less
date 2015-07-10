@@ -194,21 +194,7 @@ h1 {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// block
-
-.textblock {
-    max-width: 960px;
-    margin: 0 auto;
-    overflow: hidden;
-
-    h1 {
-        .bold;
-        font-size: 95/20em;
-        line-height: 0.9;
-        color: @heading;
-
-    }
-}
+// blocks
 
 .blanc_page_blocktype_nominateformblock {
     padding: 3em 0;
@@ -422,6 +408,56 @@ h1 {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// banner block
+
+.blanc_page_blocktype_banner {
+    position: relative;
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    div {
+        position: absolute;
+        max-width: 600px;
+        top: 2em;
+        margin: 0;
+        text-align: center;
+        left: 50%;
+        margin-left: -300px;
+        right: 0;
+        color: white;
+    }
+    .button {
+        .ribbon;
+        clear: both;
+        padding: 0 2em;
+        margin: 0 auto;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// redactor block
+
+.blanc_page_blocktype_redactorblock {
+    max-width: 600px;
+    padding: 2em 1em;
+    margin: 0 auto;
+
+    max-width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    h1 {
+        .bold;
+        font-size: 95/20em;
+        line-height: 0.9;
+        color: @heading;
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
 // contact form block
 
 .errorlist {
@@ -435,7 +471,7 @@ h1 {
     }
 }
 
-.blanc_page_blocktype_contactformblock {
+.blanc_page_blocktype_contactformblock, .blanc_page_blocktype_nominateformblock {
     background: @purple;
     color: white;
     padding-top: 2em;
