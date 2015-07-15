@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.admin.utils import unquote
@@ -87,22 +86,7 @@ class LiveAdmin(AdminImageMixin, admin.ModelAdmin):
             }
         ),
     )
-    readonly_fields = ('id', 'updated_at', 'number',)
-
-    def save_model(self, request, obj, form, change):
-        """
-        Given a model instance save it to the database and add live number.
-        """
-        if obj.is_published and not obj.number:
-            try:
-                latest_live_number = Life.objects.filter(number__isnull=False).latest().number
-            except Life.DoesNotExist:
-                latest_live_number = settings.LIVE_52_NUMBER
-            else:
-                latest_live_number += 1
-
-            obj.number = latest_live_number
-        obj.save()
+    readonly_fields = ('id', 'updated_at')
 
     def get_urls(self):
         urls = super(LiveAdmin, self).get_urls()

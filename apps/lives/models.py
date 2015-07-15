@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib.contenttypes.fields import GenericRelation
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
@@ -26,7 +27,8 @@ class Life(models.Model):
     )
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    number = models.PositiveIntegerField(help_text.LIVE['number'], blank=True, null=True)
+    number = models.PositiveIntegerField(
+        help_text.LIVE['number'], blank=True, null=True, unique=True)
     image = ImageField(
         help_text.LIVE['image'],
         blank=True,
@@ -59,7 +61,10 @@ class Life(models.Model):
     def get_absolute_url(self):
         return reverse('lives:detail', args=[str(self.id)])
 
+    def clean(self):
+        if self.is_published and not self.number:
+            raise ValidationError('Published lives need a life number')
+
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)
     get_full_name.short_description = 'Full name'
-
