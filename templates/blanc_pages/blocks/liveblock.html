@@ -1,0 +1,17 @@
+{% load thumbnail %}
+
+
+<div class="blanc_page_blocktype_banner">
+{{ object.nominee }}
+    {% thumbnail object.image "960x480" crop="center" as thumb %}
+        <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ object.life }}">
+    {% endthumbnail %}
+
+    <div>
+        <h1>#{{ object.number }}</h1>
+        {{ object }}
+
+        <a href="{{ object.get_absolute_url }}" class="button">Read more</a>
+    </div>
+</div>
+
