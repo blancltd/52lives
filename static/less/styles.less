@@ -103,41 +103,6 @@ h1 {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// banner
-
-.banner {
-    display: block;
-    background: black url('') center center no-repeat;
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
-
-    margin: 0;
-    padding: 3em 1em;
-    text-align: center;
-
-    &:before {
-        content: '';
-        position: absolute;
-        left: 0; right: 0; top: 0; bottom: 0;
-        background: rgba(0,0,0,.35);
-    }
-
-    h1, h2, a { position: relative; }
-
-    h1 {
-        .bold;
-        color: white;
-        font-size: 115/20em;
-        margin: 0;
-    }
-    h2 {
-        margin: 0;
-        color: white;
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // header
 
 .head {
@@ -246,7 +211,7 @@ h1 {
 .posts {
     margin: 2em auto;
     overflow: hidden;
-    max-width: 600px;
+    max-width: 700px;
     padding: 0 1em;
 
     li {
@@ -462,6 +427,41 @@ h1 {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// banner
+
+.banner {
+    display: block;
+    background: black url('') center center no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 3em 1em;
+    text-align: center;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        background: rgba(0,0,0,.35);
+    }
+
+    h1, h2, a { position: relative; }
+
+    h1 {
+        .bold;
+        color: white;
+        font-size: 115/20em;
+        margin: 0;
+    }
+    h2 {
+        margin: 0;
+        color: white;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // banner block
 
 .blanc_page_blocktype_banner {
@@ -474,7 +474,7 @@ h1 {
     div {
         text-align: center;
         padding: 2em 16px 3em;
-        max-width: 600px;
+        max-width: 700px;
         overflow: hidden;
         margin: 0 auto;
 
@@ -484,10 +484,10 @@ h1 {
             left: 0;
             right: 0;
             margin: 0;
-            max-width: none;
+            max-width: 700px;
             top: 50%;
             transform: translateY(-50%);
-            h1 { color: @green; }
+            h1 { color: white; }
         }
 
         h1 {
@@ -511,11 +511,8 @@ h1 {
 // redactor block
 
 .blanc_page_blocktype_redactorblock {
-    max-width: 600px;
+    max-width: 700px;
     padding: 2em 1em;
-    margin: 0 auto;
-
-    max-width: 960px;
     margin: 0 auto;
     overflow: hidden;
 
