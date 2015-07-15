@@ -45,12 +45,3 @@
 {% endif %}
 
 {% endblock content %}
-
-{% block endpage %}
-<script>
-var $container = $('.lives-grid').imagesLoaded( function() {
-  // initialize Packery after all images have loaded
-  $container.packery({ "itemSelector": ".lifeblock", "columnWidth": ".lifeblock", "percentPosition": true });
-});
-</script>
-{% endblock endpage %}
