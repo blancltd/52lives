@@ -4,8 +4,6 @@ from django.db import models
 
 from blanc_pages.blocks import BaseBlock
 
-from lives.models import Life
-
 
 class LatestLivesBlock(BaseBlock):
     number_of_lives = models.PositiveIntegerField(default=10)
@@ -16,7 +14,7 @@ class LatestLivesBlock(BaseBlock):
 
 class LiveBlock(BaseBlock):
     life = models.ForeignKey(
-        Life,
+        'lives.Life',
         blank=True,
         null=True,
         limit_choices_to={'number__isnull': False}

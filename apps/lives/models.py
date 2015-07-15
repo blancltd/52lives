@@ -12,6 +12,7 @@ from notes.models import Note
 
 from . import help_text
 from . import choices as life_choices
+from .blocks.models import LatestLivesBlock, LiveBlock  # noqa
 from .managers import LifeManager
 
 
