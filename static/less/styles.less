@@ -67,20 +67,22 @@ h1 {
         position: absolute;
         display: block;
         background: url(../img/ribbon-left.png);
-        width: 116px;
-        height: 69px;
+        background-size: 100%;
+        width: 3.3em;
+        height: 2em;
         z-index: 1;
         bottom: 0;
         left: 0;
-        margin-left: -58px;
-        margin-bottom: -11px;
+        margin-left: -1.65em;
+        margin-bottom: -.3em;
     }
     &:after {
         background: url(../img/ribbon-right.png);
+        background-size: 100%;
         left: auto;
         right: 0;
         margin-left: auto;
-        margin-right: -58px;
+        margin-right: -1.65em;
     }
 
     span {
@@ -165,8 +167,8 @@ h1 {
     ul {
         .ribbon;
         margin: 0 auto;
-        margin-bottom: -16px;
-        top: 7px;
+        margin-bottom: -16/20em;
+        top: 7/20em;
     }
     li {
         display: inline-block;
@@ -179,7 +181,7 @@ h1 {
         &:hover { color: @purple; }
     }
     li + li {
-        margin-left: 50px;
+        margin-left: 1.5em;
         &:before {
             content: '';
             display: inline-block;
@@ -331,6 +333,10 @@ h1 {
 ////////////////////////////////////////////////////////////////////////////////
 // lives
 
+.lives-intro {
+    text-align: center;
+}
+
 .lives {
     display: block;
     clear: both;
@@ -404,12 +410,12 @@ h1 {
         width: 100%;
         padding: 0;
         position: absolute;
-        bottom: -35px;
+        bottom: -35/20em;
         left: 0;
         right: 0;
         &:before, &:after { opacity: 0; transition: all 0.3s ease-in-out; }
-        &:before {  margin-left: -10px; }
-        &:after {  margin-right: -10px; }
+        &:before {  margin-left: -10/20em; }
+        &:after {  margin-right: -10/20em; }
     }
     a {
         position: absolute;
@@ -442,6 +448,16 @@ h1 {
         }
     }
 
+}
+
+.pagination {
+    margin: 3em auto;
+    .nav;
+    ul { font-size: 1em; margin: 1em auto 2em; }
+    a {
+        background: none;
+
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
