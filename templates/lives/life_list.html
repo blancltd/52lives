@@ -12,7 +12,8 @@
     {% if object_list %}
         <ul class="lives-grid">
             {% for life in object_list %}
-                <li>
+                <li class="lifeblock {% cycle 'single' 'single' 'double' %}">
+                    <div style="position:relative">
                     {% if life.image %}
                         {% thumbnail life.image.file "280x280" crop="center" as thumb %}
                             <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ post.title }}">
@@ -22,13 +23,14 @@
                             <p>{{ life }}</p>
                             <small class="ribbon">Read more</small>
                         </a>
+                    </div>
                     {% endif %}
                 </li>
 
             {% endfor %}
         </ul>
     {% else %}
-        <p>There is no lives.</p>
+        <p>There are no lives to present yet - something must have gone wrong.</p>
     {% endif %}
 </div>
 
@@ -43,3 +45,12 @@
 {% endif %}
 
 {% endblock content %}
+
+{% block endpage %}
+<script>
+var $container = $('.lives-grid').imagesLoaded( function() {
+  // initialize Packery after all images have loaded
+  $container.packery({ "itemSelector": ".lifeblock", "columnWidth": ".lifeblock", "percentPosition": true });
+});
+</script>
+{% endblock endpage %}

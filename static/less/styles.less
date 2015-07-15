@@ -305,11 +305,14 @@ h1 {
 .lives {
     display: block;
     clear: both;
+    padding-bottom: 3em;
     overflow: hidden;
 
     .lives-grid {
         margin: 0;
         padding: 0;
+        display: block;
+        clear: both;
     }
     li {
         display: block;
@@ -376,7 +379,7 @@ h1 {
         width: 100%;
         padding: 0;
         position: absolute;
-        bottom: -35/20em;
+        bottom: -1em;
         left: 0;
         right: 0;
         &:before, &:after { opacity: 0; transition: all 0.3s ease-in-out; }
@@ -417,6 +420,7 @@ h1 {
 }
 
 .pagination {
+    display: block;
     margin: 3em auto;
     .nav;
     ul { font-size: 1em; margin: 1em auto 2em; }
@@ -532,7 +536,7 @@ h1 {
         display: block;
         width: 100%;
         height: auto;
-        max-width: 100%;
+        max-width: 960px;
         margin: 0 auto;
     }
 }
