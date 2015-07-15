@@ -1,21 +1,39 @@
-Django==1.8.1
-Pillow==2.8.1
-apache-libcloud==0.17.0
-blanc-admin-theme==1.0.1
-blanc-contentfiles==0.1
-blanc-pages-form-block==0.3.3
-blanc-pages-image-block==0.2.1
-blanc-pages-redactor-block==0.6.1
-blanc-pages==0.6.4
-blanc-basic-news==0.3
-dj-database-url==0.3.0
-dj-libcloud==0.2.0
-django-extensions==1.5.5
-django-mptt-admin==0.2.1
-django-mptt==0.7.4
-django-redactorjs-staticfiles==9.2.6
-psycopg2==2.6
-pylibmc==1.4.2
+Django==1.8.3
 pytz==2015.4
-raven==5.3.1
-sorl-thumbnail==12.2
+pylibmc==1.5.0
+psycopg2==2.6.1
+Pillow==2.9.0
+dj-database-url==0.3.0
+raven==5.4.4
+
+# Storage
+apache-libcloud==0.17.0
+dj-libcloud==0.2.0
+blanc-contentfiles==0.1.1
+
+# Admin theme
+blanc-admin-theme==1.0.1
+
+# Assets
+blanc-basic-assets==0.3
+
+# Thumbnailing
+sorl-thumbnail==12.3
+
+# Pages
+blanc-pages==0.6.4
+django-mptt==0.7.4
+django-mptt-admin==0.2.1
+six==1.9.0
+
+# Blocks
+blanc-pages-redactor-block==0.6.1
+django-redactorjs-staticfiles==9.2.6
+blanc-pages-form-block==0.3.3
+blanc-pages-image-block==0.2.2
+
+# News
+blanc-basic-news==0.3
+
+# Extensiosn
+django-extensions==1.5.5
