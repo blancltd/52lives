@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load thumbnail %}
+
 
 {% block content %}
 <div class="blanc_page_blocktype_redactorblock lives-intro">
@@ -9,11 +11,20 @@
 <div class="lives">
     {% if object_list %}
         <ul class="lives-grid">
-            {% for live in object_list %}
+            {% for life in object_list %}
                 <li>
-                    <img src="/static/img/logo.png" />
-                    <a href="{{ live.get_absolute_url }}">{{ live }}</a>
+                    {% if life.image %}
+                        {% thumbnail life.image.file "280x280" crop="center" as thumb %}
+                            <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ post.title }}">
+                        {% endthumbnail %}
+                        <a href="{{ life.get_absolute_url }}">
+                            <h1>#{{ life.number }}</h1>
+                            <p>{{ life }}</p>
+                            <small class="ribbon">Read more</small>
+                        </a>
+                    {% endif %}
                 </li>
+
             {% endfor %}
         </ul>
     {% else %}
