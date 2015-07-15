@@ -268,7 +268,19 @@ SITE_ID = 1
 # Cloud storage
 LIBCLOUD_PROVIDERS = libcloud_providers('52lives')
 
-LIVE_52_NUMBER = 12
-
+# Blanc Pages
 BLANC_PAGES_MODEL = 'pages.Page'
+BLANC_PAGES_DEFAULT_TEMPLATE = 'blanc_pages/default.html'
+BLANC_PAGES_DEFAULT_BLOCKS = (
+    ('blanc_pages_redactor_block.RedactorBlock', 'Text'),
+    ('blanc_pages_image_block.ImageBlock', 'Image'),
+    ('pages.HTML', 'HTML'),
+)
 
+# Thumbnail generation
+THUMBNAIL_PREFIX = 'thumbs/'
+THUMBNAIL_PRESERVE_FORMAT = True
+THUMBNAIL_QUALITY = 100
+
+# Lives
+LIVE_52_NUMBER = 12
