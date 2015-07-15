@@ -527,6 +527,19 @@ h1 {
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// image block
+
+.blanc_page_blocktype_imageblock {
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // contact form block
@@ -543,7 +556,8 @@ h1 {
 }
 
 .blanc_page_blocktype_contactformblock, .blanc_page_blocktype_nominateformblock {
-    background: @purple;
+    background: @purple url(../img/heart_background_clear.png);
+    background-size: cover;
     color: white;
     padding-top: 2em;
     text-align: center;
