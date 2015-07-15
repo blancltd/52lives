@@ -11,7 +11,7 @@ from blanc_pages.models.blocks import BaseBlock
 class Banner(BaseBlock):
     image = AssetForeignKey('assets.Image', blank=True, null=True, on_delete=models.PROTECT)
     content = models.TextField()
-    link = models.URLField()
+    link = models.URLField(blank=True)
     link_text = models.CharField(blank=True, max_length=40)
 
     class Meta:
