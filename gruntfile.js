@@ -1,8 +1,6 @@
 module.exports = function(grunt) {
 
-PROJECT_NAME = 'lives52';
-
-rootDir = '/var/www/' + PROJECT_NAME;
+rootDir = '.';
 staticDir = rootDir + '/static';
 
 cssDir = staticDir + '/css';
