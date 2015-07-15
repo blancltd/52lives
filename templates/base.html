@@ -41,5 +41,8 @@
       {% block endpage %}
       {% endblock endpage %}
 
+      {% if debug %}
+          <script src="//localhost:35729/livereload.js"></script>
+      {% endif %}
   </body>
 </html>
