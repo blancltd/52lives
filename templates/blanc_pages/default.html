@@ -3,14 +3,15 @@
 {% load static from staticfiles %}
 
 
-{% block content %}
-
+{% block startpage %}
 {% blancpage_render_column blanc_page "Intro" %}
+{% endblock startpage %}
 
-  <article class="content">
+
+{% block content %}
+<article class="content">
     {% blancpage_render_column blanc_page "Content" %}
-  </article>
-
+</article>
 {% endblock content %}
 
 
