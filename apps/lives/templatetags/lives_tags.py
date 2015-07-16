@@ -11,3 +11,13 @@ from lives.models import Life
 def get_latest_lives(number):
     return Life.objects.active()[:number]
 
+
+@register.assignment_tag
+def get_latest_life(default):
+    if default:
+        return default
+
+    try:
+        return Life.objects.active().latest()
+    except Life.DoesNotExist:
+        return None
