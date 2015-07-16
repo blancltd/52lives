@@ -112,17 +112,26 @@ h1 {
     background: @purple;
     h1 {
         margin: 0;
-        padding: 1.75em 0;
+        padding: 1em 0;
         a {
             display: block;
             margin: 0 auto;
-            width: 685px;
-            height: 173px;
+
+            width: 488px;
+            height: 121px;
             background: url(../img/logo.png) center center no-repeat;
             background-size: cover;
             text-indent: -100em;
             overflow: hidden;
         }
+    }
+}
+
+.homepage h1 {
+    padding: 1.75em 0;
+    a {
+        width: 685px;
+        height: 173px;
     }
 }
 
@@ -163,57 +172,35 @@ h1 {
 }
 
 .subnav {
-    font-size: 50%;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// blocks
-
-.blanc_page_blocktype_nominateformblock {
-    padding: 3em 0;
-    //background: @purple url('empty') center center no-repeat;
-    background-size: cover;
-
-    form {
-        max-width: 640px;
-        margin: 0 auto;
-        text-align: center;
-    }
-    p {
-        margin: 0 1em;
-    }
-    input, select, textarea {
-        width: 100%;
-        margin: 0.25em 0;
-    }
-    input, textarea {
-        font-size: 1em;
-        padding: 0.25em;
-        border: 0.25em solid white;
-        .font;
-    }
-
-    .errorlist {
-        text-align: left;
-        font-size: 14/20em;
-        margin-bottom: 0;
-        color: @green;
-    }
-
-    button {
-        .ribbon;
-        border: none;
-        padding: 0 2em;
-    }
+    font-size: 80%;
+    margin-top: 5em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // blog
 
+.content-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.news {
+    h1.title {
+        color: @heading;
+        text-align: center;
+        text-decoration: none;
+        .bold;
+        font-size: 4em;
+    }
+}
+
 .posts {
     margin: 2em auto;
     overflow: hidden;
-    max-width: 700px;
+    max-width: 960px;
     padding: 0 1em;
 
     li {
@@ -223,11 +210,12 @@ h1 {
     }
 
     li + li {
-        border-top: 1px solid lighten(@text, 30%);
         margin-top: 2em;
     }
 
-    h2, h1 .title {
+    .content-wrap { text-align: left; }
+
+    h2 {
         text-decoration: none;
         .bold;
         font-size: 2em;
@@ -276,6 +264,7 @@ h1 {
         position: relative;
         padding: 0;
         border-top: none;
+        text-align: center;
         &.one { background: @purple; }
         &.two { background: @green; }
         &.three { background: @purple; }
@@ -321,6 +310,7 @@ h1 {
         float: left;
         width: 25%;
         position: relative;
+        background: black;
         @media all and (min-width: 960px) {
             width: 20%;
         }
@@ -354,6 +344,7 @@ h1 {
         display: block;
         width: 100%;
         height: auto;
+        opacity: 0.5;
     }
     h1 {
         position: absolute;

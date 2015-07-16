@@ -22,7 +22,7 @@ class DefaultLayout(blanc_pages.BlancPageLayout):
 
 class HomeLayout(blanc_pages.BlancPageLayout):
     template_name = 'blanc_pages/homepage.html'
-    title = 'Default'
+    title = 'Homepage'
     columns = {
         'Intro': {
             'width': 960,

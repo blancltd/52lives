@@ -14,16 +14,17 @@
                 <p class="date">{{ post.date|date:"F d, Y" }} | <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></p>
 
                 {% if post.image %}
-                    {% thumbnail post.image.file "620x280" crop="center" as thumb %}
+                    {% thumbnail post.image.file "960x380" crop="center" as thumb %}
                         <a class="imglink" href="{{ post.get_absolute_url }}"><img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ post.title }}"> </a>
                     {% endthumbnail %}
                 {% endif %}
-
-                {% if post.teaser %}
-                    <p>{{ post.teaser }} ...</p>
-                {% else %}
-                    <p>{{ post.content|striptags|truncatewords:15 }}</p>
-                {% endif %}
+                <div class="content-wrap">
+                    {% if post.teaser %}
+                        <p>{{ post.teaser }} ...</p>
+                    {% else %}
+                        <p>{{ post.content|striptags|truncatewords:15 }}</p>
+                    {% endif %}
+                </div>
                 <a href="{{ post.get_absolute_url }}" class="button">Read more</a>
             </li>
         {% endfor %}
