@@ -8,7 +8,7 @@
         {% for post in latest_news reversed %}
             <li class="piece {% cycle 'one' 'two' 'three' %}">
                 {% if post.image %}
-                    {% thumbnail post.image.file "420x280" crop="center" as thumb %}
+                    {% thumbnail post.image "420x280" crop="center" as thumb %}
                         <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ i.title }}">
                     {% endthumbnail %}
                 {% endif %}

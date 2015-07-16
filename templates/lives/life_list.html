@@ -15,7 +15,7 @@
                 <li class="lifeblock {% cycle 'single' 'single' 'double' %}">
                     <div style="position:relative">
                     {% if life.image %}
-                        {% thumbnail life.image.file "280x280" crop="center" as thumb %}
+                        {% thumbnail life.image "280x280" crop="center" as thumb %}
                             <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ post.title }}">
                         {% endthumbnail %}
                         <a href="{{ life.get_absolute_url }}">

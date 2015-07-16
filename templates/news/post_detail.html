@@ -12,7 +12,7 @@
         <p class="date">{{ object.date|date:"F d, Y" }} | <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></p>
 
         {% if object.image %}
-            {% thumbnail object.image.file "620x280" crop="center" as thumb %}
+            {% thumbnail object.image "620x280" crop="center" as thumb %}
                 <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ i.title }}">
             {% endthumbnail %}
         {% endif %}
