@@ -2,6 +2,10 @@
 {% load thumbnail %}
 
 
+{% block navigation %}
+  {% include "includes/navigation.html" with current_page="/lives/" only %}
+{% endblock navigation %}
+
 {% block content %}
 <div class="blanc_page_blocktype_redactorblock lives-intro">
     <h1 class="title">Lives</h1>
@@ -26,7 +30,6 @@
                     </div>
                     {% endif %}
                 </li>
-
             {% endfor %}
         </ul>
     {% else %}

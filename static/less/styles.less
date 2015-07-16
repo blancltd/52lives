@@ -1,9 +1,9 @@
 @import "normalize.less";
 @import "../css/fonts.css";
 
-.font { font-family: 'Lato', sans-serif; font-weight: normal; }
-.bold { font-family: 'BrushUp', sans-serif; font-weight: normal; }
-.bold2 { font-family: 'BrushUpToo', sans-serif; font-weight: normal; }
+.font { font-family: 'Lato', sans-serif; }
+.bold { font-family: 'BrushUp', sans-serif; }
+.bold2 { font-family: 'BrushUpToo', sans-serif; }
 
 ////////////////////////////////////////////////////////////////////////////////
 // 52 Lives
@@ -15,12 +15,12 @@
 @line: #8b8497;
 
 body {
-    font-size: 1.25em;
-    font-weight: 300;
-    line-height: 1.5;
     background: @heading;
     color: white;
     .font;
+    font-size: 1.25em;
+    font-weight: 300;
+    line-height: 1.25;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -172,15 +172,25 @@ h1 {
 }
 
 .head .nav {
-    font-size: 25/20em;
+    font-size: 1em;
 }
 
 .subnav {
-    font-size: 80%;
-    margin-top: 5em;
+    font-size: 60%;
+    margin-top: 3em;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// layout fixes
+
+#blanc_page_column_content {
+    > .blanc_page_block:first-child {
+        padding-top: 5em;
+        &.blanc_page_blocktype_imageblock, &.blanc_page_blocktype_banner { padding-top: 0; }
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -192,12 +202,14 @@ h1 {
 }
 
 .news {
+    padding-top: 3em;
     h1.title {
         color: @heading;
         text-align: center;
         text-decoration: none;
         .bold;
-        font-size: 4em;
+        font-size: 4.75em;
+        line-height: .9;
     }
 }
 
@@ -217,12 +229,18 @@ h1 {
         margin-top: 2em;
     }
 
-    .content-wrap { text-align: left; }
+    .content-wrap {
+        text-align: left;
+        &.centered {
+            text-align: center;
+        }
+    }
 
     h2 {
         text-decoration: none;
         .bold;
         font-size: 2em;
+        line-height: 1;
         a {
             color: @purple;
             text-decoration: none;
@@ -269,12 +287,12 @@ h1 {
         padding: 0;
         border-top: none;
         text-align: center;
-        &.one { background: @purple; }
-        &.two { background: @green; }
-        &.three { background: @purple; }
+        &.one { background: @heading; }
+        &.two { background: @purple; }
+        &.three { background: @heading; }
     }
     img {
-        opacity: 0.75;
+        opacity: 0.5;
     }
     .action {
         position: absolute;
@@ -372,7 +390,9 @@ h1 {
         top: 50%;
         left: 0;
         right: 0;
+        font-weight: normal;
         padding: 0 1em;
+        margin: 0;
         transform: translateY(-50%);
     }
     .ribbon {
@@ -470,9 +490,9 @@ h1 {
             color: @heading;
             .bold;
             font-size: 130/20em;
-            line-height: 1.1;
+            line-height: 0.9;
             margin-top: 0;
-            margin-bottom: 0;
+            margin-bottom: .2em;
         }
 
         h2 {
@@ -511,6 +531,10 @@ h1 {
         font-size: 95/20em;
         line-height: 0.9;
         color: @heading;
+    }
+
+    h2 {
+        color: @green;
     }
 }
 
@@ -557,7 +581,7 @@ h1 {
     label {
         display: block;
         padding-left: 2%;
-        padding-bottom: 2%;
+        padding-bottom: 1%;
     }
     input, textarea {
         width: 96%;
@@ -574,6 +598,9 @@ h1 {
         margin: 0 auto 2em;
         line-height: 1;
     }
+    p {
+        margin: 14/20em 0;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -585,6 +612,7 @@ h1 {
     overflow: hidden;
     background: @heading;
     color: white;
+    font-weight: normal;
 
     .sitemap, .legal {
         max-width: 960px;
@@ -626,6 +654,8 @@ h1 {
         }
         h3 {
             .font;
+            font-size: 25/14em;
+            font-weight: normal;
             margin: 1em 0 0.25em 0;
         }
     }
@@ -639,6 +669,7 @@ h1 {
         .siteby {
             float: right;
             margin: 0;
+            a:hover { color: #fb2668; }
         }
     }
 }

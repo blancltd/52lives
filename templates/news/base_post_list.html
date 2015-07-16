@@ -10,8 +10,10 @@
         {% for post in object_list %}
             <li class="post {% if not post.image %}noimage{% endif %}">
 
-                <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                <p class="date">{{ post.date|date:"F d, Y" }} | <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></p>
+                <div class="content-wrap centered">
+                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <p class="date">{{ post.date|date:"F d, Y" }} | <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></p>
+                </div>
 
                 {% if post.image %}
                     {% thumbnail post.image.file "960x380" crop="center" as thumb %}
