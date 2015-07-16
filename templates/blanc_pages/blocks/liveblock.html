@@ -1,17 +1,20 @@
 {% load thumbnail %}
 
+{% with life=object.life %}
+    {% if life %}
+        <div class="blanc_page_blocktype_banner">
+            {{ life.nominee }}
 
-<div class="blanc_page_blocktype_banner">
-{{ object.nominee }}
-    {% thumbnail object.image "960x480" crop="center" as thumb %}
-        <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ object.life }}">
-    {% endthumbnail %}
+            {% thumbnail life.image "960x480" crop="center" as thumb %}
+                <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ life.life }}">
+            {% endthumbnail %}
 
-    <div>
-        <h1>#{{ object.number }}</h1>
-        {{ object }}
+            <div>
+                <h1>#{{ life.number }}</h1>
+                {{ life }}
 
-        <a href="{{ object.get_absolute_url }}" class="button">Read more</a>
-    </div>
-</div>
-
+                <a href="{{ life.get_absolute_url }}" class="button">Read more</a>
+            </div>
+        </div>
+    {% endif %}
+{% endwith %}
