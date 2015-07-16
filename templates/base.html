@@ -39,9 +39,20 @@
       <script src="{% static 'js/libs/packery/packery-min.js' %}"></script>
       <script src="{% static 'js/libs/imagesloaded/imagesloaded-min.js' %}"></script>
       <script>
-        var $container = $('.lives-grid').imagesLoaded( function() {
-          // initialize Packery after all images have loaded
-          $container.packery({ "itemSelector": ".lifeblock", "columnWidth": ".lifeblock", "percentPosition": true });
+        /* global $ */
+        $().ready(function() {
+          "use strict";
+
+          var $container = $('.lives-grid');
+
+          $container.imagesLoaded( function() {
+            // initialize Packery after all images have loaded
+            $container.packery({
+              "itemSelector": ".lifeblock",
+              "columnWidth": ".lifeblock",
+              "percentPosition": true
+            });
+          });
         });
       </script>
 
