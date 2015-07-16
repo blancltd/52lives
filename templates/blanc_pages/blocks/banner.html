@@ -9,13 +9,15 @@
     {% endif %}
 
     <div{% if object.image_id %} class="image"{% endif %}>
-      {{ object.content|safe }}
+      <div class="content-wrap">
+        {{ object.content|safe }}
 
-      {% if object.link %}
-        <a href="{{ object.link }}" class="button">
-          {{ object.link_text|default:"Read more" }}
-        </a>
-      {% endif %}
+        {% if object.link %}
+          <a href="{{ object.link }}" class="button">
+            {{ object.link_text|default:"Read more" }}
+          </a>
+        {% endif %}
+      </div>
     </div>
   </div>
 {% endif %}

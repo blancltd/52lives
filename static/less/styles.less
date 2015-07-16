@@ -99,7 +99,9 @@ h1 {
             background-size: cover;
         }
     }
-
+    &:hover {
+        color: @purple;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -124,7 +126,7 @@ h1 {
     }
 }
 
-.nav {
+.nav, .subnav {
     margin: 0 auto;
     text-align: center;
     position: relative;
@@ -143,7 +145,7 @@ h1 {
     a {
         color: white;
         text-decoration: none;
-        &:hover { color: @purple; }
+        &:hover, &.active { color: @purple; }
     }
     li + li {
         margin-left: 1.5em;
@@ -158,6 +160,10 @@ h1 {
             background-size: cover;
         }
     }
+}
+
+.subnav {
+    font-size: 50%;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -429,52 +435,55 @@ h1 {
 ////////////////////////////////////////////////////////////////////////////////
 // banner
 
-.banner {
-    display: block;
-    background: black url('') center center no-repeat;
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
+// .banner {
+//     display: block;
+//     background: black url('') center center no-repeat;
+//     background-size: cover;
+//     position: relative;
+//     overflow: hidden;
 
-    margin: 0;
-    padding: 3em 1em;
-    text-align: center;
+//     margin: 0;
+//     padding: 3em 1em;
+//     text-align: center;
 
-    &:before {
-        content: '';
-        position: absolute;
-        left: 0; right: 0; top: 0; bottom: 0;
-        background: rgba(0,0,0,.35);
-    }
+//     &:before {
+//         content: '';
+//         position: absolute;
+//         left: 0; right: 0; top: 0; bottom: 0;
+//         background: rgba(0,0,0,.35);
+//     }
 
-    h1, h2, a { position: relative; }
+//     h1, h2, a { position: relative; }
 
-    h1 {
-        .bold;
-        color: white;
-        font-size: 115/20em;
-        margin: 0;
-    }
-    h2 {
-        margin: 0;
-        color: white;
-    }
-}
+//     h1 {
+//         .bold;
+//         color: white;
+//         font-size: 115/20em;
+//         margin: 0;
+//     }
+//     h2 {
+//         margin: 0;
+//         color: white;
+//     }
+// }
 
 ////////////////////////////////////////////////////////////////////////////////
 // banner block
 
 .blanc_page_blocktype_banner {
     position: relative;
+    &.has-image {
+        background: black;
+    }
     img {
         display: block;
         width: 100%;
         height: auto;
+        opacity: 0.5;
     }
     div {
         text-align: center;
         padding: 2em 16px 3em;
-        max-width: 700px;
         overflow: hidden;
         margin: 0 auto;
 
@@ -484,10 +493,13 @@ h1 {
             left: 0;
             right: 0;
             margin: 0;
-            max-width: 700px;
             top: 50%;
             transform: translateY(-50%);
             h1 { color: white; }
+            .content-wrap {
+                max-width: 700px;
+                margin: 0 auto;
+            }
         }
 
         h1 {

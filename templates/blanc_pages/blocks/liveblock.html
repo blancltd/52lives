@@ -2,18 +2,17 @@
 
 {% get_latest_life object.life as life %}
 {% if life %}
-    <div class="{{ css_classes }}">
-        {{ life.nominee }}
-
+    <div class="{{ css_classes }} blanc_page_blocktype_banner {% if life.image %}has-image{% endif %}">
         {% thumbnail life.image "960x480" crop="center" as thumb %}
             <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ life.life }}">
         {% endthumbnail %}
 
-        <div>
-            <h1>#{{ life.number }}</h1>
-            {{ life }}
-
-            <a href="{{ life.get_absolute_url }}" class="button">Read more</a>
+        <div class="image">
+            <div class="content-wrap">
+                <h1>#{{ life.number }}</h1>
+                <p>{{ life.nominee }}</p>
+                <a href="{{ life.get_absolute_url }}" class="button">Read more</a>
+            </div>
         </div>
     </div>
 {% endif %}
