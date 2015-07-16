@@ -65,6 +65,9 @@ class Life(models.Model):
         if self.is_published and not self.number:
             raise ValidationError('Published lives need a life number')
 
+        if self.is_published and not self.image:
+            raise ValidationError('Published lives need an image')
+
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)
     get_full_name.short_description = 'Full name'
