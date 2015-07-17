@@ -71,7 +71,6 @@ class LiveAdmin(AdminImageMixin, admin.ModelAdmin):
 
         (
             'Approved information', {
-                'classes': ('collapse',),
                 'fields': (
                     'summary', 'thank_you',
                 )
