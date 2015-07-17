@@ -6,7 +6,8 @@
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'redactorjs/redactor.css' %}" />
 <style type="text/css">
-#content-main .field-content label, #content-main .field-request label {
+#content-main .field-content label, #content-main .field-request label,
+#content-main .field-summary label, #content-main .field-thank_you label {
     float: none;
     padding-bottom: 10px;
 }
@@ -23,7 +24,7 @@
 $().ready(function() {
     "use strict";
 
-    $("#id_content,#id_request").redactor({
+    $("#id_content,#id_request,#id_summary,#id_thank_you").redactor({
         iframe: true,
         minHeight: 300,
         css: "{% static 'redactorjs/redactor-iframe.css' %}"

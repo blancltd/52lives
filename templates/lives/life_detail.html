@@ -52,6 +52,12 @@
         {{ life.summary|safe }}
     </div>
     {% endif %}
+
+    {% if life.thank_you %}
+        <div class="support_formblock">
+            {{ life.thank_you|safe }}
+        </div>
+    {% endif %}
 {% endwith %}
 
 {% endblock content %}
