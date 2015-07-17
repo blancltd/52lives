@@ -123,15 +123,29 @@ h1 {
             background-size: cover;
             text-indent: -100em;
             overflow: hidden;
+            @media all and (max-width:440px) {
+                width: 280px;
+                height: 71px;
+            }
         }
     }
 }
 
 .homepage .head h1 {
     padding: 1.75em 0;
+    @media all and (max-width:760px) { padding: 1.5em 0; }
+    @media all and (max-width:440px) { padding: 1em 0; }
     a {
         width: 685px;
         height: 173px;
+        @media all and (max-width:760px) {
+            width: 400px;
+            height: 100px;
+        }
+        @media all and (max-width:440px) {
+            width: 280px;
+            height: 71px;
+        }
     }
 }
 
@@ -140,11 +154,12 @@ h1 {
     text-align: center;
     position: relative;
     z-index: 3000;
+    width: 100% !important;
     ul {
         .ribbon;
         margin: 0 auto;
         margin-bottom: -16/20em;
-        top: 7/20em;
+        top: .15em;
     }
     li {
         display: inline-block;
@@ -190,6 +205,9 @@ h1 {
     @media all and (max-width:560px) {
         font-size: 0.5em;
     }
+    @media all and (max-width:560px) {
+        display: none;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -199,6 +217,12 @@ h1 {
     > .blanc_page_block:first-child {
         padding-top: 5em;
         &.blanc_page_blocktype_imageblock, &.blanc_page_blocktype_banner { padding-top: 0; }
+    }
+}
+
+#blanc_page_column_intro {
+    @media all and (max-width:640px) {
+        display: none;
     }
 }
 
