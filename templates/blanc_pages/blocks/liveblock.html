@@ -9,7 +9,7 @@
 
         <div class="image">
             <div class="content-wrap">
-                <h1>Life #{{ life.number }}</h1>
+                <h1>{% if not life.first_name %}Life {% endif %}#{{ life.number }}{% if life.first_name %} {{ life.first_name }}{% endif %}</h1>
                 <h2>{{ life.nominee }}</h2>
                 <a href="{{ life.get_absolute_url }}" class="button">Read more</a>
             </div>
