@@ -217,6 +217,7 @@ h1 {
     > .blanc_page_block:first-child {
         padding-top: 5em;
         &.blanc_page_blocktype_imageblock, &.blanc_page_blocktype_banner { padding-top: 0; }
+        @media all and (max-width:640px) { padding-top: 1em; }
     }
 }
 
@@ -236,6 +237,7 @@ h1 {
 
 .news {
     padding-top: 3em;
+    @media all and (max-width:640px) { padding-top: 1em; }
     h1.title {
         color: @heading;
         text-align: center;
@@ -407,13 +409,14 @@ h1 {
             text-align: center;
             transform: translateY(-50%);
             transition: all 0.3s ease-in-out;
+            @media all and (max-width:640px) { font-size: 2.5em; }
         }
 
         &.double {
             width: 50%;
             width: -webkit-calc( 1/2 * 100% );
             width: calc( 1/2 * 100% );
-            h1 { font-size: 9.25em; }
+            h1 { font-size: 9.25em; @media all and (max-width:640px) { font-size: 3.5em; } }
             .ribbon { font-size: 2em; }
             @media all and (min-width: 960px) { width: 40%; }
             @media all and (max-width: 840px) { width: 66.666666%; }
@@ -546,6 +549,8 @@ h1 {
             .content-wrap {
                 max-width: 700px;
                 margin: 0 auto;
+                padding-left: 0;
+                padding-right: 0;
             }
             @media all and (max-width:640px) {
                 color: @text;
@@ -562,10 +567,11 @@ h1 {
             line-height: 0.9;
             margin-top: 0;
             margin-bottom: .2em;
+            @media all and (max-width:640px) { font-size: 3.5em; }
         }
 
         h2 {
-            margin-top: 0;
+            margin: 0;
         }
     }
     .button {
@@ -574,6 +580,7 @@ h1 {
         padding: 0 2em;
         margin: 0 auto;
         z-index: 2;
+        @media all and (max-width:640px) { font-size: 1em; }
     }
 }
 
@@ -608,6 +615,7 @@ h1 {
         font-size: 130/20em;
         line-height: 0.9;
         color: @heading;
+        @media all and (max-width:640px) { font-size: 3.5em; }
     }
 
     h2 {
@@ -725,12 +733,14 @@ h1 {
         color: @text;
         padding: 2%;
     }
+    select { color: @text; }
     button {
         .ribbon;
         display: block;
         width: 240px;
         margin: 0 auto;
         line-height: 1;
+        @media all and (max-width:640px) { font-size: 1em; }
     }
     p {
         margin: 14/20em 0;
