@@ -11,7 +11,7 @@
             <li class="post {% if not post.image %}noimage{% endif %}">
 
                 <div class="content-wrap centered">
-                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <h1 class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
                     <p class="date">{{ post.date|date:"F d, Y" }} | <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></p>
                 </div>
 
