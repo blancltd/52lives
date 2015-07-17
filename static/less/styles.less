@@ -234,15 +234,21 @@ h1 {
         &.centered {
             text-align: center;
         }
+        li + li {
+            margin-top: 0;
+            list-style: default;
+            padding-bottom: 0.5em;
+            text-align: left;
+        }
     }
 
-    h2 {
+    h1.title {
         text-decoration: none;
         .bold;
-        font-size: 2em;
+        font-size: 2.5em;
         line-height: 1;
         a {
-            color: @purple;
+            color: @heading;
             text-decoration: none;
             &:hover {
                 color: @green;
@@ -292,7 +298,7 @@ h1 {
         &.three { background: @heading; }
     }
     img {
-        opacity: 0.5;
+        opacity: 0.65;
     }
     .action {
         position: absolute;
@@ -313,6 +319,8 @@ h1 {
 
 .lives-intro {
     text-align: center;
+    padding-top: 3em;
+    h1 { margin-bottom: 0; }
 }
 
 .lives {
@@ -331,6 +339,8 @@ h1 {
         display: block;
         float: left;
         width: 25%;
+        width: -webkit-calc( 1/4 * 100% );
+        width: calc( 1/4 * 100% );
         position: relative;
         background: @heading;
         @media all and (min-width: 960px) {
@@ -355,6 +365,8 @@ h1 {
 
         &.double {
             width: 50%;
+            width: -webkit-calc( 1/2 * 100% );
+            width: calc( 1/2 * 100% );
             h1 { font-size: 9.25em; }
             .ribbon { font-size: 2em; }
             @media all and (min-width: 960px) { width: 40%; }
@@ -381,7 +393,7 @@ h1 {
         display: block;
         width: 100%;
         height: auto;
-        opacity: 0.5;
+        opacity: 0.65;
     }
 
     p {
@@ -513,7 +525,7 @@ h1 {
         background: @heading;
     }
     img {
-        opacity: 0.5;
+        opacity: 0.65;
     }
 }
 
@@ -526,15 +538,24 @@ h1 {
     margin: 0 auto;
     overflow: hidden;
 
+    &.messages {
+        text-align: center;
+    }
+
     h1 {
         .bold;
-        font-size: 95/20em;
+        font-size: 130/20em;
         line-height: 0.9;
         color: @heading;
     }
 
     h2 {
+        font-size: 35/20em;
         color: @green;
+    }
+
+    h3 {
+        font-size: 25/20em;
     }
 }
 
@@ -566,7 +587,8 @@ h1 {
     }
 }
 
-.blanc_page_blocktype_contactformblock, .blanc_page_blocktype_nominateformblock {
+.blanc_page_blocktype_contactformblock, .blanc_page_blocktype_nominateformblock,
+.support_formblock {
     background: @purple url(../img/heart_background_clear.png);
     background-size: cover;
     color: white;
