@@ -173,6 +173,12 @@ h1 {
 
 .head .nav {
     font-size: 1em;
+    @media all and (max-width:750px) {
+        font-size: 0.8em;
+    }
+    @media all and (max-width:560px) {
+        font-size: 0.5em;
+    }
 }
 
 .subnav {
@@ -181,6 +187,9 @@ h1 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    @media all and (max-width:560px) {
+        font-size: 0.5em;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -217,7 +226,7 @@ h1 {
     margin: 2em auto;
     overflow: hidden;
     max-width: 960px;
-    padding: 0 1em;
+    padding: 0;
 
     li {
         list-style: none;
@@ -303,6 +312,12 @@ h1 {
         &.one { background: @heading; }
         &.two { background: @purple; }
         &.three { background: @heading; }
+
+        @media all and (max-width:760px) {
+            width: 100%;
+            display: block;
+            margin-top: 0 !important;
+        }
     }
     img {
         opacity: 0.65;
@@ -486,9 +501,14 @@ h1 {
     }
     div {
         text-align: center;
-        padding: 2em 16px 3em;
+        padding: 2em 1em 3em;
         overflow: hidden;
         margin: 0 auto;
+
+        @media all and (max-width:640px) {
+            padding-top: 1em;
+            padding-bottom: 1em;
+        }
 
         &.image {
             color: white;
@@ -502,6 +522,12 @@ h1 {
             .content-wrap {
                 max-width: 700px;
                 margin: 0 auto;
+            }
+            @media all and (max-width:640px) {
+                color: @text;
+                h1 { color: @heading; }
+                position: static;
+                transform: none;
             }
         }
 
@@ -530,9 +556,13 @@ h1 {
 .blanc_page_blocktype_liveblock {
     &.has-image {
         background: @heading;
+        @media all and (max-width:640px) { background: white; }
     }
     img {
         opacity: 0.65;
+        @media all and (max-width:640px) {
+            opacity: 1;
+        }
     }
 }
 
@@ -650,7 +680,7 @@ h1 {
     background: @purple url(../img/heart_background_clear.png);
     background-size: cover;
     color: white;
-    padding-top: 2em;
+    padding: 2em 1em;
     text-align: center;
     overflow: hidden;
     form {
@@ -675,11 +705,19 @@ h1 {
         .ribbon;
         display: block;
         width: 240px;
-        margin: 0 auto 2em;
+        margin: 0 auto;
         line-height: 1;
     }
     p {
         margin: 14/20em 0;
+    }
+
+    .title {
+        text-align: center;
+        text-decoration: none;
+        .bold;
+        font-size: 4.75em;
+        line-height: .9;
     }
 }
 
@@ -693,10 +731,14 @@ h1 {
     background: @heading;
     color: white;
     font-weight: normal;
+    @media all and (max-width:960px) {
+        padding: 0 1em;
+    }
 
     .sitemap, .legal {
         max-width: 960px;
         margin: 0 auto;
+
     }
 
     a {
@@ -716,6 +758,10 @@ h1 {
             display: table-cell;
             width: 25%;
             list-style: none;
+            @media all and (max-width:580px) {
+                width: 100%;
+                display: block;
+            }
             > ul {
                 display: block;
                 padding: 0;
@@ -730,6 +776,9 @@ h1 {
             }
             & + li {
                 padding-left: 10px;
+                @media all and (max-width:580px) {
+                    padding-left: 0;
+                }
             }
         }
         h3 {
@@ -750,6 +799,10 @@ h1 {
             float: right;
             margin: 0;
             a:hover { color: #fb2668; }
+            @media all and (max-width:580px) {
+                float: none;
+                margin-bottom: 0.5em;
+            }
         }
     }
 }
