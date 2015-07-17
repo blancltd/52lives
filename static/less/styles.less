@@ -231,14 +231,21 @@ h1 {
 
     .content-wrap {
         text-align: left;
+        .blanc_page_blocktype_redactorblock;
         &.centered {
             text-align: center;
+            a { border: none; }
+        }
+        li {
+            text-align: left;
+            padding-bottom: 0;
         }
         li + li {
             margin-top: 0;
-            list-style: default;
-            padding-bottom: 0.5em;
             text-align: left;
+        }
+        ol {
+            li { list-style: decimal; }
         }
     }
 
@@ -556,6 +563,57 @@ h1 {
 
     h3 {
         font-size: 25/20em;
+    }
+
+    h4, h5 { font-size: 1em; font-weight: bold; }
+
+    blockquote {
+        font-style: italic;
+        color: @purple;
+        border-left: 2px solid @purple;
+        margin-left: 0;
+        padding-left: 40/20em;
+    }
+
+    ul {
+        li {
+            list-style: none;
+            &:before {
+                content: '';
+                display: block;
+                width: 0.3em;
+                height: 0.3em;
+                border-radius: 0.3em;
+                background: @purple;
+                position: absolute;
+                margin-left: -1.2em;
+                margin-top: 0.5em;
+            }
+        }
+    }
+
+    iframe, video {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        border-bottom: 1px solid @green;
+        &:hover {
+            border-bottom: 1px solid @purple;
+        }
+    }
+
+    hr {
+        height: 1px;
+        background: none;
+        margin: 1em 0;
+        border: none;
+        border-bottom: 1px solid @green;
     }
 }
 
