@@ -4,6 +4,28 @@
 .font { font-family: 'Lato', sans-serif; }
 .bold { font-family: 'BrushUp', sans-serif; }
 .bold2 { font-family: 'BrushUpToo', sans-serif; }
+.icon {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook:before {
+    content: "\e600";
+}
+.icon-instagram:before {
+    content: "\e601";
+}
+.icon-twitter:before {
+    content: "\e602";
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // 52 Lives
@@ -767,6 +789,47 @@ h1 {
 
 ////////////////////////////////////////////////////////////////////////////////
 // footer
+
+.social {
+    ul {
+        display: table;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        li {
+            list-style: none;
+            width: 100/3%;
+            display: table-cell;
+        }
+    }
+    a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        color: white;
+        padding: 0.5em 1em;
+        .bold;
+        &:before {
+            color: white;
+            margin-right: .5em;
+            .icon;
+        }
+        &.icon-facebook {
+            background: #3b5998;
+        }
+        &.icon-twitter {
+            background: #55acee;
+        }
+        &.icon-instagram {
+            background: #3f729b;
+        }
+        @media all and (max-width:460px) {
+            &:before { margin-right: 0; }
+            span { display: none;}
+        }
+    }
+}
 
 .foot {
     display: block;
