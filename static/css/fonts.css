@@ -34,10 +34,10 @@
 
 @font-face {
     font-family: 'icomoon';
-    src:url('../webfonts/icomoon.eot?jzpman');
-    src:url('../webfonts/icomoon.eot?#iefixjzpman') format('embedded-opentype'),
-        url('../webfonts/icomoon.ttf?jzpman') format('truetype'),
-        url('../webfonts/icomoon.woff?jzpman') format('woff'),
-        url('../webfonts/icomoon.svg?jzpman#icomoon') format('svg');
+    src:url('../webfonts/icomoon.eot');
+    src:url('../webfonts/icomoon.eot#iefix') format('embedded-opentype'),
+        url('../webfonts/icomoon.ttf') format('truetype'),
+        url('../webfonts/icomoon.woff') format('woff'),
+        url('../webfonts/icomoon.svg#wf') format('svg');
     font-weight: normal;
     font-style: normal;
