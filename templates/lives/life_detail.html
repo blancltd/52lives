@@ -2,6 +2,10 @@
 {% load thumbnail %}
 
 
+{% block title %}
+  {% if not life.first_name %}Life {% endif %}#{{ life.number }}{% if life.first_name %} {{ life.first_name }}{% endif %} - {{ block.super }}
+{% endblock %}
+
 {% block content %}
 {% if messages %}
     <div class="blanc_page_blocktype_redactorblock messages">

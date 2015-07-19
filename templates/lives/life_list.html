@@ -2,6 +2,10 @@
 {% load thumbnail %}
 
 
+{% block title %}
+  The lives - {{ block.super }}
+{% endblock %}
+
 {% block navigation %}
   {% include "includes/navigation.html" with current_page="/lives/" only %}
 {% endblock navigation %}
