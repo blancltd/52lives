@@ -16,7 +16,7 @@
     {% if object_list %}
         <ul class="lives-grid">
             {% for life in object_list %}
-                <li class="lifeblock {% cycle 'single' 'single' 'double' %}">
+                <li class="lifeblock">
                     <div style="position:relative">
                     {% if life.image %}
                         {% thumbnail life.image "280x280" crop="center" as thumb %}

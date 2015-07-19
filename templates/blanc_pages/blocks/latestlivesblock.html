@@ -1,12 +1,12 @@
 {% load lives_tags thumbnail %}
 
-{% get_latest_lives 11 as latest_lives %}
+{% get_latest_lives 10 as latest_lives %}
 
 {% if latest_lives %}
     <div class="{{ css_classes }} lives">
         <ul class="lives-grid">
             {% for life in latest_lives %}
-                <li class="lifeblock {% cycle 'single' 'single' 'double' %}">
+                <li class="lifeblock">
                     {% thumbnail life.image "280x280" crop="center" as thumb %}
                         <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ post.title }}">
                     {% endthumbnail %}

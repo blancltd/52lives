@@ -44,27 +44,6 @@
 
       </main>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-      <script src="{% static 'js/libs/packery/packery-min.js' %}"></script>
-      <script src="{% static 'js/libs/imagesloaded/imagesloaded-min.js' %}"></script>
-      <script>
-        /* global $ */
-        $().ready(function() {
-          "use strict";
-
-          var $container = $('.lives-grid');
-
-          $container.imagesLoaded( function() {
-            // initialize Packery after all images have loaded
-            $container.packery({
-              "itemSelector": ".lifeblock",
-              "columnWidth": ".lifeblock",
-              "gutter": 0
-            });
-          });
-        });
-      </script>
-
       {% block endpage %}
       {% endblock endpage %}
 

@@ -15,7 +15,7 @@ from .models import Life
 class LivesListView(ListView):
     queryset = Life.objects.active()
     model = Life
-    paginate_by = 44
+    paginate_by = 24
 
 
 class SupportLife(SingleObjectMixin, FormView):
