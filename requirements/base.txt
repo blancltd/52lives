@@ -37,3 +37,6 @@ blanc-basic-news==0.3
 
 # Extensiosn
 django-extensions==1.5.5
+
+# New Relic
+newrelic==2.54.0.41
