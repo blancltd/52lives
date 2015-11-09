@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
+from django.forms import inlineformset_factory
 
 from . import choices as persons_choices
 from .models import Person, Nominee
@@ -38,7 +39,6 @@ class NomineeForm(forms.ModelForm):
         self.fields['what_need'].required = True
 
 
-from django.forms import inlineformset_factory
 NominatorFormSet = inlineformset_factory(
     Person,
     Nominee,

@@ -19,32 +19,7 @@ class NomineeCreateView(CreateView):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         nominee_form = NominatorFormSet()
-        nominee_form.forms[0].initial = {
-            'first_name': 'Cat',
-            'last_name': 'Mouse',
-            'email': 'ziogas@gmail.com',
-            'phone': '01214131231',
-            'relation': 'TESTING relation',
-            'why_help': 'TEsting why help',
-            'what_need': 'TEsting what need',
-        }
         address_form = AddressForm()
-        nominate_form_data = {
-            'first_name': 'Kazys',
-            'last_name': 'Test',
-            'email': 'lol@gmail.com',
-            'home_phone': '012141231',
-            'hear_about_us': 'cat',
-        }
-        address_form_data = {
-            'line_1': '91 Anglesey street',
-            'city': 'Birmingham',
-            'country': 'West Midlands',
-            'postcode': 'b19 1ax',
-            'country': '1',
-        }
-        address_form.initial = address_form_data
-        form.initial = nominate_form_data
         context = {
             'form': form,
             'nominee_form': nominee_form,
