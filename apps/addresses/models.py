@@ -10,6 +10,7 @@ from countries.models import Country
 
 from . import choices as addresses_choices
 from . import help_text
+from .managers import AddressManager
 
 
 @python_2_unicode_compatible
@@ -35,9 +36,10 @@ class Address(models.Model):
     postcode = models.CharField(max_length=30)
     country = models.ForeignKey(Country, blank=True, null=True)
     default = models.BooleanField(default=False)
-    created_by = models.ForeignKey(User)
+    created_by = models.ForeignKey(User, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = AddressManager()
 
     def __str__(self):
         return self.get_type_display()

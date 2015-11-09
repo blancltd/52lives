@@ -1,0 +1,27 @@
+{% load lives52_forms %}
+
+{% if form %}
+    <div class="{{ css_classes }}">
+        <form method="POST" action="{% url 'nominate:form' %}"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+            {% csrf_token %}
+            <fieldset>
+                <legend>Your details</legend>
+                {{ form.as_p }}
+            </fieldset>
+            <fieldset>
+                <legend>Nominee's details</legend>
+
+                {% get_nominee_form_set as nominee_form %}
+                {{ nominee_form.management_form }}
+                {% for form in nominee_form %}
+                    {{ form.as_p }}
+                {% endfor %}
+
+                {% get_address_form as address_form %}
+                {{ address_form.as_p }}
+
+            </fieldset>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+{% endif %}

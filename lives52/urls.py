@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^lives/', include('lives.urls', namespace='lives')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blockadmin/', include(block_admin.site.urls)),
-
+    url(r'^nominate/', include('people.urls', namespace='nominate')),
 ]
 
 

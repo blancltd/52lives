@@ -12,7 +12,7 @@ from addresses.admin import AddressInline
 from notes.admin import NoteInline
 
 from .blocks.forms import NominateFormBlock
-from .models import Person
+from .models import Person, Nominator, Nominee
 
 
 @admin.register(Person)
@@ -22,7 +22,7 @@ class PersonAdmin(admin.ModelAdmin):
     ]
     date_hierarchy = 'created_at'
     search_fields = (
-        'first_name', 'last_name', 'reason', 'life__first_nane', 'life__last_name', 'email',
+        'first_name', 'last_name', 'life__first_name', 'life__last_name', 'email',
         'home_phone', 'mobile_phone',
     )
     list_display = (
@@ -118,6 +118,47 @@ class PersonAdmin(admin.ModelAdmin):
         return JsonResponse(context)
 
 
+class NomineeInline(admin.StackedInline):
+    model = Nominee
+    max_num = 1
+    readonly_fields = (
+        'first_name', 'last_name', 'email', 'phone', 'relation', 'why_help', 'what_need',
+        'get_html_address',
+    )
+
+
+@admin.register(Nominator)
+class Nominator(PersonAdmin):
+    list_filter = ()
+    inlines = [
+        NomineeInline, AddressInline, NoteInline
+    ]
+    fieldsets = (
+        (
+            'Person', {
+                'fields': (
+                    'title', 'first_name', 'last_name', 'life', 'hear_about_us',
+                )
+            }
+        ),
+        (
+            'Contacts', {
+                'classes': ('collapse',),
+                'fields': (
+                    'email', 'home_phone', 'mobile_phone',
+                )
+            }
+        ),
+        (
+            'Meta data', {
+                'classes': ('collapse',),
+                'fields': (
+                    'id', 'created_at', 'updated_at',
+                )
+            }
+        ),
+    )
+
+
 block_admin.site.register((NominateFormBlock))
 block_admin.site.register_block(NominateFormBlock, 'Forms')
-
