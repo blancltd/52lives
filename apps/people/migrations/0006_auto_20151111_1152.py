@@ -41,6 +41,11 @@ class Migration(migrations.Migration):
             name='is_agreed',
             field=models.BooleanField(default=False, help_text=b'Please ensure you have the permission of those involved before sharing personal details, and familiarise yourself with our terms and conditions and data protection policy.'),
         ),
+        migrations.AlterField(
+            model_name='person',
+            name='title',
+            field=models.CharField(blank=True, max_length=10, choices=[(b'Mr', 'Mr'), (b'Mrs', 'Mrs'), (b'Ms', 'Ms'), (b'Miss', 'Miss'), (b'Dr', 'Dr'), (b'Sir', 'Sir')]),
+        ),
         migrations.AddField(
             model_name='nominee',
             name='person',
