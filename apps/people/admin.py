@@ -163,6 +163,9 @@ class NominatorAdmin(PersonAdmin):
         ),
     )
 
+    def get_queryset(self, request):
+        qs = super(PersonAdmin, self).get_queryset(request)
+        return qs.filter(reason=people_choices.REASON_TYPE_WOULD_LIKE_TO_NOMINATE)
 
 
 block_admin.site.register((NominateFormBlock))
