@@ -30,6 +30,7 @@ class PersonAdmin(admin.ModelAdmin):
         'first_name', 'last_name', 'reason', 'life', 'title', 'email', 'home_phone',
         'mobile_phone', 'hear_about_us', 'updated_at', 'created_at',
     )
+    list_filter = ('reason',)
     fieldsets = (
         (
             'Person', {
