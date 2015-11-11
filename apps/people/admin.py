@@ -30,7 +30,6 @@ class PersonAdmin(admin.ModelAdmin):
         'first_name', 'last_name', 'reason', 'life', 'title', 'email', 'home_phone',
         'mobile_phone', 'hear_about_us', 'updated_at', 'created_at',
     )
-    list_filter = ('reason',)
     fieldsets = (
         (
             'Person', {
@@ -64,16 +63,9 @@ class PersonAdmin(admin.ModelAdmin):
     class Media:
         js = ('js/admin/addresses/addresses.js',)
 
-    def changelist_view(self, request, extra_context=None):
-        # If there is no filter selected display I CAN HELP persons as we have seperate model for I
-        # would like to nominate.
-        if not request.GET:
-            if 'reason__exact={}'.format(people_choices.REASON_TYPE_I_CAN_HELP) not in request.GET:
-                q = request.GET.copy()
-                q['reason__exact'] = str(people_choices.REASON_TYPE_I_CAN_HELP)
-                request.GET = q
-                request.META['QUERY_STRING'] = request.GET.urlencode()
-        return super(PersonAdmin, self).changelist_view(request, extra_context)
+    def get_queryset(self, request):
+        qs = super(PersonAdmin, self).get_queryset(request)
+        return qs.exclude(reason=people_choices.REASON_TYPE_WOULD_LIKE_TO_NOMINATE)
 
     def get_urls(self):
         urls = super(PersonAdmin, self).get_urls()
@@ -140,7 +132,7 @@ class NomineeInline(admin.StackedInline):
 
 
 @admin.register(Nominator)
-class Nominator(PersonAdmin):
+class NominatorAdmin(PersonAdmin):
     list_filter = ()
     inlines = [
         NomineeInline, AddressInline, NoteInline
@@ -170,6 +162,7 @@ class Nominator(PersonAdmin):
             }
         ),
     )
+
 
 
 block_admin.site.register((NominateFormBlock))
