@@ -142,7 +142,8 @@ class NominatorAdmin(PersonAdmin):
         (
             'Person', {
                 'fields': (
-                    'title', 'first_name', 'last_name', 'life', 'hear_about_us', 'is_agreed',
+                    'title', 'first_name', 'last_name', 'life', 'message',
+                    'hear_about_us', 'is_agreed',
                 )
             }
         ),
