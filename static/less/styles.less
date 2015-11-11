@@ -1,5 +1,5 @@
-@import "normalize.less";
-@import "../css/fonts.css";
+@import (less) "normalize.less";
+@import (inline) "../css/fonts.css";
 
 .font { font-family: 'Lato', sans-serif; }
 .bold { font-family: 'BrushUp', sans-serif; }
@@ -713,13 +713,20 @@ h1 {
 // contact form block
 
 .errorlist {
-    color: red;
+    color: #DA3823;
+    font-weight: bold;
     margin: 0 0 -20px 0;
     padding-left: 17px;
     font-size: 80%;
+    list-style: none;
     li {
         padding: 0;
         margin-left: -5px;
+    }
+    + p input[type=text], + p input[type=email], + p textarea, + p input[type=address] {
+        width: ~"calc(96% - 6px)";
+        border: 1px solid #DA3823;
+        border-right: 5px solid #DA3823;
     }
 }
 
@@ -731,15 +738,43 @@ h1 {
     padding: 2em 1em;
     text-align: center;
     overflow: hidden;
+    fieldset {
+        border-color: #94caaa;
+        + fieldset {
+            margin-top: 4%;
+        }
+    }
     form {
         max-width: 700px;
         margin: 0 auto;
         text-align: left;
+        position: relative;
+        &:after {
+            content: "* required field";
+            font-size: 0.7em;
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 1em;
+        }
     }
     label {
         display: block;
         padding-left: 2%;
         padding-bottom: 1%;
+        &.required:after {
+            content: " *";
+        }
+    }
+    label[for=id_is_agreed] {
+        display: none;
+    }
+    #id_is_agreed {
+        float: left;
+        display: inline-block;
+        width: 3%;
+        position: relative;
+        top: 9px;
     }
     input, textarea {
         width: 96%;
@@ -760,6 +795,10 @@ h1 {
     }
     p {
         margin: 14/20em 0;
+        &:first-child:not(.required) {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
     }
 
     .title {
@@ -768,6 +807,16 @@ h1 {
         .bold;
         font-size: 4.75em;
         line-height: .9;
+    }
+    input[type=checkbox] + .helptext {
+        width: 96%;
+        float: right;
+        padding-left: 1%;
+    }
+    #id_country {
+        margin-left: 2%;
+        width: 40%;
+        font-family: .font;
     }
 }
 
