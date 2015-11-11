@@ -24,7 +24,7 @@ class Person(models.Model):
     home_phone = models.CharField(max_length=20, blank=True)
     mobile_phone = models.CharField(max_length=20, blank=True)
     reason = models.IntegerField(choices=persons_choices.REASON_TYPES)
-    message = models.TextField()
+    message = models.TextField(blank=True)
     hear_about_us = models.CharField('How did you hear about us?', max_length=120)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
