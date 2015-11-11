@@ -37,6 +37,11 @@ class Migration(migrations.Migration):
             bases=('people.person',),
         ),
         migrations.AddField(
+            model_name='person',
+            name='is_agreed',
+            field=models.BooleanField(default=False, help_text=b'Please ensure you have the permission of those involved before sharing personal details, and familiarise yourself with our terms and conditions and data protection policy.'),
+        ),
+        migrations.AddField(
             model_name='nominee',
             name='person',
             field=models.ForeignKey(to='people.Person'),
