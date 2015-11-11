@@ -10,6 +10,7 @@ from lives import choices as live_choices
 from lives.models import Life
 
 from . import choices as persons_choices
+from .help_texts import PERSON_HELP_TEXTS
 from .managers import NominatorManager
 
 
@@ -27,6 +28,7 @@ class Person(models.Model):
     hear_about_us = models.CharField('How did you hear about us?', max_length=120)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_agreed = models.BooleanField(default=False, help_text=PERSON_HELP_TEXTS['is_agreed'])
 
     class Meta:
         verbose_name_plural = 'People'

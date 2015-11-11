@@ -11,6 +11,7 @@ from blanc_pages import block_admin
 from addresses.admin import AddressInline
 from notes.admin import NoteInline
 
+from . import choices as people_choices
 from .blocks.forms import NominateFormBlock
 from .models import Person, Nominator, Nominee
 
@@ -58,10 +59,21 @@ class PersonAdmin(admin.ModelAdmin):
     )
     raw_id_fields = ('life',)
 
-    readonly_fields = ('id', 'created_at', 'updated_at',)
+    readonly_fields = ('id', 'created_at', 'updated_at', 'is_agreed',)
 
     class Media:
         js = ('js/admin/addresses/addresses.js',)
+
+    def changelist_view(self, request, extra_context=None):
+        # If there is no filter selected display I CAN HELP persons as we have seperate model for I
+        # would like to nominate.
+        if not request.GET:
+            if 'reason__exact={}'.format(people_choices.REASON_TYPE_I_CAN_HELP) not in request.GET:
+                q = request.GET.copy()
+                q['reason__exact'] = str(people_choices.REASON_TYPE_I_CAN_HELP)
+                request.GET = q
+                request.META['QUERY_STRING'] = request.GET.urlencode()
+        return super(PersonAdmin, self).changelist_view(request, extra_context)
 
     def get_urls(self):
         urls = super(PersonAdmin, self).get_urls()
@@ -137,7 +149,7 @@ class Nominator(PersonAdmin):
         (
             'Person', {
                 'fields': (
-                    'title', 'first_name', 'last_name', 'life', 'hear_about_us',
+                    'title', 'first_name', 'last_name', 'life', 'hear_about_us', 'is_agreed',
                 )
             }
         ),
