@@ -822,6 +822,23 @@ h1 {
     }
 }
 
+.support_formblock {
+    form:after {
+        display: none;
+    }
+    .form-callout {
+        position: relative;
+        &:after {
+            content: "* required field";
+            font-size: 0.7em;
+            display: block;
+            position: absolute;
+            bottom: -60px;
+            right: 1em;
+        }
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // footer
 
