@@ -5,7 +5,6 @@ from django.db import models
 from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 
-
 from sorl.thumbnail import ImageField
 
 from lives import choices as life_choices
@@ -14,7 +13,12 @@ from lives import help_text
 
 @python_2_unicode_compatible
 class Company(models.Model):
-    name = models.CharField(max_length=120)
+    title = models.CharField(max_length=120)
+    description = models.TextField(blank=True)
+    image = ImageField(
+        blank=True,
+        upload_to='uploads/companies/company/%Y/%m/%d'
+    )
     slug = models.SlugField()
 
     class Meta:
@@ -38,7 +42,7 @@ class Life(models.Model):
     image = ImageField(
         help_text.LIVE['image'],
         blank=True,
-        upload_to='uploads/lives/live/%Y/%m/%d'
+        upload_to='uploads/companies/life/%Y/%m/%d'
     )
     email = models.EmailField(blank=True)
     home_phone = models.CharField(max_length=20, blank=True)

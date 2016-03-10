@@ -19,15 +19,15 @@ class LifeInline(admin.TabularInline):
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     inlines = (LifeInline,)
-    list_display = ('name',)
-    search_fields = ['name']
+    list_display = ('title', 'description', 'image',)
+    search_fields = ['title', 'description']
     readonly_fields = ('id',)
-    prepopulated_fields = {'slug': ('name',)}
+    prepopulated_fields = {'slug': ('title',)}
     fieldsets = (
         (
             'Company', {
                 'fields': (
-                    'name', 'slug',
+                    'title', 'description', 'image', 'slug',
                 )
             }
         ),
@@ -50,7 +50,7 @@ class LifeAdmin(admin.ModelAdmin):
     )
     list_filter = ('company', 'is_published',)
     readonly_fields = ('id', 'updated_at')
-    search_fields = ['company__name', 'first_name', 'last_name', 'email']
+    search_fields = ['company__title', 'first_name', 'last_name', 'email']
     fieldsets = (
         (
             'Live', {

@@ -16,7 +16,9 @@ class Migration(migrations.Migration):
             name='Company',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=120)),
+                ('title', models.CharField(max_length=120)),
+                ('description', models.TextField(blank=True)),
+                ('image', sorl.thumbnail.fields.ImageField(upload_to='uploads/companies/company/%Y/%m/%d', blank=True)),
                 ('slug', models.SlugField()),
             ],
             options={
@@ -31,7 +33,7 @@ class Migration(migrations.Migration):
                 ('first_name', models.CharField(max_length=20, blank=True)),
                 ('last_name', models.CharField(max_length=30, blank=True)),
                 ('number', models.PositiveIntegerField(unique=True, null=True, verbose_name=b'Life number', blank=True)),
-                ('image', sorl.thumbnail.fields.ImageField(upload_to='uploads/lives/live/%Y/%m/%d', verbose_name=b'Profile image', blank=True)),
+                ('image', sorl.thumbnail.fields.ImageField(upload_to='uploads/companies/life/%Y/%m/%d', verbose_name=b'Profile image', blank=True)),
                 ('email', models.EmailField(max_length=254, blank=True)),
                 ('home_phone', models.CharField(max_length=20, blank=True)),
                 ('mobile_phone', models.CharField(max_length=20, blank=True)),
