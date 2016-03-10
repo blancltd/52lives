@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+
+{% block title %}
+  The lives - {{ block.super }}
+{% endblock %}
+
+{% block navigation %}
+  {% include "includes/navigation.html" with current_page="/lives/" only %}
+{% endblock navigation %}
+
+{% block content %}
+<div class="blanc_page_blocktype_redactorblock lives-intro">
+    <h1 class="title">The Lives</h1>
+    <h2>Look at the lives we've changed so far<br /> with your help!</h2>
+</div>
+
+<div class="lives">
+    {% if object_list %}
+        <ul class="lives-grid">
+            {% for company in object_list %}
+                <li class="lifeblock">
+                    <div style="position:relative">
+                        {{ company.name }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no lives to present yet - something must have gone wrong.</p>
+    {% endif %}
+</div>
+
+{% if is_paginated %}
+    <div class="pagination">
+        <ul>
+            {% for page in page_obj.paginator.page_range %}
+                <li><a class="page{% ifequal page page_obj.number %} active{% endifequal %}" href="?page={{ page }}">{{ page }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+{% endblock content %}

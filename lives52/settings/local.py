@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 import os
 
 from django.utils.importlib import import_module
-
 from .base import *  # NOQA @UnusedWildImport
 
 
