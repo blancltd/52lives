@@ -41,6 +41,14 @@ class CompanyAdmin(admin.ModelAdmin):
         ),
     )
 
+    def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
+        response = super(CompanyAdmin, self).changeform_view(
+            request, object_id, form_url, extra_context
+        )
+        if object_id is None:
+            response.context_data['inline_admin_formsets'] = []
+        return response
+
 
 @admin.register(Life)
 class LifeAdmin(admin.ModelAdmin):
@@ -92,3 +100,4 @@ class LifeAdmin(admin.ModelAdmin):
             }
         ),
     )
+

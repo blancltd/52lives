@@ -25,7 +25,7 @@ class Company(models.Model):
         verbose_name_plural = "Companies"
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Life(models.Model):
