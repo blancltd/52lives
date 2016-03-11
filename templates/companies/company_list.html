@@ -7,32 +7,32 @@
 {% endblock %}
 
 {% block navigation %}
-  {% include "includes/navigation.html" with current_page="/lives/" only %}
+  {% include "includes/navigation.html" with current_page="/partners/" only %}
 {% endblock navigation %}
 
 {% block content %}
 <div class="blanc_page_blocktype_redactorblock lives-intro">
-    <h1 class="title">The Partners</h1>
-    <h2>some help text here...</h2>
+    <h1 class="title">Our Partners</h1>
+    <h2>The 12 Lives programme</h2>
 </div>
 
-<div class="lives">
+<div class="company-lives blanc_page_blocktype_redactorblock">
     {% if object_list %}
-        <ul class="lives-grid">
+        <ul>
             {% for company in object_list %}
-                <li class="lifeblock">
+                <li class="company {% cycle 'left' 'right' %}">
                     <div style="position:relative">
                     {% if company.image %}
                         {% thumbnail company.image "280x280" crop="center" as thumb %}
-                            <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ post.title }}">
+                            <a href="{{ company.get_absolute_url }}"><img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ post.title }}"></a>
                         {% endthumbnail %}
-                        <a href="{{ company.get_absolute_url }}">
-                            <h1>#{{ company.title }}</h1>
-                            <p>{{ company.description }}</p>
-                            <small class="ribbon">12 Lives</small>
-                        </a>
-                    </div>
                     {% endif %}
+                        <a href="{{ company.get_absolute_url }}">
+                            <h1>{{ company.title }}</h1>
+                        </a>
+                        <p>{{ company.description }}</p>
+                        <span class="posts"><a class="button">Browse lives</a></span>
+                    </div>
                 </li>
             {% endfor %}
         </ul>

@@ -915,7 +915,7 @@ h1 {
         margin-bottom: 2em;
         > li {
             display: table-cell;
-            width: 25%;
+            width: 20%;
             list-style: none;
             @media all and (max-width:580px) {
                 width: 100%;
@@ -964,5 +964,50 @@ h1 {
                 margin-bottom: 0.5em;
             }
         }
+    }
+}
+
+.company-lives {
+    padding: 0;
+}
+
+.company {
+    list-style: none;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 1em;
+    cursor: pointer;
+    padding-left: 32%;
+    padding-bottom: 1em;
+    img {
+        float: left;
+        background: @purple;
+        margin-left: -46%;
+        width: 37%;
+        height: auto;
+    }
+    h1 {
+        font-size: 3em;
+    }
+    .posts {
+        text-align: center;
+        margin: 0 1em;
+        display: block;
+        padding-bottom: 1em;
+        .button {
+            margin: 0 auto;
+            width:60%;
+            font-size: 1em;
+            border: none !important;
+        }
+    }
+    &.right {
+        padding: 0 32% 0 0;
+        img { float: right; margin: 0 -46% 0 0; background: @green; }
+    }
+    &:before { display: none !important; }
+    & + .company {
+        border-top: 2px solid @line;
+        margin-top: 1em;
     }
 }
