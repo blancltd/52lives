@@ -27,7 +27,7 @@ class CompanyAdmin(admin.ModelAdmin):
         (
             'Company', {
                 'fields': (
-                    'title', 'description', 'image', 'slug',
+                    'title', 'description', 'image',
                 )
             }
         ),
@@ -35,19 +35,27 @@ class CompanyAdmin(admin.ModelAdmin):
             'Meta', {
                 'classes': ('collapse',),
                 'fields': (
-                    'id',
+                    'id', 'slug',
                 )
             }
         ),
     )
 
-    def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
-        response = super(CompanyAdmin, self).changeform_view(
-            request, object_id, form_url, extra_context
-        )
-        if object_id is None:
-            response.context_data['inline_admin_formsets'] = []
-        return response
+    def get_inline_instances(self, request, obj=None):
+        inline_instances = []
+        if obj is not None:
+            for inline_class in self.inlines:
+                inline = inline_class(self.model, self.admin_site)
+                if request:
+                    if not (inline.has_add_permission(request) or
+                            inline.has_change_permission(request, obj) or
+                            inline.has_delete_permission(request, obj)):
+                        continue
+                    if not inline.has_add_permission(request):
+                        inline.max_num = 0
+                inline_instances.append(inline)
+
+        return inline_instances
 
 
 @admin.register(Life)

@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=120)),
                 ('description', models.TextField(blank=True)),
                 ('image', sorl.thumbnail.fields.ImageField(upload_to='uploads/companies/company/%Y/%m/%d', blank=True)),
-                ('slug', models.SlugField()),
+                ('slug', models.SlugField(unique=True)),
             ],
             options={
                 'verbose_name_plural': 'Companies',
@@ -30,6 +30,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(blank=True, max_length=10, choices=[(b'Mr', 'Mr'), (b'Mrs', 'Mrs'), (b'Ms', 'Ms'), (b'Miss', 'Miss'), (b'Dr', 'Dr'), (b'Sir', 'Sir')])),
+                ('life_number', models.IntegerField(default=1)),
                 ('first_name', models.CharField(max_length=20, blank=True)),
                 ('last_name', models.CharField(max_length=30, blank=True)),
                 ('number', models.PositiveIntegerField(unique=True, null=True, verbose_name=b'Life number', blank=True)),
@@ -43,10 +44,13 @@ class Migration(migrations.Migration):
                 ('summary', models.TextField(verbose_name=b'What we did', blank=True)),
                 ('thank_you', models.TextField(verbose_name=b'Thank you content form', blank=True)),
                 ('is_published', models.BooleanField(default=False, verbose_name=b'Is accepted?')),
-                ('slug', models.SlugField()),
+                ('slug', models.SlugField(unique=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('created_at', models.DateTimeField(default=django.utils.timezone.now)),
                 ('company', models.ForeignKey(to='companies.Company')),
             ],
+            options={
+                'verbose_name_plural': 'Lives',
+            },
         ),
     ]

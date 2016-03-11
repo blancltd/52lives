@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
+from django.core.urlresolvers import reverse
 
 from sorl.thumbnail import ImageField
 
@@ -19,13 +20,16 @@ class Company(models.Model):
         blank=True,
         upload_to='uploads/companies/company/%Y/%m/%d'
     )
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
 
     class Meta:
         verbose_name_plural = "Companies"
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('companies:detail', args=(self.slug,))
 
 
 class Life(models.Model):
@@ -35,6 +39,7 @@ class Life(models.Model):
         choices=life_choices.SOCIAL_TITLE_CHOICES,
         blank=True,
     )
+    life_number = models.IntegerField(default=1)
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     number = models.PositiveIntegerField(
@@ -53,9 +58,18 @@ class Life(models.Model):
     summary = models.TextField(help_text.LIVE['summary'], blank=True)
     thank_you = models.TextField(help_text.LIVE['thank_you'], blank=True)
     is_published = models.BooleanField(help_text.LIVE['is_published'], default=False)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        verbose_name_plural = 'Lives'
+
+    def __str__(self):
+        return self.get_full_name()
+
+    def get_absolute_url(self):
+        return reverse('companies:life-detail', args=(self.company.slug, self.life_number))
 
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)

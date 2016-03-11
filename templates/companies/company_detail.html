@@ -3,41 +3,41 @@
 
 
 {% block title %}
-  The Partners - {{ block.super }}
+  The lives - {{ block.super }}
 {% endblock %}
 
 {% block navigation %}
-  {% include "includes/navigation.html" with current_page="/lives/" only %}
+  {% include "includes/navigation.html" with current_page="" only %}
 {% endblock navigation %}
 
 {% block content %}
 <div class="blanc_page_blocktype_redactorblock lives-intro">
-    <h1 class="title">The Partners</h1>
-    <h2>some help text here...</h2>
+    <h1 class="title">12 lives</h1>
+    <h2>Some help text.</h2>
 </div>
 
 <div class="lives">
-    {% if object_list %}
+    {% if object %}
         <ul class="lives-grid">
-            {% for company in object_list %}
+            {% for life in object.life_set.all %}
                 <li class="lifeblock">
                     <div style="position:relative">
-                    {% if company.image %}
-                        {% thumbnail company.image "280x280" crop="center" as thumb %}
+                    {% if life.image %}
+                        {% thumbnail life.image "280x280" crop="center" as thumb %}
                             <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="{{ post.title }}">
                         {% endthumbnail %}
-                        <a href="{{ company.get_absolute_url }}">
-                            <h1>#{{ company.title }}</h1>
-                            <p>{{ company.description }}</p>
-                            <small class="ribbon">12 Lives</small>
+                        <a href="{{ life.get_absolute_url }}">
+                            <h1>#{{ life.number }}</h1>
+                            <p>{{ life }}</p>
+                            <small class="ribbon">Read more</small>
                         </a>
                     </div>
                     {% endif %}
                 </li>
+            {% empty %}
+                <p>There are no lives to present yet - something must have gone wrong.</p>
             {% endfor %}
         </ul>
-    {% else %}
-        <p>There are no partners to present yet.</p>
     {% endif %}
 </div>
 
