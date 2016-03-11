@@ -741,8 +741,10 @@ h1 {
     fieldset {
         border-color: #94caaa;
         + fieldset {
-            margin-top: 4%;
+            margin-top: 2%;
+            margin-bottom: 2%;
         }
+        a:hover { color: white; }
     }
     form {
         max-width: 700px;
@@ -817,6 +819,23 @@ h1 {
         margin-left: 2%;
         width: 40%;
         font-family: .font;
+    }
+}
+
+.support_formblock {
+    form:after {
+        display: none;
+    }
+    .form-callout {
+        position: relative;
+        &:after {
+            content: "* required field";
+            font-size: 0.7em;
+            display: block;
+            position: absolute;
+            bottom: -60px;
+            right: 1em;
+        }
     }
 }
 

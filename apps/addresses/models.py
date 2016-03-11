@@ -28,9 +28,9 @@ class Address(models.Model):
         help_text=help_text.ADDRESS['description']
     )
     company_name = models.CharField(max_length=200, null=True, blank=True)
-    line_1 = models.CharField(max_length=255)
-    line_2 = models.CharField(max_length=255, null=True, blank=True)
-    line_3 = models.CharField(max_length=255, null=True, blank=True)
+    line_1 = models.CharField('Address Line 1', max_length=255)
+    line_2 = models.CharField('Address Line 2', max_length=255, null=True, blank=True)
+    line_3 = models.CharField('Address Line 3', max_length=255, null=True, blank=True)
     city = models.CharField(max_length=255)
     county = models.CharField(max_length=255, null=True, blank=True)
     postcode = models.CharField(max_length=30)

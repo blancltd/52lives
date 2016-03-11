@@ -22,9 +22,9 @@
                 {% endif %}
                 <div class="content-wrap">
                     {% if post.teaser %}
-                        <p>{{ post.teaser }} ...</p>
+                        <p>{{ post.teaser|safe }} ...</p>
                     {% else %}
-                        <p>{{ post.content|striptags|truncatewords:15 }}</p>
+                        <p>{{ post.content|striptags|truncatewords:15|safe }}</p>
                     {% endif %}
                 </div>
                 <a href="{{ post.get_absolute_url }}" class="button">Read more</a>
