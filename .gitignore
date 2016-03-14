@@ -14,3 +14,5 @@ edvinas.py
 node_modules/
 
 static/css/style*
+
+*.dump
