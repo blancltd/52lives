@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 
 from django.conf.urls import url
 
@@ -12,9 +14,8 @@ urlpatterns = [
         name='list'
     ),
     url(
-        r'^(?P<pk>[0-9]+)/$',
+        r'^(?P<live_id>[0-9]+)/$',
         LifeDetailView.as_view(),
         name='detail'
     ),
 ]
-

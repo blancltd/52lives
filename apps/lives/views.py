@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 
 from django.contrib import messages
+from django.http import Http404
+from django.utils.translation import ugettext as _
 from django.views.generic import FormView
 from django.views.generic import View
 from django.views.generic.detail import DetailView
@@ -45,6 +49,23 @@ class SupportLife(SingleObjectMixin, FormView):
 class LifeDisplay(DetailView):
     queryset = Life.objects.active()
     model = Life
+    pk_url_kwarg = 'live_id'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+        number = self.kwargs.get('live_id')
+
+        if number is not None:
+            queryset = queryset.filter(number=number)
+
+        try:
+            # Get the single item from the filtered queryset
+            obj = queryset.get()
+        except queryset.model.DoesNotExist:
+            raise Http404(_("No %(verbose_name)s found matching the query") %
+                          {'verbose_name': queryset.model._meta.verbose_name})
+        return obj
 
     def get_context_data(self, **kwargs):
         context = super(LifeDisplay, self).get_context_data(**kwargs)
@@ -53,6 +74,7 @@ class LifeDisplay(DetailView):
 
 
 class LifeDetailView(View):
+    pk_url_kwarg = 'live_id'
 
     def get(self, request, *args, **kwargs):
         view = LifeDisplay.as_view()
@@ -61,4 +83,3 @@ class LifeDetailView(View):
     def post(self, request, *args, **kwargs):
         view = SupportLife.as_view()
         return view(request, *args, **kwargs)
-
