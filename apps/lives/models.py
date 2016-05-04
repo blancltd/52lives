@@ -60,7 +60,7 @@ class Life(models.Model):
         return u'{}'.format(self.nominee)
 
     def get_absolute_url(self):
-        return reverse('lives:detail', args=[str(self.id)])
+        return reverse('lives:detail', args=[str(self.number)])
 
     def clean(self):
         if self.is_published and not self.number:
