@@ -14,7 +14,7 @@ urlpatterns = [
         name='list'
     ),
     url(
-        r'^(?P<live_id>[0-9]+)/$',
+        r'^(?P<slug>[0-9]+)/$',
         LifeDetailView.as_view(),
         name='detail'
     ),

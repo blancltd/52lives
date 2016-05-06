@@ -25,6 +25,7 @@ class LivesListView(ListView):
 class SupportLife(SingleObjectMixin, FormView):
     template_name = 'lives/life_detail.html'
     model = Life
+    slug_field = 'number'
     form_class = SupportForm
     success_message = 'Your form has been submitted successfully.'
 
@@ -49,23 +50,7 @@ class SupportLife(SingleObjectMixin, FormView):
 class LifeDisplay(DetailView):
     queryset = Life.objects.active()
     model = Life
-    pk_url_kwarg = 'live_id'
-
-    def get_object(self, queryset=None):
-        if queryset is None:
-            queryset = self.get_queryset()
-        number = self.kwargs.get('live_id')
-
-        if number is not None:
-            queryset = queryset.filter(number=number)
-
-        try:
-            # Get the single item from the filtered queryset
-            obj = queryset.get()
-        except queryset.model.DoesNotExist:
-            raise Http404(_("No %(verbose_name)s found matching the query") %
-                          {'verbose_name': queryset.model._meta.verbose_name})
-        return obj
+    slug_field = 'number'
 
     def get_context_data(self, **kwargs):
         context = super(LifeDisplay, self).get_context_data(**kwargs)
@@ -74,8 +59,6 @@ class LifeDisplay(DetailView):
 
 
 class LifeDetailView(View):
-    pk_url_kwarg = 'live_id'
-
     def get(self, request, *args, **kwargs):
         view = LifeDisplay.as_view()
         return view(request, *args, **kwargs)
