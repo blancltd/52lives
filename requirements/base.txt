@@ -1,15 +1,15 @@
-Django==1.8.3
-pytz==2015.4
-pylibmc==1.5.0
+Django==1.8.13
+pytz==2016.4
+pylibmc==1.5.1
 psycopg2==2.6.1
-Pillow==2.9.0
-dj-database-url==0.3.0
-raven==5.4.4
+Pillow==3.2.0
+dj-database-url==0.4.1
+raven==5.15.0
 
 # Storage
-apache-libcloud==0.17.0
-dj-libcloud==0.2.0
-blanc-contentfiles==0.1.1
+django-storages==1.4.1
+boto==2.40.0
+blanc-contentfiles==0.2.3
 
 # Admin theme
 blanc-admin-theme==1.0.1
@@ -24,7 +24,7 @@ sorl-thumbnail==12.3
 blanc-pages==0.6.4
 django-mptt==0.7.4
 django-mptt-admin==0.2.1
-six==1.9.0
+six==1.10.0
 
 # Blocks
 blanc-pages-redactor-block==0.6.1
@@ -39,4 +39,4 @@ blanc-basic-news==0.3
 django-extensions==1.5.5
 
 # New Relic
-newrelic==2.54.0.41
+newrelic==2.64.0.48
