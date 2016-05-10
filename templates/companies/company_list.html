@@ -31,7 +31,7 @@
                             <h1>{{ company.title }}</h1>
                         </a>
                         <p>{{ company.description }}</p>
-                        <span class="posts"><a class="button">Browse lives</a></span>
+                        <span class="posts"><a href="{{ company.get_absolute_url }}" class="button">Browse lives</a></span>
                     </div>
                 </li>
             {% endfor %}
