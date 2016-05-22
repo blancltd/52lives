@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blockadmin/', include(block_admin.site.urls)),
     url(r'^nominate/', include('people.urls', namespace='nominate')),
-    url(r'^partners/', include('companies.urls', namespace='companies')),
+    url(r'^12lives/', include('companies.urls', namespace='companies')),
 ]
 
 
