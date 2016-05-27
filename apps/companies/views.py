@@ -39,7 +39,7 @@ class CompanyLifeDetailView(DetailView):
             raise Http404("No company found matching the query")
         else:
             try:
-                obj = company.life_set.get(id=life_number)
+                obj = company.life_set.get(number=life_number)
             except Life.DoesNotExist:
                 raise Http404("No life for given company was found")
 

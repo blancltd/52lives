@@ -29,7 +29,8 @@ class Life(models.Model):
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     number = models.PositiveIntegerField(
-        help_text.LIVE['number'], blank=True, null=True, unique=True)
+        help_text.LIVE['number'], blank=True, null=True, unique=True
+    )
     image = ImageField(
         help_text.LIVE['image'],
         blank=True,

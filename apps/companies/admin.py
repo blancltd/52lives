@@ -11,7 +11,7 @@ class LifeInline(admin.TabularInline):
     readonly_fields = (
         'title', 'is_published', 'first_name', 'last_name', 'number', 'image', 'email',
         'home_phone', 'mobile_phone', 'request_title', 'content', 'request', 'summary',
-        'thank_you', 'slug', 'created_at',
+        'thank_you', 'created_at',
     )
     max_num = 0
 
@@ -108,4 +108,3 @@ class LifeAdmin(admin.ModelAdmin):
             }
         ),
     )
-

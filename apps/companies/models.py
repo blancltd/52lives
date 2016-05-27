@@ -39,11 +39,9 @@ class Life(models.Model):
         choices=life_choices.SOCIAL_TITLE_CHOICES,
         blank=True,
     )
-    life_number = models.IntegerField(default=1)
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    number = models.PositiveIntegerField(
-        help_text.LIVE['number'], blank=True, null=True, unique=True)
+    number = models.PositiveIntegerField(help_text.LIVE['number'], blank=True, null=True)
     image = ImageField(
         help_text.LIVE['image'],
         blank=True,
@@ -58,18 +56,18 @@ class Life(models.Model):
     summary = models.TextField(help_text.LIVE['summary'], blank=True)
     thank_you = models.TextField(help_text.LIVE['thank_you'], blank=True)
     is_published = models.BooleanField(help_text.LIVE['is_published'], default=False)
-    slug = models.SlugField(unique=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name_plural = 'Lives'
+        unique_together = (('company', 'number'),)
 
     def __str__(self):
         return self.get_full_name()
 
     def get_absolute_url(self):
-        return reverse('companies:life-detail', args=(self.company.slug, self.life_number))
+        return reverse('companies:life-detail', args=(self.company.slug, self.number))
 
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)
