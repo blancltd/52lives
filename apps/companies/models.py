@@ -62,6 +62,7 @@ class Life(models.Model):
     class Meta:
         verbose_name_plural = 'Lives'
         unique_together = (('company', 'number'),)
+        ordering = ('number',)
 
     def __str__(self):
         return self.get_full_name()
