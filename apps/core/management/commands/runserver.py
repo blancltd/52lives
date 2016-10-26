@@ -6,9 +6,8 @@ import signal
 import subprocess
 
 from django.conf import settings
-from django.contrib.staticfiles.management.commands.runserver import (
+from django.contrib.staticfiles.management.commands.runserver import \
     Command as StaticfilesRunserverCommand
-)
 
 
 class Command(StaticfilesRunserverCommand):
@@ -20,7 +19,7 @@ class Command(StaticfilesRunserverCommand):
     def start_grunt(self):
         self.stdout.write('>>> Starting grunt')
         self.grunt_process = subprocess.Popen(
-            ['node_modules/.bin/grunt --gruntfile={0}/gruntfile.js --base=.'.format(
+            ['node_modules/.bin/grunt --gruntfile={0}/gruntfile.js --base=. development'.format(
                 os.path.join(settings.BASE_DIR)
             )],
             shell=True,
