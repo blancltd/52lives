@@ -74,6 +74,10 @@ THIRD_PARTY_APPS = [
     'raven.contrib.django.raven_compat',
     'redactorjs_staticfiles',
     'sorl.thumbnail',
+    'django_otp',
+    'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_totp',
+    'two_factor',
 ]
 
 
@@ -99,6 +103,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django_otp.middleware.OTPMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'blanc_pages.middleware.BlancpageFallbackMiddleware',
@@ -265,6 +270,11 @@ LOGGING = {
 
 
 # Any other application config goes below here
+
+# 2FA login url
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL = 'two_factor:login'
+LOGIN_REDIRECT_URL = 'admin:index'
 
 # Sites framework
 SITE_ID = 1

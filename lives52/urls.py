@@ -8,6 +8,8 @@ from django.contrib import admin
 
 from blanc_pages import block_admin
 
+from two_factor.admin import AdminSiteOTPRequired
+admin.site.__class__ = AdminSiteOTPRequired
 
 urlpatterns = [
     url(r'^news/', include('blanc_basic_news.urls', namespace='blanc_basic_news')),
@@ -16,6 +18,7 @@ urlpatterns = [
     url(r'^blockadmin/', include(block_admin.site.urls)),
     url(r'^nominate/', include('people.urls', namespace='nominate')),
     url(r'^12lives/', include('companies.urls', namespace='companies')),
+    url(r'', include('two_factor.urls', 'two_factor')),
 ]
 
 
