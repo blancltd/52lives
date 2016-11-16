@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 import os
 import sys
+from django.core.urlresolvers import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -70,10 +71,14 @@ THIRD_PARTY_APPS = [
     'blanc_pages_image_block',
     'blanc_pages_redactor_block',
     'django_mptt_admin',
+    'django_otp',
+    'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_totp',
     'mptt',
     'raven.contrib.django.raven_compat',
     'redactorjs_staticfiles',
     'sorl.thumbnail',
+    'two_factor',
 ]
 
 
@@ -99,6 +104,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django_otp.middleware.OTPMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'blanc_pages.middleware.BlancpageFallbackMiddleware',
@@ -265,6 +271,10 @@ LOGGING = {
 
 
 # Any other application config goes below here
+
+# 2FA login url
+LOGIN_URL = 'two_factor:login'
+LOGIN_REDIRECT_URL = 'admin:index'
 
 # Sites framework
 SITE_ID = 1

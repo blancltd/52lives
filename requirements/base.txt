@@ -40,3 +40,6 @@ django-extensions==1.5.5
 
 # New Relic
 newrelic==2.64.0.48
+
+# Django 2FA
+django-two-factor-auth==1.4.0

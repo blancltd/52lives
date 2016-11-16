@@ -1,0 +1,56 @@
+{% load i18n admin_static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <style type="text/css" media="screen">
+  .btn-info:link, .btn-info:visited,
+  .btn-primary:link, .btn-primary:visited { color: #fff !important; }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  {% if user.is_authenticated %}
+  <div id="header">
+    <div id="branding">
+      {% block branding %}
+      <h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+      {% endblock %}
+    </div>
+    {% block usertools %}
+      <div id="user-tools">
+        {% block welcome-msg %}
+          {% trans 'Welcome,' %}
+          <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+        {% endblock %}
+        {% block userlinks %}
+            <a href="/">{% trans 'View site' %}</a> /
+          {% if user.has_usable_password %}
+            <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+          {% endif %}
+
+          <a href="{% url 'two_factor:profile' %}">{% trans 'Security' %}</a> /
+        {% endblock %}
+        <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+      </div>
+    {% endblock %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% block content_wrapper %}
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+  {% endblock %}
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
