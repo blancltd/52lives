@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^nominate/', include('people.urls', namespace='nominate')),
     url(r'^12lives/', include('companies.urls', namespace='companies')),
     url(r'', include('two_factor.urls', 'two_factor')),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', name='logout'),
 ]
 
 
