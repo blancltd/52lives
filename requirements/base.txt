@@ -1,4 +1,4 @@
-Django==1.8.13
+Django==1.8.18
 pytz==2016.4
 pylibmc==1.5.1
 psycopg2==2.6.1
