@@ -19,7 +19,7 @@
 <div class="lives">
     {% if object %}
         <ul class="lives-grid">
-            {% for life in object.life_set.all %}
+            {% for life in lifes %}
                 <li class="lifeblock">
                     <div style="position:relative">
                     {% if life.image %}
