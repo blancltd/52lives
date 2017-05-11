@@ -68,7 +68,11 @@ class Life(models.Model):
         return self.get_full_name()
 
     def get_absolute_url(self):
-        return reverse('companies:life-detail', args=(self.company.slug, self.number))
+        if self.number and self.company.slug:
+            url = reverse('companies:life-detail', args=(self.company.slug, self.number))
+        else:
+            url = self.company.get_absolute_url()
+        return url
 
     def get_full_name(self):
         return u'{} {} {}'.format(self.title, self.first_name, self.last_name)
