@@ -22,7 +22,7 @@ class CompanyDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CompanyDetailView, self).get_context_data(**kwargs)
-        context['lifes'] = self.object.life_set.filter(number__isnull=False)
+        context['lives'] = self.object.life_set.filter(number__isnull=False)
         return context
 
 
