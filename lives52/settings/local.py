@@ -12,8 +12,6 @@ DEBUG = True
 THUMBNAIL_DEBUG = DEBUG
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['*']
-
 
 DATABASES = {
     'default': {
