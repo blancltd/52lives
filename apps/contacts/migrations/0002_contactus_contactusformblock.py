@@ -20,9 +20,9 @@ class Migration(migrations.Migration):
             name='ContactUs',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=120, blank=True)),
+                ('name', models.CharField(max_length=120)),
                 ('position', models.CharField(max_length=120, blank=True)),
-                ('school', models.CharField(max_length=150, blank=True)),
+                ('school', models.CharField(max_length=150)),
                 ('address', models.TextField(blank=True)),
                 ('telephone', models.CharField(max_length=30, blank=True)),
                 ('email', models.EmailField(max_length=70)),

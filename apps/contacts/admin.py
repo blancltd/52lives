@@ -12,7 +12,7 @@ from .models import Contact, ContactUs
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
-    list_display = ('name', 'email', 'subject', 'content', 'created_at')
+    list_display = ('name', 'email', 'subject', 'content', 'created_at', 'id')
     fieldsets = (
         (
             'Contact', {
@@ -39,10 +39,10 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(ContactUs)
 class ContactUsAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
-    list_display = ('name', 'position', 'school', 'year_group')
+    list_display = ('name', 'position', 'school', 'year_group', 'created_at', 'id')
     fieldsets = (
         (
-            'Contact us', {
+            'ContactUs', {
                 'fields': (
                     'name',
                     'position',
