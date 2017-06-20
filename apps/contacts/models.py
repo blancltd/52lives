@@ -42,7 +42,7 @@ class ContactUs(models.Model):
         return u'{0} {1}'.format(self.name, self.email)
 
     def format_email(self):
-        message = """From email: {} \nName: {} \nSchool: {} \nPosition: {} \nYear group: {} \nTelephone: {} \nAddress: {} \nPreferred workshop date: {} \nHeard about us through: {}'""".format(
-            self.email, self.name, self.school, self.position, self.year_group, self.telephone, self.address, self.workshop_date, self.hear_about
+        message = """From email: {} \nName: {} \nPosition: {} \nTelephone: {} \nSchool: {} \nAddress: {} \nYear group: {} \nPreferred workshop date: {} \nHeard about us through: {}'""".format(
+            self.email, self.name, self.position, self.telephone, self.school, self.address, self.year_group, self.workshop_date, self.hear_about
         )
         return message
