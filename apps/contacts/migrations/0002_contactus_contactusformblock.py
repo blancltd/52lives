@@ -32,6 +32,7 @@ class Migration(migrations.Migration):
                 ('hear_about', models.TextField(blank=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
+            options={'verbose_name': 'Contact us form'},
         ),
         migrations.CreateModel(
             name='ContactUsFormBlock',
