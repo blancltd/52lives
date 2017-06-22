@@ -16,6 +16,10 @@ class Migration(migrations.Migration):
             name='number',
             field=models.PositiveIntegerField(null=True, verbose_name=b'Life number', blank=True),
         ),
+        migrations.AlterModelOptions(
+            name='life',
+            options={'ordering': ('number',), 'verbose_name_plural': 'Lives'},
+        ),
         migrations.AlterUniqueTogether(
             name='life',
             unique_together=set([('company', 'number')]),
