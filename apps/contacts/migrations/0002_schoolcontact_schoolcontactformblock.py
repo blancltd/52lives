@@ -17,25 +17,27 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ContactUs',
+            name='SchoolContact',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=120)),
-                ('position', models.CharField(max_length=120, blank=True)),
                 ('school', models.CharField(max_length=150)),
+                ('position', models.CharField(max_length=120, blank=True)),
+                ('year_group', models.CharField(max_length=30, blank=True)),
+                ('workshop_date', models.CharField(max_length=100, blank=True)),
                 ('address', models.TextField(blank=True)),
                 ('telephone', models.CharField(max_length=30, blank=True)),
                 ('email', models.EmailField(max_length=70)),
                 ('confirm_email', models.EmailField(max_length=70)),
-                ('year_group', models.CharField(max_length=30, blank=True)),
-                ('workshop_date', models.CharField(max_length=100, blank=True)),
                 ('hear_about', models.TextField(blank=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
-            options={'verbose_name': 'Contact us form'},
+            options={
+                'verbose_name': 'School contact form',
+            },
         ),
         migrations.CreateModel(
-            name='ContactUsFormBlock',
+            name='SchoolContactFormBlock',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('recipient', models.EmailField(max_length=254)),

@@ -7,5 +7,5 @@ class ContactFormBlock(BaseFormBlock):
     form_class = 'contacts.forms.ContactForm'
 
 
-class ContactUsFormBlock(BaseFormBlock):
-    form_class = 'contacts.forms.ContactUsForm'
+class SchoolContactFormBlock(BaseFormBlock):
+    form_class = 'contacts.forms.SchoolContactForm'

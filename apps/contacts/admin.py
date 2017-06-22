@@ -5,8 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from blanc_pages import block_admin
 
-from .blocks.forms import ContactFormBlock, ContactUsFormBlock
-from .models import Contact, ContactUs
+from .blocks.forms import ContactFormBlock, SchoolContactFormBlock
+from .models import Contact, SchoolContact
 
 
 @admin.register(Contact)
@@ -36,13 +36,13 @@ class ContactAdmin(admin.ModelAdmin):
         return False
 
 
-@admin.register(ContactUs)
-class ContactUsAdmin(admin.ModelAdmin):
+@admin.register(SchoolContact)
+class SchoolContactAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     list_display = ('name', 'position', 'school', 'year_group', 'created_at', 'id')
     fieldsets = (
         (
-            'ContactUs', {
+            'SchoolContact', {
                 'fields': (
                     'name',
                     'position',
@@ -87,5 +87,5 @@ block_admin.site.register((ContactFormBlock))
 block_admin.site.register_block(ContactFormBlock, 'Forms')
 
 
-block_admin.site.register((ContactUsFormBlock))
-block_admin.site.register_block(ContactUsFormBlock, 'Forms')
+block_admin.site.register((SchoolContactFormBlock))
+block_admin.site.register_block(SchoolContactFormBlock, 'Forms')

@@ -3,7 +3,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from .blocks.forms import ContactFormBlock, ContactUsFormBlock  # noqa
+from .blocks.forms import ContactFormBlock, SchoolContactFormBlock  # noqa
 
 
 @python_2_unicode_compatible
@@ -25,7 +25,7 @@ class Contact(models.Model):
 
 
 @python_2_unicode_compatible
-class ContactUs(models.Model):
+class SchoolContact(models.Model):
     name = models.CharField(max_length=120)
     school = models.CharField(max_length=150)
     position = models.CharField(max_length=120, blank=True)
@@ -42,4 +42,4 @@ class ContactUs(models.Model):
         return u'{0} {1}'.format(self.name, self.email)
 
     class Meta:
-        verbose_name = "Contact us form"
+        verbose_name = "School contact form"

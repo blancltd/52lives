@@ -3,7 +3,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Contact, ContactUs
+from .models import Contact, SchoolContact
 
 
 class ContactForm(forms.ModelForm):
@@ -18,9 +18,9 @@ class ContactForm(forms.ModelForm):
         }
 
 
-class ContactUsForm(forms.ModelForm):
+class SchoolContactForm(forms.ModelForm):
     class Meta:
-        model = ContactUs
+        model = SchoolContact
         exclude = ('created_at',)
         labels = {
             'name': 'Your name',
@@ -32,7 +32,7 @@ class ContactUsForm(forms.ModelForm):
         }
 
     def clean(self):
-        cleaned_data = super(ContactUsForm, self).clean()
+        cleaned_data = super(SchoolContactForm, self).clean()
         email = cleaned_data.get('email')
         email_confirm = cleaned_data.get('confirm_email')
 
