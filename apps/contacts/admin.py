@@ -65,7 +65,19 @@ class ContactUsAdmin(admin.ModelAdmin):
             }
         ),
     )
-    readonly_fields = list_display
+    readonly_fields = [
+        'name',
+        'position',
+        'school',
+        'address',
+        'telephone',
+        'email',
+        'year_group',
+        'workshop_date',
+        'hear_about',
+        'created_at',
+        'id'
+    ]
 
     def has_add_permission(self, request):
         return False
