@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,6 +30,14 @@ if settings.DEBUG:
 
     urlpatterns += [
         url(r'^404/$', page_not_found),
+    ]
+
+# Only enable debug toolbar if it's an installed app
+if apps.is_installed('debug_toolbar'):
+    import debug_toolbar
+
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
     ]
 
 # Serving static/media under debug
