@@ -35,7 +35,7 @@ class SchoolContact(models.Model):
     telephone = models.CharField(max_length=30, blank=True)
     email = models.EmailField(max_length=70)
     confirm_email = models.EmailField(max_length=70)
-    hear_about = models.TextField(blank=True)
+    hear_about = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
