@@ -1,8 +1,8 @@
 {% if form %}
-    <div class="{{ css_classes }}">
+    <div class="{{ css_classes }}" id="school_form">
         <form method="POST" action=""{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
             {% csrf_token %}
-            <h2>Workshop Booking / Enquiry Form</h2>
+            <h2 class="big-text">Interested?</h2>
             <p>If you are interested in booking a School Kindness Workshop, please complete the form below and we will get back to you as soon as possible.</p>
             {{ form.as_p }}
             <button type="submit">Send</button>
