@@ -261,11 +261,6 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': False,
         },
-        'newrelic.core': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
-        },
     }
 }
 
