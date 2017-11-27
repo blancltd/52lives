@@ -1,7 +1,7 @@
 Django==1.8.18
 pytz==2016.4
 pylibmc==1.5.1
-psycopg2==2.6.1
+psycopg2==2.7.3.2
 Pillow==3.2.0
 dj-database-url==0.4.1
 raven==6.1.0
