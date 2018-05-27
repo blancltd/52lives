@@ -28,7 +28,7 @@ MAILTO=admin@blanc.ltd.uk
 
 # Avoid tweaking these
 env.use_ssh_config = True
-GIT_REMOTE = 'git@github.com:blancltd/{env.repo}.git'
+GIT_REMOTE = 'git@github.com:developersociety/{env.repo}.git'
 DATABASE_SERVER = 'golestandt.devsoc.org'
 
 
