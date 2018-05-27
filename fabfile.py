@@ -7,11 +7,11 @@ from fabric.contrib.files import exists
 # Changable settings
 env.roledefs = {
     'web': [
-        'lives52@scorch.blanctools.com',
-        'lives52@smaug.blanctools.com',
+        'lives52@scorch.devsoc.org',
+        'lives52@smaug.devsoc.org',
     ],
     'cron': [
-        'lives52@scorch.blanctools.com',
+        'lives52@scorch.devsoc.org',
     ],
 }
 
@@ -29,7 +29,7 @@ MAILTO=admin@blanc.ltd.uk
 # Avoid tweaking these
 env.use_ssh_config = True
 GIT_REMOTE = 'git@github.com:blancltd/{env.repo}.git'
-DATABASE_SERVER = 'golestandt.blanctools.com'
+DATABASE_SERVER = 'golestandt.devsoc.org'
 
 
 @task
