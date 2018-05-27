@@ -39,9 +39,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-SERVER_EMAIL = 'lives52@blanctools.com'
+SERVER_EMAIL = 'lives52@devsoc.org'
 
-DEFAULT_FROM_EMAIL = 'lives52@blanctools.com'
+DEFAULT_FROM_EMAIL = 'lives52@devsoc.org'
 
 EMAIL_SUBJECT_PREFIX = '[lives52] '
 
