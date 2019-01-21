@@ -2,6 +2,7 @@
 
 from django import forms
 from django.forms import inlineformset_factory
+from django.core.exceptions import ValidationError
 
 from . import choices as persons_choices
 from .models import Person, Nominee
@@ -23,20 +24,40 @@ class NominateForm(forms.ModelForm):
 
 class NomineeForm(forms.ModelForm):
     required_css_class = 'required'
+    confirm_email = forms.EmailField(label="Re-enter email address:")
 
     class Meta:
         model = Nominee
-        exclude = ('person',)
+        fields = (
+            'first_name',
+            'last_name',
+            'email',
+            'confirm_email',
+            'phone',
+            'relation',
+            'why_help',
+            'what_need'
+        )
 
     def __init__(self, *args, **kwargs):
         super(NomineeForm, self).__init__(*args, **kwargs)
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
-        self.fields['phone'].required = True
         self.fields['email'].required = True
+        self.fields['confirm_email'].required = True
+        self.fields['phone'].required = True
         self.fields['relation'].required = True
         self.fields['why_help'].required = True
         self.fields['what_need'].required = True
+
+    def clean(self):
+        cleaned_data = super(NomineeForm, self).clean()
+
+        email = cleaned_data.get('email')
+        email_confirm = cleaned_data.get('confirm_email')
+
+        if email != email_confirm:
+            raise ValidationError({'confirm_email': ['The email addresses you entered do not match']})
 
 
 NominatorFormSet = inlineformset_factory(
