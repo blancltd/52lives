@@ -36,7 +36,7 @@ class NomineeForm(forms.ModelForm):
             'phone',
             'relation',
             'why_help',
-            'what_need'
+            'what_need',
         )
 
     def __init__(self, *args, **kwargs):
