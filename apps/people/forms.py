@@ -10,54 +10,57 @@ from .models import Person, Nominee
 
 class NominateForm(forms.ModelForm):
     required_css_class = 'required'
-
-    class Meta:
-        model = Person
-        exclude = ('message', 'mobile_phone', 'title', 'created_at', 'updated_at', 'life',)
-
-    def __init__(self, *args, **kwargs):
-        super(NominateForm, self).__init__(*args, **kwargs)
-        self.fields['email'].required = True
-        self.fields['reason'].widget = forms.widgets.HiddenInput()
-        self.fields['reason'].initial = persons_choices.REASON_TYPE_WOULD_LIKE_TO_NOMINATE
-
-
-class NomineeForm(forms.ModelForm):
-    required_css_class = 'required'
     confirm_email = forms.EmailField(label="Re-enter email address:")
 
     class Meta:
-        model = Nominee
+        model = Person
         fields = (
             'first_name',
             'last_name',
             'email',
             'confirm_email',
-            'phone',
-            'relation',
-            'why_help',
-            'what_need',
+            'home_phone',
+            'hear_about_us',
+            'is_agreed',
+            'reason',
         )
 
+
     def __init__(self, *args, **kwargs):
-        super(NomineeForm, self).__init__(*args, **kwargs)
-        self.fields['first_name'].required = True
-        self.fields['last_name'].required = True
+        super(NominateForm, self).__init__(*args, **kwargs)
         self.fields['email'].required = True
         self.fields['confirm_email'].required = True
-        self.fields['phone'].required = True
-        self.fields['relation'].required = True
-        self.fields['why_help'].required = True
-        self.fields['what_need'].required = True
+        self.fields['reason'].widget = forms.widgets.HiddenInput()
+        self.fields['reason'].initial = persons_choices.REASON_TYPE_WOULD_LIKE_TO_NOMINATE
+        self.fields['is_agreed'].required = True
 
+    
     def clean(self):
-        cleaned_data = super(NomineeForm, self).clean()
+        cleaned_data = super(NominateForm, self).clean()
 
         email = cleaned_data.get('email')
         email_confirm = cleaned_data.get('confirm_email')
 
         if email != email_confirm:
             raise ValidationError({'confirm_email': ['The email addresses you entered do not match']})
+
+
+class NomineeForm(forms.ModelForm):
+    required_css_class = 'required'
+
+    class Meta:
+        model = Nominee
+        exclude = ('person',)
+
+    def __init__(self, *args, **kwargs):
+        super(NomineeForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['email'].required = True
+        self.fields['phone'].required = True
+        self.fields['relation'].required = True
+        self.fields['why_help'].required = True
+        self.fields['what_need'].required = True
 
 
 NominatorFormSet = inlineformset_factory(
