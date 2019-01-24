@@ -9,7 +9,9 @@
                 {{ form.as_p }}
             </fieldset>
             <fieldset>
-                <legend>Nominee's details</legend>
+                <legend>Details of the person you are nominating</legend>
+
+                <p>For data protection reasons, please provide your nominee’s first name only in the name box below.</p>
 
                 {% get_nominee_form_set as nominee_form %}
                 {{ nominee_form.management_form }}
