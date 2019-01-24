@@ -55,9 +55,7 @@ class NomineeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(NomineeForm, self).__init__(*args, **kwargs)
         self.fields['first_name'].required = True
-        self.fields['last_name'].required = True
-        self.fields['email'].required = True
-        self.fields['phone'].required = True
+        self.fields['country'].required = True
         self.fields['relation'].required = True
         self.fields['why_help'].required = True
         self.fields['what_need'].required = True

@@ -127,8 +127,7 @@ class NomineeInline(admin.StackedInline):
     model = Nominee
     max_num = 1
     readonly_fields = (
-        'first_name', 'last_name', 'email', 'phone', 'relation', 'why_help', 'what_need',
-        'get_html_address',
+        'first_name', 'country', 'relation', 'why_help', 'what_need'
     )
 
 
