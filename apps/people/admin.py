@@ -135,7 +135,7 @@ class NomineeInline(admin.StackedInline):
 class NominatorAdmin(PersonAdmin):
     list_filter = ()
     inlines = [
-        NomineeInline, AddressInline, NoteInline
+        NomineeInline, NoteInline
     ]
     fieldsets = (
         (

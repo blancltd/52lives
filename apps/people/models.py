@@ -5,7 +5,6 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
 from countries.models import Country
-from addresses import choices as addresses_choices
 from lives import choices as live_choices
 from lives.models import Life
 
