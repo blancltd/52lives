@@ -4,8 +4,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from addresses.models import Address
-from addresses import choices as addresses_choices
+from countries.models import Country
 from lives import choices as live_choices
 from lives.models import Life
 
@@ -50,32 +49,10 @@ class Nominator(Person):
 class Nominee(models.Model):
     person = models.ForeignKey(Person)
     first_name = models.CharField(max_length=20, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
-    email = models.EmailField(blank=True)
-    phone = models.CharField(max_length=20, blank=True)
+    country = models.ForeignKey(Country, blank=True, null=True)
     relation = models.CharField('How do you know the nominee?', max_length=124, blank=True)
     why_help = models.TextField('Why do they need help?', blank=True)
     what_need = models.TextField('What do they need?', blank=True)
-    address = GenericRelation(Address, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Nominee'
-
-    def get_html_address(self):
-        address = ''
-        obj_address = self.address.get(type=addresses_choices.ADDRESS_TYPE_PRIMARY)
-        if obj_address.line_1:
-            address += u'{} <br/>'.format(obj_address.line_1)
-        if obj_address.line_2:
-            address += u'{} <br/>'.format(obj_address.line_2)
-        if obj_address.line_3:
-            address += u'{} <br/>'.format(obj_address.line_3)
-        if obj_address.city:
-            address += u'{} <br/>'.format(obj_address.city)
-        if obj_address.county:
-            address += u'{} <br/>'.format(obj_address.county)
-        if obj_address.postcode:
-            address += u'{} <br/>'.format(obj_address.postcode)
-        return address
-    get_html_address.allow_tags = True
-    get_html_address.short_description = 'Nominee address'
