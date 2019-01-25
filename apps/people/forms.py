@@ -10,7 +10,7 @@ from .models import Person, Nominee
 
 class NominateForm(forms.ModelForm):
     required_css_class = 'required'
-    confirm_email = forms.EmailField(label="Re-enter email address:")
+    confirm_email = forms.EmailField(label='Re-enter email address:')
 
     class Meta:
         model = Person

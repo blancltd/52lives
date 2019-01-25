@@ -35,9 +35,9 @@ class NomineeCreateView(CreateView):
 
         form = self.get_form(form_class)
         nominee_form = NominatorFormSet(request.POST)
-        if (form.is_valid() and nominee_form.is_valid()):
+        nominee_form_is_valid = nominee_form.is_valid()
+        if form.is_valid() and nominee_form_is_valid:
             return self.form_valid(form, nominee_form)
-        nominee_form.is_valid()
         return self.form_invalid(form, nominee_form)
 
     def form_valid(self, form, nominee_form):
