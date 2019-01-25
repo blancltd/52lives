@@ -17,10 +17,6 @@ class ContactForm(forms.ModelForm):
             'content': 'Your content',
         }
 
-    def __init__(self, *args, **kwargs):
-        super(ContactForm, self).__init__(*args, **kwargs)
-        self.fields['is_agreed'].required = True
-
 
 class SchoolContactForm(forms.ModelForm):
     class Meta:

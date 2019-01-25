@@ -5,8 +5,6 @@ from django.utils.encoding import python_2_unicode_compatible
 
 from .blocks.forms import ContactFormBlock, SchoolContactFormBlock  # noqa
 
-from .help_texts import CONTACT_HELP_TEXTS
-
 
 @python_2_unicode_compatible
 class Contact(models.Model):
@@ -15,7 +13,6 @@ class Contact(models.Model):
     subject = models.CharField(max_length=120)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    is_agreed = models.BooleanField(default=False, help_text=CONTACT_HELP_TEXTS['is_agreed'])
 
     def __str__(self):
         return u'{0} {1}'.format(self.name, self.email)

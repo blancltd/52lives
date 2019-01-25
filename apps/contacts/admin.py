@@ -12,12 +12,12 @@ from .models import Contact, SchoolContact
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
-    list_display = ('name', 'email', 'subject', 'content', 'is_agreed', 'created_at', 'id')
+    list_display = ('name', 'email', 'subject', 'content', 'created_at', 'id')
     fieldsets = (
         (
             'Contact', {
                 'fields': (
-                    'name', 'email', 'subject', 'content', 'is_agreed',
+                    'name', 'email', 'subject', 'content',
                 )
             }
         ),
