@@ -72,11 +72,35 @@ NominatorFormSet = inlineformset_factory(
 
 
 class SupportForm(forms.ModelForm):
+    confirm_email = forms.EmailField(label='Re-enter email address:', required=False)
+
     class Meta:
         model = Person
-        exclude = ('created_at', 'updated_at', 'life',)
+        fields = (
+            'title',
+            'first_name',
+            'last_name',
+            'email',
+            'confirm_email',
+            'home_phone',
+            'message',
+            'hear_about_us',
+            'is_agreed',
+            'reason'
+        )
 
     def __init__(self, *args, **kwargs):
         super(SupportForm, self).__init__(*args, **kwargs)
         self.fields['reason'].widget = forms.widgets.HiddenInput()
         self.fields['reason'].initial = persons_choices.REASON_TYPE_I_CAN_HELP
+    
+    def clean(self):
+        cleaned_data = super(SupportForm, self).clean()
+
+        email = cleaned_data.get('email')
+        email_confirm = cleaned_data.get('confirm_email')
+
+        # Email isn't required here, so we only require confirmation if either
+        # of the e-mail fields is not empty
+        if (email or email_confirm) and email != email_confirm:
+            raise ValidationError({'confirm_email': ['The email addresses you entered do not match']})
