@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 
 from . import choices as persons_choices
 from .models import Person, Nominee
+from .help_texts import PERSON_HELP_TEXTS
 
 
 class NominateForm(forms.ModelForm):
@@ -33,6 +34,7 @@ class NominateForm(forms.ModelForm):
         self.fields['reason'].widget = forms.widgets.HiddenInput()
         self.fields['reason'].initial = persons_choices.REASON_TYPE_WOULD_LIKE_TO_NOMINATE
         self.fields['is_agreed'].required = True
+        self.fields['is_agreed'].help_text = PERSON_HELP_TEXTS['is_agreed_nominator']
 
     
     def clean(self):
