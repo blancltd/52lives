@@ -42,7 +42,11 @@
             {% if not life.summary %}
                 <div style="text-align: center" class="form-callout">
                     <h1 class="title">Offer support</h1>
-                    <h2>Can you help? Please let us know.</h2>
+                    <h2>Offer help or send a message</h2>
+                    <p>
+                        (if you are sending a message of support for the person we’re helping, there
+                        is no need to fill in your email address or telephone number)<br><br>
+                    </p>
                 </div>
                 {% csrf_token %}
                 {{ form.as_p }}
