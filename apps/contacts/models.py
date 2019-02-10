@@ -33,7 +33,7 @@ class SchoolContact(models.Model):
     school = models.CharField(max_length=150)
     position = models.CharField(max_length=120, blank=True)
     year_group = models.CharField(max_length=30, blank=True)
-    workshop_date = models.CharField(max_length=100, blank=True)
+    workshop_date = models.TextField(blank=True)
     address = models.TextField(blank=True)
     telephone = models.CharField(max_length=30, blank=True)
     email = models.EmailField(max_length=70)

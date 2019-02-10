@@ -51,7 +51,8 @@ class SchoolContactForm(forms.ModelForm):
             'position': 'Your position',
             'telephone': 'Your telephone',
             'email': 'Your email',
-            'workshop_date': 'Preferred workshop date',
+            'workshop_date': """Please enter 3 preferred dates for your workshop (we will do our
+                                best to accommodate one of the dates)""",
             'hear_about': 'How did you hear about us?',
         }
 
@@ -59,6 +60,7 @@ class SchoolContactForm(forms.ModelForm):
         super(SchoolContactForm, self).__init__(*args, **kwargs)
         self.fields['is_agreed'].required = True
         self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
+        self.fields['workshop_date'].widget.attrs['rows'] = 3
 
     def clean(self):
         cleaned_data = super(SchoolContactForm, self).clean()
