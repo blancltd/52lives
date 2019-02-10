@@ -40,6 +40,7 @@ class SchoolContact(models.Model):
     confirm_email = models.EmailField(max_length=70)
     hear_about = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_agreed = models.BooleanField(default=False, help_text=CONTACT_HELP_TEXTS['is_agreed'])
 
     def __str__(self):
         return u'{0} {1}'.format(self.name, self.email)

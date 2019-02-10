@@ -55,6 +55,11 @@ class SchoolContactForm(forms.ModelForm):
             'hear_about': 'How did you hear about us?',
         }
 
+    def __init__(self, *args, **kwargs):
+        super(SchoolContactForm, self).__init__(*args, **kwargs)
+        self.fields['is_agreed'].required = True
+        self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
+
     def clean(self):
         cleaned_data = super(SchoolContactForm, self).clean()
         email = cleaned_data.get('email')
