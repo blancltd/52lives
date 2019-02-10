@@ -36,6 +36,10 @@
 @green: #94caaa;
 @line: #8b8497;
 
+@breakpoint-full: 1520px;
+@breakpoint-medium: 1220px;
+@breakpoint-mobile: 760px;
+
 body {
     background: @heading;
     color: white;
@@ -234,29 +238,37 @@ h1 {
             background-size: cover;
         }
     }
+    
+    @media all and (max-width: @breakpoint-mobile) {
+        display: none;
+    }
 }
 
 .head .nav {
     font-size: 1em;
-    @media all and (max-width:750px) {
+
+    @media all and (max-width: @breakpoint-full) {
         font-size: 0.8em;
     }
-    @media all and (max-width:560px) {
+
+    @media all and (max-width: @breakpoint-medium) {
         font-size: 0.5em;
     }
 }
 
-.subnav {
+.head .subnav {
     font-size: 60%;
     margin-top: 3em;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    @media all and (max-width:560px) {
+
+    @media all and (max-width: @breakpoint-full) {
         font-size: 0.5em;
     }
-    @media all and (max-width:560px) {
-        display: none;
+
+    @media all and (max-width: @breakpoint-medium) {
+        font-size: 0.4em;
     }
 }
 
