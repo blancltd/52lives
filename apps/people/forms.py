@@ -94,6 +94,7 @@ class SupportForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SupportForm, self).__init__(*args, **kwargs)
         self.fields['is_agreed'].required = True
+        self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
         self.fields['reason'].widget = forms.widgets.HiddenInput()
         self.fields['reason'].initial = persons_choices.REASON_TYPE_I_CAN_HELP
     

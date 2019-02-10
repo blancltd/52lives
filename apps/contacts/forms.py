@@ -30,7 +30,7 @@ class ContactForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
         self.fields['is_agreed'].required = True
-        self.fields['is_agreed'].widget.attrs['class'] = 'contact-form__is-agreed'
+        self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
 
     def clean(self):
         cleaned_data = super(ContactForm, self).clean()
