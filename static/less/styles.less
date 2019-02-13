@@ -255,7 +255,29 @@ h1 {
 
     @media all and (max-width: @breakpoint-mobile) {
         .nav__links {
-            display: none;
+            display: block;
+            height: auto;
+            max-height: 0;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+            top: 1.2em;
+            margin-bottom: 0.3em;
+
+            &:before, &:after {
+                display: none;
+            }
+
+            .nav__link {
+                display: block;
+
+                &:before, &:after {
+                    display: none;
+                }
+            }
+
+            .nav__link + .nav__link {
+                margin-left: 0;
+            }
         }
     }
 }
@@ -288,27 +310,8 @@ h1 {
     }
 
     .nav__mobile-button[aria-expanded="true"] + .nav__links {
-        display: block;
-        height: auto;
-        top: 1.2em;
-        margin-bottom: 0.3em;
-
-        &:before, &:after {
-            display: none;
-        }
-
-        .nav__link {
-            display: block;
-
-            &:before, &:after {
-                display: none;
-            }
-        }
-
-        .nav__link + .nav__link {
-            margin-left: 0;
-        }
-        
+        max-height: 20em; // e.g. https://css-tricks.com/using-css-transitions-auto-dimensions/
+        transition: max-height 0.5s ease;
     }
 }
 
