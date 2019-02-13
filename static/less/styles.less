@@ -215,10 +215,6 @@ h1 {
         margin: 0 auto;
         margin-bottom: -16/20em;
         top: .15em;
-
-        @media all and (max-width: @breakpoint-mobile) {
-            display: none;
-        }
     }
     li {
         display: inline-block;
@@ -245,9 +241,30 @@ h1 {
     }
 }
 
+// Responsively change main menu
+.head .nav {
+    font-size: 1em;
+
+    @media all and (max-width: @breakpoint-full) {
+        font-size: 0.8em;
+    }
+
+    @media all and (max-width: @breakpoint-medium) {
+        font-size: 0.5em;
+    }
+
+    @media all and (max-width: @breakpoint-mobile) {
+        .nav__links {
+            display: none;
+        }
+    }
+}
+
+// Styles for mobile menu toggle
 .head .nav {
     .nav__mobile-button {
         .ribbon;
+        top: 1.6em;
 
         @media all and (min-width: @breakpoint-mobile) {
             display: none;
@@ -269,33 +286,62 @@ h1 {
         margin-left: 8px;
         fill: white;
     }
+
+    .nav__mobile-button[aria-expanded="true"] + .nav__links {
+        display: block;
+        height: auto;
+        top: 1.2em;
+        margin-bottom: 0.3em;
+
+        &:before, &:after {
+            display: none;
+        }
+
+        .nav__link {
+            display: block;
+
+            &:before, &:after {
+                display: none;
+            }
+        }
+
+        .nav__link + .nav__link {
+            margin-left: 0;
+        }
+        
+    }
 }
 
-.head .nav {
-    font-size: 1em;
-
-    @media all and (max-width: @breakpoint-full) {
-        font-size: 0.8em;
-    }
-
-    @media all and (max-width: @breakpoint-medium) {
-        font-size: 0.5em;
-    }
-}
-
+// Style the submenu
 .head .subnav {
     font-size: 60%;
     margin-top: 3em;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
 
+// Responsively change the submenu
+.head .subnav {
     @media all and (max-width: @breakpoint-full) {
         font-size: 0.5em;
     }
 
     @media all and (max-width: @breakpoint-medium) {
         font-size: 0.4em;
+    }
+
+    @media all and (max-width: @breakpoint-mobile) {
+        ul {
+            height: auto;
+        }
+    }
+}
+
+// Add a bit more space for the subnav - avoid overlapping content on mobile
+@media all and (max-width: @breakpoint-mobile) {
+    .head {
+        margin-bottom: 1em;
     }
 }
 

@@ -28,7 +28,7 @@
     
     <ul class="nav__links">
         {% for page, page_active in root_pages %}
-            <li>
+            <li class="nav__link">
                 <a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>
                     {{ page.title }}
                 </a>
