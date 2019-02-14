@@ -48,14 +48,30 @@ class ContactForm(forms.ModelForm):
 
 
 class SchoolContactForm(forms.ModelForm):
+    captcha = ReCaptchaField()
+
     class Meta:
         model = SchoolContact
-        exclude = ('created_at',)
+        fields = (
+            'name',
+            'school',
+            'position',
+            'year_group',
+            'workshop_date',
+            'address',
+            'telephone',
+            'email',
+            'confirm_email',
+            'hear_about',
+            'captcha',
+            'is_agreed',
+        )
         labels = {
             'name': 'Your name',
             'position': 'Your position',
             'telephone': 'Your telephone',
             'email': 'Your email',
+            'confirm_email': 'Re-enter your e-mail address',
             'workshop_date': """Please enter 3 preferred dates for your workshop (we will do our
                                 best to accommodate one of the dates)""",
             'hear_about': 'How did you hear about us?',
@@ -63,6 +79,7 @@ class SchoolContactForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(SchoolContactForm, self).__init__(*args, **kwargs)
+        self.fields['captcha'].label = 'Please tick this box to help us protect against spam messages'
         self.fields['is_agreed'].required = True
         self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
         self.fields['workshop_date'].widget.attrs['rows'] = 3
