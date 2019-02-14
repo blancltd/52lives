@@ -182,13 +182,20 @@ h1 {
                 height: 71px;
             }
         }
+
+        @media all and (max-width: @breakpoint-mobile) {
+            padding-bottom: 0.5em;
+        }
     }
 }
 
 .homepage .head h1 {
     padding: 1.75em 0;
-    @media all and (max-width:760px) { padding: 1.5em 0; }
-    @media all and (max-width:440px) { padding: 1em 0; }
+
+    @media all and (max-width: @breakpoint-mobile) {
+        padding-bottom: 1em;
+    }
+
     a {
         width: 685px;
         height: 173px;
@@ -286,6 +293,7 @@ h1 {
 .head .nav {
     .nav__mobile-button {
         .ribbon;
+        margin-top: -3em;
         top: 1.6em;
 
         @media all and (min-width: @breakpoint-mobile) {
