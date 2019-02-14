@@ -323,6 +323,39 @@ h1 {
     }
 }
 
+// Animate hamburger menu icon into an X icon
+// Adapted from https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-navigation-mobile
+.nav__menu-toggle-icon {
+    .line {
+        opacity: 1;
+        transform: rotate(0) translateY(0) translateX(0);
+        transform-origin: 1rem 1em;
+        transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    }
+
+    .line-1 {
+        transform-origin: 1rem 2.5rem;
+    }
+
+    .line-3 {
+        transform-origin: 1rem 4rem;
+    }
+}
+
+.nav__mobile-button[aria-expanded="true"] {
+    .nav__menu-toggle-icon .line-1 {
+        transform: rotate(45deg) translateY(0) translateX(0);
+    }
+
+    .nav__menu-toggle-icon .line-2 {
+        opacity: 0;
+    }
+
+    .nav__menu-toggle-icon .line-3 {
+        transform: rotate(-45deg) translateY(0) translateX(0);
+    }
+}
+
 // Style the submenu
 .head .subnav {
     font-size: 60%;
