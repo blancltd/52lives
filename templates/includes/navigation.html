@@ -7,7 +7,7 @@
 <nav class="nav">
     <button class="nav__mobile-button"
             aria-expanded="false"
-            aria-controls="TODO!!!">
+            aria-controls="nav__links">
         <span class="nav__mobile-label">Open Menu</span>
 
         <svg class="nav__mobile-icon"
@@ -26,7 +26,7 @@
         </svg>
     </button>
     
-    <ul class="nav__links">
+    <ul id="nav__links" class="nav__links">
         {% for page, page_active in root_pages %}
             <li class="nav__link">
                 <a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>
