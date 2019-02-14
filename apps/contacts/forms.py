@@ -3,11 +3,14 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from captcha.fields import ReCaptchaField
+
 from .models import Contact, SchoolContact
 
 
 class ContactForm(forms.ModelForm):
     confirm_email = forms.EmailField()
+    captcha = ReCaptchaField()
 
     class Meta:
         model = Contact
@@ -17,18 +20,20 @@ class ContactForm(forms.ModelForm):
             'confirm_email',
             'subject',
             'content',
+            'captcha',
             'is_agreed',
         )
         labels = {
             'name': 'Your name',
             'email': 'Your email',
-            'confirm_email': 'Re-enter your email:',
             'subject': 'Your subject',
             'content': 'Your content',
         }
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
+        self.fields['confirm_email'].label = 'Re-enter your email'
+        self.fields['captcha'].label = 'Please tick this box to help us protect against spam messages'
         self.fields['is_agreed'].required = True
         self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
 
