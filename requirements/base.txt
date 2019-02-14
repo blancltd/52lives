@@ -40,3 +40,6 @@ django-extensions==1.5.5
 
 # Django 2FA
 django-two-factor-auth==1.4.0
+
+# Recapatch
+django-recaptcha==1.2.1
