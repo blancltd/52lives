@@ -33,13 +33,14 @@ class SchoolContact(models.Model):
     school = models.CharField(max_length=150)
     position = models.CharField(max_length=120, blank=True)
     year_group = models.CharField(max_length=30, blank=True)
-    workshop_date = models.CharField(max_length=100, blank=True)
+    workshop_date = models.TextField(blank=True)
     address = models.TextField(blank=True)
     telephone = models.CharField(max_length=30, blank=True)
     email = models.EmailField(max_length=70)
     confirm_email = models.EmailField(max_length=70)
     hear_about = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_agreed = models.BooleanField(default=False, help_text=CONTACT_HELP_TEXTS['is_agreed'])
 
     def __str__(self):
         return u'{0} {1}'.format(self.name, self.email)
