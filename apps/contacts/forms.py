@@ -9,8 +9,8 @@ from .models import Contact, SchoolContact
 
 
 class ContactForm(forms.ModelForm):
-    confirm_email = forms.EmailField()
-    captcha = ReCaptchaField()
+    confirm_email = forms.EmailField(label='Re-enter email address:')
+    captcha = ReCaptchaField(label='Please tick this box to help us protect against spam messages')
 
     class Meta:
         model = Contact
@@ -32,8 +32,6 @@ class ContactForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
-        self.fields['confirm_email'].label = 'Re-enter your email'
-        self.fields['captcha'].label = 'Please tick this box to help us protect against spam messages'
         self.fields['is_agreed'].required = True
         self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
 
@@ -48,7 +46,7 @@ class ContactForm(forms.ModelForm):
 
 
 class SchoolContactForm(forms.ModelForm):
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(label='Please tick this box to help us protect against spam messages')
 
     class Meta:
         model = SchoolContact
@@ -79,7 +77,6 @@ class SchoolContactForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(SchoolContactForm, self).__init__(*args, **kwargs)
-        self.fields['captcha'].label = 'Please tick this box to help us protect against spam messages'
         self.fields['is_agreed'].required = True
         self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
         self.fields['workshop_date'].widget.attrs['rows'] = 3
