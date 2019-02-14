@@ -5,9 +5,30 @@
 
 
 <nav class="nav">
-    <ul>
+    <button class="nav__mobile-button"
+            aria-expanded="false"
+            aria-controls="nav__links">
+        <span class="nav__mobile-label">Open Menu</span>
+
+        <svg class="nav__mobile-icon"
+            aria-hidden="true"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 100 100">
+            <g class="nav__menu-toggle-icon">
+                <path class="line line-1" d="M5 13h90v14H5z"/>
+                <path class="line line-2" d="M5 43h90v14H5z"/>
+                <path class="line line-3" d="M5 73h90v14H5z"/>
+            </g>
+        </svg>
+    </button>
+    
+    <ul id="nav__links" class="nav__links">
         {% for page, page_active in root_pages %}
-            <li>
+            <li class="nav__link">
                 <a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>
                     {{ page.title }}
                 </a>
