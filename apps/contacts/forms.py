@@ -61,6 +61,7 @@ class SchoolContactForm(forms.ModelForm):
         self.fields['is_agreed'].required = True
         self.fields['is_agreed'].widget.attrs['class'] = 'is-agreed_spaced'
         self.fields['workshop_date'].widget.attrs['rows'] = 3
+        self.fields['workshop_date'].widget.attrs['style'] = 'resize: none'
 
     def clean(self):
         cleaned_data = super(SchoolContactForm, self).clean()
