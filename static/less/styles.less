@@ -1148,6 +1148,100 @@ h1 {
             }
         }
     }
+
+    .cookie-notice {
+        .ribbon;
+        display: flex;
+        position: fixed;
+        height: 100px;
+        width: 80%;
+        bottom: 40px;
+        left: 10%;
+        margin: auto;
+        padding: 0;
+        z-index: 9999;
+
+        &:hover {
+            color: white;
+        }
+
+        .cookie-notice__text {
+            width: 60%;
+            margin: auto;
+
+            background-color: @green;
+            color: @purple;
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .cookie-notice__more-info {
+            display: inline;
+
+            &:hover {
+                color: @purple;
+            }
+        }
+
+        .cookie-notice__button-container {
+            margin: auto;
+        }
+
+        .cookie-notice__button {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            border: none;
+            background-color: transparent;
+
+            &:hover {
+                color: @purple;
+            }
+        }
+
+        @media all and (max-width: @breakpoint-medium) {
+            .cookie-notice__text {
+                font-size: 1rem;
+            }
+
+            .cookie-notice__button {
+                font-size: 1rem;
+            }
+        }
+
+        @media all and (max-width: @breakpoint-mobile) {
+            width: 100%;
+            height: 8rem;
+            bottom: 0;
+            left: 0;
+            padding: 1rem;
+
+            &:before, &:after {
+                display: none;
+            }
+
+            .cookie-notice__text {
+                width: 50%;
+                font-size: 0.8rem;
+                margin-right: 0.25rem;
+                margin-left: 0.25rem;
+            }
+
+            .cookie-notice__button-container {
+                display: flex;
+                flex-direction: column-reverse;
+                width: 30%;
+                height: 100%;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .cookie-notice__button {
+                margin: auto;
+                line-height: 1;
+            }
+        }
+    }
 }
 
 .company-lives {
