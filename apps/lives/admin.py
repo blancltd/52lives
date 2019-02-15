@@ -25,7 +25,7 @@ class PersonInline(admin.TabularInline):
     min_num = 0
     show_change_link = True
     readonly_fields = (
-        'title', 'first_name', 'last_name', 'email', 'home_phone', 'mobile_phone', 'reason',
+        'first_name', 'last_name', 'email', 'home_phone', 'mobile_phone', 'reason',
         'message', 'hear_about_us',
     )
 
@@ -49,7 +49,7 @@ class LiveAdmin(admin.ModelAdmin):
         (
             'Live', {
                 'fields': (
-                    'nominee', 'title', 'first_name', 'last_name', 'number',
+                    'nominee', 'first_name', 'last_name', 'number',
                     'image', 'is_published',
                 )
             }
@@ -147,4 +147,3 @@ block_admin.site.register_block(LiveBlock, 'Advanced')
 
 block_admin.site.register(LatestLivesBlock)
 block_admin.site.register_block(LatestLivesBlock, 'Advanced')
-
