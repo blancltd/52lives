@@ -84,7 +84,6 @@ class SupportForm(forms.ModelForm):
     class Meta:
         model = Person
         fields = (
-            'title',
             'first_name',
             'last_name',
             'email',

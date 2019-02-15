@@ -27,7 +27,7 @@ class PersonAdmin(admin.ModelAdmin):
         'home_phone', 'mobile_phone',
     )
     list_display = (
-        'first_name', 'last_name', 'reason', 'life', 'title', 'email', 'home_phone',
+        'first_name', 'last_name', 'reason', 'life', 'email', 'home_phone',
         'mobile_phone', 'hear_about_us', 'updated_at', 'created_at',
     )
     list_filter = ('reason',)
@@ -35,7 +35,7 @@ class PersonAdmin(admin.ModelAdmin):
         (
             'Person', {
                 'fields': (
-                    'title', 'first_name', 'last_name', 'life', 'reason', 'message',
+                    'first_name', 'last_name', 'life', 'reason', 'message',
                     'hear_about_us',
                 )
             }
@@ -141,7 +141,7 @@ class NominatorAdmin(PersonAdmin):
         (
             'Person', {
                 'fields': (
-                    'title', 'first_name', 'last_name', 'life', 'message',
+                    'first_name', 'last_name', 'life', 'message',
                     'hear_about_us', 'is_agreed',
                 )
             }
