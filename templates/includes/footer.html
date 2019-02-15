@@ -36,4 +36,18 @@
       <p>Anonymity: In most cases we use real names, but occasionally may change someone's name for privacy or safety reasons.</p>
       <p>All rights reserved. <a href="/terms/">Terms</a> &amp; <a href="/privacy/">Privacy</a>. <a href="/cookie-policy/">Cookie Policy</a></p>
   </div>
-</footer>
+
+  {% if not 'cookies_accepted' in request.COOKIES %}
+    <div class="cookie-notice">
+      <p class="cookie-notice__text">
+        We use cookies to ensure that you have the best experience on our website.
+        By clicking "I agree" you give us permission to store cookies in your browser.
+        <a class="cookie-notice__more-info" href="/cookie-policy/">Find out more.</a>
+      </p>
+
+      <div class="cookie-notice__button-container">
+        <button class="cookie-notice__button cookie-notice__button_no">I do not agree</button>
+        <button class="cookie-notice__button cookie-notice__button_yes">I agree</button>
+      </div>
+    </div>
+  {% endif %}

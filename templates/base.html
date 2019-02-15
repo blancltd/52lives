@@ -4,12 +4,12 @@
     <title>{% block title %}52 Lives{% endblock %}</title>
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
     <link href="{% static 'css/styles.min.css' %}" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
     <meta name="google-site-verification" content="5x3PoAAz0bcv_CkqNz7347TlbRWMzpRycBH_ABuFaHM" />
     <!--[if lt IE 9]>
         <script src="{% static 'js/modernizr.js' %}"></script>
     <![endif]-->
-    {% if request.get_host == "www.52-lives.org" %}
+    {% if request.get_host == "www.52-lives.org" and request.COOKIES.cookies_accepted == 'true' %}
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -41,7 +41,7 @@
           {% block content %}
           {% endblock content %}
 
-          {% include "includes/footer.html" only %}
+          {% include "includes/footer.html" with request=request only %}
 
       </main>
 
@@ -51,6 +51,7 @@
       {% endblock endpage %}
 
       <script src="{% static 'js/mobile_menu.js' %}"></script>
+      <script src="{% static 'js/cookies.js' %}"></script>
 
       {% if debug %}
           <script src="//localhost:35729/livereload.js"></script>
