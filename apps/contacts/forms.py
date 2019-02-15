@@ -3,11 +3,14 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from captcha.fields import ReCaptchaField
+
 from .models import Contact, SchoolContact
 
 
 class ContactForm(forms.ModelForm):
-    confirm_email = forms.EmailField()
+    confirm_email = forms.EmailField(label='Re-enter email address:')
+    captcha = ReCaptchaField(label='Please tick this box to help us protect against spam messages')
 
     class Meta:
         model = Contact
@@ -17,12 +20,12 @@ class ContactForm(forms.ModelForm):
             'confirm_email',
             'subject',
             'content',
+            'captcha',
             'is_agreed',
         )
         labels = {
             'name': 'Your name',
             'email': 'Your email',
-            'confirm_email': 'Re-enter your email:',
             'subject': 'Your subject',
             'content': 'Your content',
         }
@@ -43,14 +46,30 @@ class ContactForm(forms.ModelForm):
 
 
 class SchoolContactForm(forms.ModelForm):
+    captcha = ReCaptchaField(label='Please tick this box to help us protect against spam messages')
+
     class Meta:
         model = SchoolContact
-        exclude = ('created_at',)
+        fields = (
+            'name',
+            'school',
+            'position',
+            'year_group',
+            'workshop_date',
+            'address',
+            'telephone',
+            'email',
+            'confirm_email',
+            'hear_about',
+            'captcha',
+            'is_agreed',
+        )
         labels = {
             'name': 'Your name',
             'position': 'Your position',
             'telephone': 'Your telephone',
             'email': 'Your email',
+            'confirm_email': 'Re-enter your e-mail address',
             'workshop_date': """Please enter 3 preferred dates for your workshop (we will do our
                                 best to accommodate one of the dates)""",
             'hear_about': 'How did you hear about us?',

@@ -70,6 +70,7 @@ THIRD_PARTY_APPS = [
     'blanc_pages_form_block',
     'blanc_pages_image_block',
     'blanc_pages_redactor_block',
+    'captcha',
     'django_mptt_admin',
     'django_otp',
     'django_otp.plugins.otp_static',
@@ -291,3 +292,9 @@ BLANC_PAGES_DEFAULT_BLOCKS = (
 THUMBNAIL_PREFIX = 'thumbs/'
 THUMBNAIL_PRESERVE_FORMAT = True
 THUMBNAIL_QUALITY = 100
+
+# Recaptcha
+if 'RECAPTCHA_PUBLIC_KEY' in os.environ:
+    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+    RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
+NOCAPTCHA = True

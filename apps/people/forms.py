@@ -4,6 +4,8 @@ from django import forms
 from django.forms import inlineformset_factory
 from django.core.exceptions import ValidationError
 
+from captcha.fields import ReCaptchaField
+
 from . import choices as persons_choices
 from .models import Person, Nominee
 from .help_texts import PERSON_HELP_TEXTS
@@ -12,6 +14,7 @@ from .help_texts import PERSON_HELP_TEXTS
 class NominateForm(forms.ModelForm):
     required_css_class = 'required'
     confirm_email = forms.EmailField(label='Re-enter email address:')
+    captcha = ReCaptchaField(label='Please tick this box to help us protect against spam messages')
 
     class Meta:
         model = Person
@@ -22,6 +25,7 @@ class NominateForm(forms.ModelForm):
             'confirm_email',
             'home_phone',
             'hear_about_us',
+            'captcha',
             'is_agreed',
             'reason',
         )
@@ -75,6 +79,7 @@ NominatorFormSet = inlineformset_factory(
 
 class SupportForm(forms.ModelForm):
     confirm_email = forms.EmailField(label='Re-enter email address:', required=False)
+    captcha = ReCaptchaField(label='Please tick this box to help us protect against spam messages')
 
     class Meta:
         model = Person
@@ -87,6 +92,7 @@ class SupportForm(forms.ModelForm):
             'home_phone',
             'message',
             'hear_about_us',
+            'captcha',
             'is_agreed',
             'reason'
         )
