@@ -18,7 +18,7 @@ class CountryAdmin(admin.ModelAdmin):
         (
             'Country', {
                 'fields': (
-                    'name', 'iso_3166_1_a2',
+                    'name', 'iso_3166_1_a2', 'frequently_used'
                 )
             }
         ),
@@ -33,5 +33,3 @@ class CountryAdmin(admin.ModelAdmin):
     )
 
     readonly_fields = ('id',)
-
-
