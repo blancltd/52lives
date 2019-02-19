@@ -27,7 +27,7 @@ class ContactForm(forms.ModelForm):
             'name': 'Your name',
             'email': 'Your email',
             'subject': 'Your subject',
-            'content': 'Your content',
+            'content': 'Your message',
         }
 
     def __init__(self, *args, **kwargs):
