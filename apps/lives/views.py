@@ -27,7 +27,7 @@ class SupportLife(SingleObjectMixin, FormView):
     model = Life
     slug_field = 'number'
     form_class = SupportForm
-    success_message = 'Your form has been submitted successfully.'
+    success_message = 'Thank you! Your form has been submitted successfully.'
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
