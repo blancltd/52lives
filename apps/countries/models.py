@@ -43,9 +43,13 @@ class Country(models.Model):
         help_text=help_text.COUNTRY['display_order']
     )
 
+    frequently_used = models.BooleanField(
+        default=False,
+        help_text=help_text.COUNTRY['frequently_used']
+    )
+
     class Meta:
         verbose_name_plural = 'Countries'
 
     def __str__(self):
         return self.name
-

@@ -9,6 +9,7 @@ from captcha.fields import ReCaptchaField
 from . import choices as persons_choices
 from .models import Person, Nominee
 from .help_texts import PERSON_HELP_TEXTS
+from countries.models import Country
 
 
 class NominateForm(forms.ModelForm):
@@ -65,7 +66,8 @@ class NomineeForm(forms.ModelForm):
         self.fields['relation'].required = True
         self.fields['why_help'].required = True
         self.fields['what_need'].required = True
-
+        
+        self.fields['country'].queryset = Country.objects.order_by('-frequently_used', 'name')
 
 NominatorFormSet = inlineformset_factory(
     Person,
