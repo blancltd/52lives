@@ -1,14 +1,15 @@
 var country_select = document.getElementById('id_nominee_set-0-country');
 
 if (country_select) {
-    // Create a new option to be added after the frequently selected countries
-    var option_separator = document.createElement("option");
-    option_separator.text = "---------";
-
     // Find the index of the last frequently used country (this is a hack - see function below)
     last_frequently_used_country = find_first_alphabetical_name(country_select);
 
-    country_select.add(option_separator, country_select[last_frequently_used_country])
+    // Add option separator but only when any frequently selected countries have been found
+    if (last_frequently_used_country != 1) {
+        var option_separator = document.createElement("option");
+        option_separator.text = "---------";
+        country_select.add(option_separator, country_select[last_frequently_used_country])
+    }
 }
 
 /**
