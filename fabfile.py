@@ -172,7 +172,12 @@ def get_media(directory=''):
     fab get_media:assets
     """
     # Recreate database
-    local((
+    # Sync files from our S3 bucket/directory
+    local(
+        'aws-vault exec devsoc-contentfiles-download -- '
         'aws s3 sync '
-        's3://contentfiles-media-eu-west-1/{media}/{directory} '
-        'htdocs/media/{directory}').format(media=env.media, directory=directory))
+        's3://contentfiles-media-eu-west-2/{media}/{directory} '
+        'htdocs/media/{directory}'.format(
+            media=env.media, directory=directory
+        )
+    )

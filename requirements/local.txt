@@ -2,4 +2,4 @@
 
 django-debug-toolbar==1.6
 coverage==3.7.1
-awscli==1.7.34
+awscli==1.18.80
