@@ -40,6 +40,11 @@ django-extensions==1.5.5
 
 # Django 2FA
 django-two-factor-auth==1.4.0
+django-formtools==1.0
+django-otp==0.3.7
+django-phonenumber-field==0.7.2
+phonenumbers==7.7.4
+qrcode==4.0.4
 
 # Recapatch
 django-recaptcha==1.2.1
