@@ -48,3 +48,6 @@ qrcode==4.0.4
 
 # Recapatch
 django-recaptcha==1.2.1
+
+# Import/Export
+django-import-export==1.2.0
