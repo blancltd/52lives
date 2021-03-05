@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
+from import_export.admin import ExportMixin
+
 from .models import Company, Life
 
 
@@ -17,7 +19,7 @@ class LifeInline(admin.TabularInline):
 
 
 @admin.register(Company)
-class CompanyAdmin(admin.ModelAdmin):
+class CompanyAdmin(ExportMixin, admin.ModelAdmin):
     inlines = (LifeInline,)
     list_display = ('title', 'description', 'image',)
     search_fields = ['title', 'description']
@@ -59,7 +61,7 @@ class CompanyAdmin(admin.ModelAdmin):
 
 
 @admin.register(Life)
-class LifeAdmin(admin.ModelAdmin):
+class LifeAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (
         'get_full_name', 'is_published', 'company', 'number', 'request_title', 'home_phone',
         'mobile_phone', 'created_at', 'updated_at',

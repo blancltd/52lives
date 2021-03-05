@@ -6,6 +6,8 @@ from django.contrib.admin.utils import unquote
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 
+from import_export.admin import ExportMixin
+
 from blanc_pages import block_admin
 
 from addresses.admin import AddressInline
@@ -17,7 +19,7 @@ from .models import Person, Nominator, Nominee
 
 
 @admin.register(Person)
-class PersonAdmin(admin.ModelAdmin):
+class PersonAdmin(ExportMixin, admin.ModelAdmin):
     inlines = [
         AddressInline, NoteInline
     ]

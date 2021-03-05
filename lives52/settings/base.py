@@ -77,6 +77,7 @@ THIRD_PARTY_APPS = [
     'django_otp',
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
+    'import_export',
     'mptt',
     'raven.contrib.django.raven_compat',
     'redactorjs_staticfiles',

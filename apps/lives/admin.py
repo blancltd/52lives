@@ -7,6 +7,8 @@ from django.contrib.admin.utils import unquote
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 
+from import_export.admin import ExportMixin
+
 from sorl.thumbnail.admin import AdminImageMixin
 from blanc_pages import block_admin
 
@@ -34,7 +36,7 @@ class PersonInline(admin.TabularInline):
 
 
 @admin.register(Life)
-class LiveAdmin(admin.ModelAdmin):
+class LiveAdmin(ExportMixin, admin.ModelAdmin):
     inlines = [
         PersonInline, AddressInline, NoteInline
     ]

@@ -5,12 +5,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from blanc_pages import block_admin
 
+from import_export.admin import ExportMixin
+
 from .blocks.forms import ContactFormBlock, SchoolContactFormBlock
 from .models import Contact, SchoolContact
 
 
 @admin.register(Contact)
-class ContactAdmin(admin.ModelAdmin):
+class ContactAdmin(ExportMixin, admin.ModelAdmin):
     date_hierarchy = 'created_at'
     list_display = ('name', 'email', 'subject', 'content', 'is_agreed', 'created_at', 'id')
     fieldsets = (
@@ -37,7 +39,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 @admin.register(SchoolContact)
-class SchoolContactAdmin(admin.ModelAdmin):
+class SchoolContactAdmin(ExportMixin, admin.ModelAdmin):
     date_hierarchy = 'created_at'
     list_display = ('name', 'position', 'school', 'year_group', 'created_at', 'id')
     fieldsets = (
