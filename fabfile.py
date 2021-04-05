@@ -110,8 +110,24 @@ def deploy(force_reload=None):
         # Clean up any potential cruft
         run('find . -name "*.pyc" -delete')
 
-        # Make sure npm requirements installed.
-        run('npm install')
+        # Install nvm using .nvmrc version
+        run('nvm install --no-progress')
+
+        # Check for changes in nvm or package-lock.json
+        run(
+            'cmp --silent .nvmrc node_modules/.nvmrc || '
+            'rm -f node_modules/.package-lock.json'
+        )
+        run(
+            'cmp --silent package-lock.json node_modules/.package-lock.json || '
+            'rm -f node_modules/.package-lock.json'
+        )
+
+        # Install node packages
+        if not exists('node_modules/.package-lock.json'):
+            run('npm ci --no-progress')
+            run('cp -a package-lock.json node_modules/.package-lock.json')
+            run('cp -a .nvmrc node_modules/.nvmrc')
 
         # Generate css from less.
         run(
