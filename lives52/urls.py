@@ -10,7 +10,9 @@ from django.contrib import admin
 from blanc_pages import block_admin
 
 from two_factor.admin import AdminSiteOTPRequired
-admin.site.__class__ = AdminSiteOTPRequired
+
+if not settings.DEBUG:
+    admin.site.__class__ = AdminSiteOTPRequired
 
 urlpatterns = [
     url(r'^news/', include('blanc_basic_news.urls', namespace='blanc_basic_news')),

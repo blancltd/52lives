@@ -1,4 +1,4 @@
-{% load thumbnail lives_tags %}
+{% load thumbnail lives_tags static %}
 
 {% get_latest_life object.life as life %}
 {% if life %}
@@ -11,7 +11,9 @@
             <div class="content-wrap">
                 <h1>{% if not life.first_name %}Life {% endif %}#{{ life.number }}{% if life.first_name %} {{ life.first_name }}{% endif %}</h1>
                 <h2>{{ life.nominee }}</h2>
-                <a href="{{ life.get_absolute_url }}" class="button">Read more</a>
+                <a href="{{ life.get_absolute_url }}" class="button">Can you help?
+                    <img class="arrow-icon" src="{% static 'img/heart_white.svg' %}" >
+                </a>
             </div>
         </div>
     </div>
