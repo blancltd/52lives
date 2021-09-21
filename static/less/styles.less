@@ -568,11 +568,16 @@ h2, h3 {
 
 .lives {
     display: block;
-    margin-top: 10rem;
+    margin-top: 9rem;
     .lives-grid {
         margin: 0;
         padding: 0;
         background: @heading;
+         h3{
+            &:before {
+                content: none;
+            }
+        }
     }
     h2 {
         font-weight: bold;
@@ -586,6 +591,10 @@ h2, h3 {
         &:before {
             content:none;
         }
+        @media all and (max-width: 840px) {
+            margin-left: calc(50% + 1rem);
+        }
+
     }
  
     li {
@@ -601,7 +610,7 @@ h2, h3 {
 
         &:first-of-type
         {
-            margin-top: -10rem;
+            margin-top: -9rem;
         }
 
         h3 {
