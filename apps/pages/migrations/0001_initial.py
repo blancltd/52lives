@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('video_embed_link', models.URLField(blank=True)),
                 ('colour', models.CharField(blank=True, max_length=40, choices=[(b'dark_purple', b'Dark Purple'), (b'purple', b'Purple'), (b'green', b'Green')])),
                 ('content_block', models.ForeignKey(editable=False, to='pages.ContentBlock', null=True)),
-                ('thumbnail_image', blanc_basic_assets.fields.AssetForeignKey(on_delete=django.db.models.deletion.PROTECT, blank=True, to='assets.Image', null=True)),
+                ('thumbnail_image', blanc_basic_assets.fields.AssetForeignKey(on_delete=django.db.models.deletion.PROTECT, to='assets.Image', null=True)),
             ],
             options={
                 'ordering': ('title',),
