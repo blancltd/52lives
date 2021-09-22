@@ -10,6 +10,9 @@ env.roledefs = {
         'lives52@scorch.devsoc.org',
         'lives52@smaug.devsoc.org',
     ],
+    'demo': [
+        'lives52@trogdor.devsoc.org',
+    ],
     'cron': [
         'lives52@scorch.devsoc.org',
     ],
@@ -18,10 +21,12 @@ env.roledefs = {
 env.home = env.get('home', '/var/www/lives52')
 env.repo = env.get('repo', '52lives')
 env.media = env.get('media', '52lives')
+env.media_bucket = env.get('media_bucket', 'contentfiles-media-eu-west-2')
 env.database = env.get('database', 'lives52_django')
+env.database_ssh = env.get('database_ssh', 'golestandt.devsoc.org')
 
 CRONTAB = """
-MAILTO=admin@blanc.ltd.uk
+MAILTO=""
 
 {daily}         /usr/local/bin/django-cron python manage.py clearsessions
 """
@@ -29,7 +34,14 @@ MAILTO=admin@blanc.ltd.uk
 # Avoid tweaking these
 env.use_ssh_config = True
 GIT_REMOTE = 'git@github.com:developersociety/{env.repo}.git'
-DATABASE_SERVER = 'golestandt.devsoc.org'
+
+
+@task
+def demo():
+    env.roledefs['web'] = env.roledefs['demo']
+    env.roledefs['cron'] = env.roledefs['demo']
+    env.database_ssh = 'trogdor.devsoc.org'
+    env.media_bucket = 'contentfiles-demo-media-eu-west-2'
 
 
 @task
@@ -164,7 +176,7 @@ def get_backup(hostname=None, replace_hostname='127.0.0.1', replace_port=8000):
 
     # Connect to the server and dump database.
     commands = ['ssh -C {} sudo -u postgres pg_dump --no-owner {}'.format(
-        DATABASE_SERVER, env.database
+        env.database_ssh, env.database
     )]
 
     if hostname:
@@ -192,8 +204,8 @@ def get_media(directory=''):
     local(
         'aws-vault exec devsoc-contentfiles-download -- '
         'aws s3 sync '
-        's3://contentfiles-media-eu-west-2/{media}/{directory} '
+        's3://{media_bucket}/{media}/{directory} '
         'htdocs/media/{directory}'.format(
-            media=env.media, directory=directory
+            media_bucket=env.media_bucket, media=env.media, directory=directory
         )
     )
