@@ -1,0 +1,20 @@
+<div class="{{css_classes}}">
+    {% if object.column_one_image.file.url %}
+        <div class="column-item">
+            <img class="column-item__image" src="{{object.column_one_image.file.url}}"/>
+            <h2><strong>{{object.column_one_heading}}</strong></h2>
+        </div>
+    {% endif %}
+    {% if object.column_two_image.file.url %}
+        <div class="column-item">
+            <img class="column-item__image" src="{{object.column_two_image.file.url}}"/>
+            <h2><strong>{{object.column_two_heading}}</strong></h2>
+        </div>
+    {% endif %}    
+    {% if object.column_three_image.file.url %}
+        <div class="column-item">
+            <img class="column-item__image" src="{{object.column_three_image.file.url}}"/>
+            <h2><strong>{{object.column_three_heading}}</strong></h2>
+        </div>
+    {% endif %}    
+</div>
