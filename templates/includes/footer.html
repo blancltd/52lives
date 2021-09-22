@@ -4,51 +4,27 @@
 
   {% load blancpages_navigation %}
 
-{% get_root_pages current_page as root_pages %}
-{% get_pages_at_level current_page as secondary_pages %}
+  {% get_root_pages current_page as root_pages %}
 
-
-<nav class="nav"> 
-  <ul id="nav__links" class="nav__links">
-      {% for page, page_active in root_pages %}
-          <li class="nav__link">
-              <a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>
-                  {{ page.title }}
-              </a>
-          </li>
-      {% endfor %}
-  </ul>
-</nav>
-
-<div class="social">
-  <ul>
-    <li><a href="https://twitter.com/52lives" class="ribbon icon icon-twitter" target="_blank"><span>Twitter</span></a></li>
-    <li><a href="https://www.facebook.com/52lives" class="ribbon icon icon-facebook" target="_blank"><span>Facebook</span></a></li>
-    <li><a href="https://instagram.com/52.lives/" class="ribbon icon icon-instagram" target="_blank"><span>Instagram</span></a></li>
-  </ul>
-</div>
-
-  <!-- {% footer_pages as footer_links %}
-
-  <ul class="sitemap">
-  {% for footer_header in footer_links|show_nav %}
-        <li>
-          <ul>
-            <li>
-              <h3>
-                <a href="{{ footer_header.get_absolute_url }}">{{ footer_header.title }}</a>
-              </h3>
+  <nav class="nav"> 
+    <ul id="nav__links" class="nav__links">
+        {% for page, page_active in root_pages %}
+            <li class="nav__link">
+                <a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>
+                    {{ page.title }}
+                </a>
             </li>
+        {% endfor %}
+    </ul>
+  </nav>
 
-            {% for footer_page in footer_header.get_children|show_nav %}
-              <li>
-                <a href="{{ footer_page.get_absolute_url }}">{{ footer_page.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </li>
-  {% endfor %}
-  </ul> -->
+  <div class="social">
+    <ul>
+      <li><a href="https://twitter.com/52lives" class="ribbon icon icon-twitter" target="_blank"><span>Twitter</span></a></li>
+      <li><a href="https://www.facebook.com/52lives" class="ribbon icon icon-facebook" target="_blank"><span>Facebook</span></a></li>
+      <li><a href="https://instagram.com/52.lives/" class="ribbon icon icon-instagram" target="_blank"><span>Instagram</span></a></li>
+    </ul>
+  </div>
 
   <div class="legal">
       <p>&copy;Copyright 52 Lives {% now 'Y' %}</p>
@@ -57,6 +33,7 @@
       <p>All rights reserved. <a href="/terms/">Terms</a> &amp; <a href="/privacy/">Privacy</a>. <a href="/cookie-policy/">Cookie Policy</a></p>
       <p class="siteby"><a href="https://www.dev.ngo/">Website by Developer Society</a></p>
   </div>
+</footer> 
 
   {% if not 'cookies_accepted' in request.COOKIES %}
     <div class="cookie-notice">
