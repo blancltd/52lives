@@ -1104,6 +1104,9 @@ h2, h3 {
             list-style: none;
             display: inline;
             margin: 2rem 2rem 2rem 0;
+            @media all and (max-width: @breakpoint-medium) {
+                margin: 2rem;
+            }
         }
     }
 
@@ -1124,7 +1127,6 @@ h2, h3 {
 }
 
 .foot {
-
     padding-top: 3rem;
     display: block;
     clear: both;
@@ -1139,12 +1141,19 @@ h2, h3 {
     }
 
     @media all and (max-width: @breakpoint-medium) {
+
         .nav__links{
-            flex-flow: row wrap;
+            background: none;
+            flex-flow: column wrap;
             height: auto;
             &:before, &:after {
                 display: none;
             }
+            li+li{
+                border-left: none;
+                border-top: 2px solid #7cb9a6;
+            }
+
         }
     }
   
