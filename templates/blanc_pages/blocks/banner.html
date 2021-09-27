@@ -1,4 +1,4 @@
-{% load thumbnail %}
+{% load thumbnail static %}
 
 
 {% if object.content %}
@@ -15,6 +15,7 @@
         {% if object.link %}
           <a href="{{ object.link }}" class="button">
             {{ object.link_text|default:"Read more" }}
+            <img class="arrow-icon" src="{% static 'img/heart_white.svg' %}" >
           </a>
         {% endif %}
       </div>
