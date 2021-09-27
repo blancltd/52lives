@@ -587,9 +587,10 @@ h2, h3 {
             width: 3rem;
             height: auto;
             margin-right: 1rem;
+            margin-left: 0.5rem;
         }
         &:before {
-            content:none;
+            content: none;
         }
         @media all and (max-width: 840px) {
             margin-left: calc(50% + 1rem);
@@ -631,7 +632,8 @@ h2, h3 {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,.35);
+            background: @heading;
+            opacity: 35%;
             z-index: 1;
             transition: all 0.3s ease-in-out;
         }
