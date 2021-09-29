@@ -17,15 +17,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-facebook:before {
-    content: "\e600";
-}
-.icon-instagram:before {
-    content: "\e601";
-}
-.icon-twitter:before {
-    content: "\e602";
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 // 52 Lives
@@ -242,6 +233,7 @@ h2, h3 {
         display: inline-block;
         position: relative;
         z-index: 2;
+        padding: 0.5rem;
     }
     a {
         color: white;
@@ -249,17 +241,7 @@ h2, h3 {
         &:hover, &.active { color: @purple; }
     }
     li + li {
-        margin-left: 1.5em;
-        &:before {
-            content: '';
-            display: inline-block;
-            position: absolute;
-            margin: .75em 0 0 -1.2em;
-            height: .5em;
-            width: 0.75em;
-            background: url(../img/heart.png) center center no-repeat;
-            background-size: cover;
-        }
+        border-left: 2px solid #7cb9a6;
     }
 }
 
@@ -1101,123 +1083,95 @@ h2, h3 {
 // footer
 
 .social {
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+    padding-top: 1rem;
+
+    .ribbon {
+        line-height: 1.1rem;
+        font-size: 1.375rem;
+    }
+
     ul {
-        display: table;
+        display:flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
         width: 100%;
+        max-width: 960px;
         margin: 0;
         padding: 0;
+
         li {
             list-style: none;
-            width: 100/3%;
-            display: table-cell;
+            display: inline;
+            margin: 2rem 2rem 2rem 0;
+            @media all and (max-width: @breakpoint-medium) {
+                margin: 2rem;
+            }
         }
     }
+
     a {
-        display: block;
+        display: inline;
         text-align: center;
         text-decoration: none;
         border: none;
         color: white;
         padding: 0.5em 1em;
-        .bold;
+        .font;
         &:before {
             color: white;
             margin-right: .5em;
             .icon;
         }
-        &.icon-facebook {
-            background: #3b5998;
-        }
-        &.icon-twitter {
-            background: #55acee;
-        }
-        &.icon-instagram {
-            background: #3f729b;
-        }
-        @media all and (max-width:460px) {
-            &:before { margin-right: 0; }
-            span { display: none;}
-        }
     }
 }
 
 .foot {
+    padding-top: 3rem;
     display: block;
     clear: both;
     overflow: hidden;
     background: @heading;
     color: white;
     font-weight: normal;
+ 
+    li {
+        font-size: 1.5rem;
+        line-height: 1.1;
+    }
+
+    @media all and (max-width: @breakpoint-medium) {
+
+        .nav__links{
+            background: none;
+            flex-flow: column wrap;
+            height: auto;
+            &:before, &:after {
+                display: none;
+            }
+            li+li{
+                border-left: none;
+                border-top: 2px solid #7cb9a6;
+            }
+
+        }
+    }
+  
     @media all and (max-width:960px) {
         padding: 0 1em;
-    }
-
-    .sitemap, .legal {
-        max-width: 960px;
-        margin: 0 auto;
-
-    }
-
-    a {
-        display: block;
-        color: white;
-        text-decoration: none;
-        &:hover { color: @green; }
-    }
-
-    .sitemap {
-        padding: 2em 0 2em 0;
-        display: table;
-        width: 100%;
-        border-bottom: 1px solid @line;
-        margin-bottom: 2em;
-        > li {
-            display: table-cell;
-            width: 20%;
-            list-style: none;
-            @media all and (max-width:580px) {
-                width: 100%;
-                display: block;
-            }
-            > ul {
-                display: block;
-                padding: 0;
-                li {
-                    list-style: none;
-                    font-size: 14/20em;
-                    & + li {
-                        border-top: 1px solid @line;
-                        padding: 0.25em 0;
-                    }
-                }
-            }
-            & + li {
-                padding-left: 10px;
-                @media all and (max-width:580px) {
-                    padding-left: 0;
-                }
-            }
-        }
-        h3 {
-            .font;
-            font-size: 25/14em;
-            font-weight: normal;
-            margin: 1em 0 0.25em 0;
-            &:before {
-                content: none;
-            }
-        }
     }
 
     .legal {
         font-size: 14/20em;
         margin-bottom: 2em;
+        text-align: center;
         p {
             margin: 0 0 0.25em 0;
         }
         a { display: inline; }
         .siteby {
-            float: right;
             margin: 0;
             a:hover { color: #fb2668; }
             @media all and (max-width:580px) {
