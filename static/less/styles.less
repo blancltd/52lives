@@ -112,7 +112,7 @@ h2, h3 {
     display: inline-flex;
     font-size: 35/20em;
     line-height: 1.9em;
-    height: 2em;
+    height: 3.5rem;
     margin: 1em 0;
     padding: 0 1em;
     border: none;
@@ -225,29 +225,53 @@ h2, h3 {
 
     ul {
         .ribbon;
+        display: inline-flex;
         margin: 0 auto;
         margin-bottom: -16/20em;
         top: .15em;
     }
+
     li {
         display: inline-block;
         position: relative;
         z-index: 2;
-        padding: 0.5rem;
+        margin-left: 0.2rem;
+        height: auto;  
     }
     a {
         color: white;
         text-decoration: none;
-        &:hover, &.active { color: @purple; }
+        padding: 0 0.5rem;
+        &:hover, &.active { color: @green; }
     }
     li + li {
-        border-left: 2px solid #7cb9a6;
+        a {
+            border-left: 2px solid #7cb9a6;   
+        }
+    }
+    @media all and (max-width: @breakpoint-mobile) {
+        a {
+            &:hover, &.active { color: @heading; }
+        }
+        li + li {
+            padding: 0.25rem 0;
+            a {
+                border-top: 2px solid #7cb9a6;
+                border-left: none;
+                padding: 0.25rem 0 ;
+            }
+        }   
+    }
+    @media all and (max-width: @breakpoint-medium) {
+        a {
+            padding: 0 0.3rem;
+        }
     }
 }
 
 // Responsively change main menu
 .head .nav {
-    font-size: 1em;
+    font-size: 1rem;
 
     @media all and (max-width: @breakpoint-full) {
         font-size: 0.8em;
@@ -281,6 +305,40 @@ h2, h3 {
 
             .nav__link + .nav__link {
                 margin-left: 0;
+            }
+        }
+    }
+
+    .dropdown {
+        display: none;
+    }
+
+    @media all and (min-width: @breakpoint-mobile) {
+        .nav__link:hover {
+            background: @heading;
+            position: relative;
+            a {
+                border-left: none;
+            }
+            .dropdown {
+                display: block;
+                position:absolute;
+                top:100%;
+                height: auto;
+                left:0;
+                right:0;
+                background: @heading;
+                display: flex;
+                flex-flow: column nowrap;
+                font-size: 1rem;
+
+                &:before, &:after {
+                    content: none;
+                }
+                    a {
+                        border-left: none;
+                        padding: 0;
+                    }
             }
         }
     }
@@ -350,33 +408,6 @@ h2, h3 {
 
     .nav__menu-toggle-icon .line-3 {
         transform: rotate(-45deg) translateY(0) translateX(0);
-    }
-}
-
-// Style the submenu
-.head .subnav {
-    font-size: 60%;
-    margin-top: 3em;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-// Responsively change the submenu
-.head .subnav {
-    @media all and (max-width: @breakpoint-full) {
-        font-size: 0.5em;
-    }
-
-    @media all and (max-width: @breakpoint-medium) {
-        font-size: 0.4em;
-    }
-
-    @media all and (max-width: @breakpoint-mobile) {
-        position: relative;
-        ul {
-            height: auto;
-        }
     }
 }
 
@@ -1136,31 +1167,38 @@ h2, h3 {
     background: @heading;
     color: white;
     font-weight: normal;
+    padding: 1em;
  
     li {
         font-size: 1.5rem;
         line-height: 1.1;
     }
+    a {
+        &:hover, &.active { color: @heading; }
+    }
 
     @media all and (max-width: @breakpoint-medium) {
-
-        .nav__links{
+    
+        .nav__links {
             background: none;
             flex-flow: column wrap;
             height: auto;
             &:before, &:after {
                 display: none;
             }
-            li+li{
-                border-left: none;
-                border-top: 2px solid #7cb9a6;
+            a {
+                &:hover, &.active { color: @green; }
             }
 
+            li+li {
+                padding-top: 1rem;
+
+                a {
+                    border-left: none;
+                    border-top: 2px solid #7cb9a6;
+                }
+            }
         }
-    }
-  
-    @media all and (max-width:960px) {
-        padding: 0 1em;
     }
 
     .legal {
