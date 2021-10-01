@@ -1,0 +1,21 @@
+{% load static %}
+{% if object.video_embed_link %}
+    <div class="{{css_classes }}">
+        <div class="video-block__background" style="background: url({{object.thumbnail_image.file.url}}) center center/cover no-repeat" >
+        <div class="video-block__overlay  {{object.colour}}"></div>
+
+            <div class="video-block__content ">
+                <h2>{{object.title}}</h2>
+                <button class="ribbon video__play">Watch             <img class="arrow-icon" src="{% static 'img/heart_white.svg' %}" ></button>
+            </div>
+        </div>
+        <div class="lightbox">
+            <div class="close">
+            X
+            </div>
+            <figure class="iframe__container" data-append='<iframe class ="video"width="60%"height="60%"src="{{object.video_embed_link}}"frameborder="0"allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>'  >
+        
+            </figure>
+        </div>
+    </div>
+{% endif %}
