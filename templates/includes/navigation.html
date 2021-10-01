@@ -1,6 +1,6 @@
 {% load blancpages_navigation %}
 
-{% get_root_pages current_page as root_pages %}
+{% get_root_pages as root_pages %}
 {% get_pages_at_level current_page as secondary_pages %}
 
 
@@ -32,21 +32,19 @@
                 <a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>
                     {{ page.title }}
                 </a>
+                {% get_pages_at_level page as next_level_pages %}
+                {% if next_level_pages %}
+                    <ul class="dropdown">
+                        {% for child_page, page_active in next_level_pages %}
+                            <li>
+                                <a href="{{ child_page.get_absolute_url }}">
+                                    {{ child_page.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}    
             </li>
         {% endfor %}
     </ul>
 </nav>
-
-{% if secondary_pages %}
-    <nav class="subnav">
-        <ul>
-            {% for page, page_active in secondary_pages %}
-                <li>
-                    <a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>
-                        {{ page.title }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </nav>
-{% endif %}
