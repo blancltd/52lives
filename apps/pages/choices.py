@@ -6,3 +6,9 @@ COLOUR_CHOICES = (
     ('green', 'Green'),
 )
 
+COLUMN_CHOICES = (
+    ("even", "1:1"),
+    ("stack-right", "1:2"), 
+    ("stack-left", "2:1"),
+)
+
