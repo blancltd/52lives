@@ -21,7 +21,7 @@ env.roledefs = {
 env.home = env.get('home', '/var/www/lives52')
 env.repo = env.get('repo', '52lives')
 env.media = env.get('media', '52lives')
-env.media_bucket = env.get('media_bucket', 'contentfiles-media-eu-west-2')
+env.media_bucket = env.get('media_bucket', 'contentfiles-media-eu-west-1')
 env.database = env.get('database', 'lives52_django')
 env.database_ssh = env.get('database_ssh', 'golestandt.devsoc.org')
 
@@ -41,7 +41,7 @@ def demo():
     env.roledefs['web'] = env.roledefs['demo']
     env.roledefs['cron'] = env.roledefs['demo']
     env.database_ssh = 'trogdor.devsoc.org'
-    env.media_bucket = 'contentfiles-demo-media-eu-west-2'
+    env.media_bucket = 'contentfiles-demo-media-eu-west-1'
 
 
 @task
