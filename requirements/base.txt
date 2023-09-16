@@ -3,7 +3,8 @@ pytz==2016.4
 psycopg2==2.7.3.2
 Pillow==3.2.0
 dj-database-url==0.4.1
-raven==6.1.0
+raven==6.10.0
+contextlib2==0.6.0.post1
 
 # Caching
 django-redis==4.8.0
