@@ -7,14 +7,14 @@ from fabric.contrib.files import exists
 # Changable settings
 env.roledefs = {
     'web': [
-        'lives52@scorch.devsoc.org',
-        'lives52@smaug.devsoc.org',
+        'lives52@moondancer.devsoc.org',
+        'lives52@morning.devsoc.org',
     ],
     'demo': [
         'lives52@trogdor.devsoc.org',
     ],
     'cron': [
-        'lives52@scorch.devsoc.org',
+        'lives52@moondancer.devsoc.org',
     ],
 }
 
@@ -154,9 +154,9 @@ def deploy(force_reload=None):
         run('python manage.py collectstatic --verbosity=0 --noinput')
 
         if force_reload:
-            run('killall -TERM uwsgi')
+            run('killall -TERM uwsgi', warn_only=True)
         else:
-            run('killall -HUP uwsgi')
+            run('killall -HUP uwsgi', warn_only=True)
 
 
 @task
