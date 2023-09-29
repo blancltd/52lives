@@ -1,7 +1,7 @@
 Django==1.8.19
 pytz==2016.4
 psycopg2==2.7.3.2
-Pillow==3.2.0
+Pillow==6.2.2
 dj-database-url==0.4.1
 raven==6.10.0
 contextlib2==0.6.0.post1
