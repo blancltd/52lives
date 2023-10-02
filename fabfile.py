@@ -103,15 +103,13 @@ def clone_repo(branch='master'):
 
 @task
 @roles('web')
-def deploy(force_reload=None):
+def deploy():
     """
     Deploy to remote server.
 
     Steps includes pull repo, migrate, install requirements, collect static.
 
     fab deploy
-    fab deploy:True
-    fab deploy:force_reload=True
     """
     with cd(env.home):
         run('git pull')
@@ -153,10 +151,8 @@ def deploy(force_reload=None):
         # Static files
         run('python manage.py collectstatic --verbosity=0 --noinput')
 
-        if force_reload:
-            run('killall -TERM uwsgi', warn_only=True)
-        else:
-            run('killall -HUP uwsgi', warn_only=True)
+        # Reload uWSGI
+        run('killall -TERM uwsgi', warn_only=True)
 
 
 @task
